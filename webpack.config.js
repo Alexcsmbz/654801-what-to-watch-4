@@ -12,6 +12,11 @@ module.exports = {
     open: true,
     port: 1337,
   },
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, `./src/components`)
+    }
+  },
   module: {
     rules: [
       {
