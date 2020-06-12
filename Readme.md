@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Sasha](https://up.htmlacademy.ru/react/4/user/654801).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Махнёв](https://htmlacademy.ru/profile/id7392).
 
 ---
 
