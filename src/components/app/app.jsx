@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 
 const App = (props) => {
   const {name, genre, reliseDate, films} = props;
+  const onClick = () => {};
 
   return <Main
     name={name}
     genre={genre}
     reliseDate={reliseDate}
     films={films}
+    onClick={onClick}
   />;
 };
 
