@@ -1,15 +1,17 @@
 import React from 'react';
-import Main from 'components/main.jsx';
+import Main from 'components/main/main.jsx';
 import PropTypes from 'prop-types';
 
 const App = (props) => {
   const {name, genre, reliseDate, films} = props;
+  const onClick = () => {};
 
   return <Main
     name={name}
     genre={genre}
     reliseDate={reliseDate}
     films={films}
+    onClick={onClick}
   />;
 };
 
