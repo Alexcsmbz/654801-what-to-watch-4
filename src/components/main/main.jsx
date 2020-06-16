@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 
 const Main = (props) => {
-  const {name, genre, reliseDate, films, onClick} = props;
+  const {name, genre, reliseDate, films} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -98,14 +99,7 @@ const Main = (props) => {
         </ul>
 
         <div className="catalog__movies-list">
-          {films.map((film) => <article key={film.name} className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src={film.img} alt={film.name} width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title" onClick={onClick}>
-              <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
-            </h3>
-          </article>)}
+          <MovieCardList films={films} />
         </div>
 
         <div className="catalog__more">
