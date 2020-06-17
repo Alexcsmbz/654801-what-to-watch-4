@@ -6,6 +6,16 @@ env:
 
 extends: ['htmlacademy/es6', 'plugin:react/recommended']
 
+rules:
+  react/react-in-jsx-scope: 0
+
+globals:
+  React: true
+  propTypes: true
+  renderer: true
+  shallow: true
+  mount: true
+
 parserOptions:
   ecmaFeatures:
     jsx: true

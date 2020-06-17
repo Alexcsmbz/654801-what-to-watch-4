@@ -1,8 +1,6 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import MovieCard from 'components/movie-card/movie-card.jsx';
 
-class MovieCardList extends PureComponent {
+class MovieCardList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -30,9 +28,9 @@ class MovieCardList extends PureComponent {
 }
 
 MovieCardList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    img: PropTypes.string,
+  films: propTypes.arrayOf(propTypes.shape({
+    name: propTypes.string,
+    img: propTypes.string,
   })).isRequired,
 };
 

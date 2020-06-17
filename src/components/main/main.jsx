@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import {Fragment} from 'react';
 
 const Main = (props) => {
   const {name, genre, reliseDate, films} = props;
 
-  return <React.Fragment>
+  return <Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -121,19 +120,18 @@ const Main = (props) => {
         </div>
       </footer>
     </div>
-
-  </React.Fragment>;
+  </Fragment>;
 };
 
 Main.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  reliseDate: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    img: PropTypes.string,
+  name: propTypes.string.isRequired,
+  genre: propTypes.string.isRequired,
+  reliseDate: propTypes.string.isRequired,
+  films: propTypes.arrayOf(propTypes.shape({
+    name: propTypes.string,
+    img: propTypes.string,
   })).isRequired,
-  onClick: PropTypes.func,
+  onClick: propTypes.func,
 };
 
 export default Main;

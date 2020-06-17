@@ -6,7 +6,7 @@
   "scripts": {
     "eslint": "eslint --ext .jsx --ext .js src/",
     "test": "npm run eslint && npm run test.jest",
-    "test.jest": "jest",
+    "test.jest": "jest --config ./jets.config.js",
     "build": "webpack --mode production",
     "start": "webpack-dev-server"
   },
@@ -34,11 +34,5 @@
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
-  },
-  "jest": {
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ]
   }
 }
