@@ -1,31 +1,23 @@
 import MovieCard from 'components/movie-card/movie-card.jsx';
+import {useState} from 'react';
 
-class MovieCardList extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const MovieCardList = (props) => {
+  const {films} = props;
+  // eslint-disable-next-line no-unused-vars
+  const [movieOnFocus, setMovieOnFocus] = useState({});
 
-    this.state = {movieOnFocus: {}};
+  const onMouseEnter = (movie) => setMovieOnFocus({movieOnFocus: movie});
+  const onMouseLeave = () => setMovieOnFocus({});
 
-    this.onMouseLeave = () => this.setState({movieOnFocus: {}});
-    this.onMouseEnter = (movieOnFocus) => this.setState({movieOnFocus});
-  }
-
-  render() {
-    const {films} = this.props;
-    const {onMouseEnter, onMouseLeave} = this;
-
-    return (
-      films.map((movie) =>
-        <MovieCard
-          key={movie.name}
-          movie={movie}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-        />
-      )
-    );
-  }
-}
+  return films.map((movie) =>
+    <MovieCard
+      key={movie.name}
+      movie={movie}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    />
+  );
+};
 
 MovieCardList.propTypes = {
   films: propTypes.arrayOf(propTypes.shape({
