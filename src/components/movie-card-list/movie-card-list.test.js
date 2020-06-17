@@ -1,8 +1,5 @@
-import App from './app.jsx';
+import MovieCardList from './movie-card-list.jsx';
 
-const name = `Whatever film`;
-const genre = `Criminal`;
-const reliseDate = `1999`;
 const films = [
   {
     name: `Film 1`,
@@ -22,13 +19,10 @@ const films = [
   },
 ];
 
-describe(`App snapshot test`, () => {
-  it(`App should render Main component with films name, genre, relise date, films list`, () => {
+describe(`MovieCardList snapshot test`, () => {
+  it(`MovieCardList should render movie list`, () => {
     const tree = renderer.create(
-        <App
-          name={name}
-          genre={genre}
-          reliseDate={reliseDate}
+        <MovieCardList
           films={films}
         />
     ).toJSON();

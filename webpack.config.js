@@ -1,11 +1,12 @@
 /* eslint-disable no-undef */
 const path = require(`path`);
+const webpack = require(`webpack`);
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: `./src/index.jsx`,
   output: {
     filename: `bundle.js`,
-    path: path.join(__dirname, `public`)
+    path: path.join(__dirname, `public`),
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
@@ -14,9 +15,17 @@ module.exports = {
   },
   resolve: {
     alias: {
-      components: path.resolve(__dirname, `./src/components`)
-    }
+      components: path.resolve(__dirname, `./src/components`),
+      mock: path.resolve(__dirname, `./src/mock`),
+    },
+    extensions: [`.js`, `.jsx`, `ts`, `tsx`],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      React: `react`,
+      propTypes: `prop-types`,
+    }),
+  ],
   module: {
     rules: [
       {
@@ -25,7 +34,7 @@ module.exports = {
         use: {
           loader: `babel-loader`,
         },
-      }
+      },
     ],
   },
   devtool: `source-map`,

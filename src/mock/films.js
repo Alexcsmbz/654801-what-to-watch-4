@@ -1,14 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from 'components/app/app.jsx';
-
-const data = {
-  name: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  reliseDate: `2014`,
-};
-
-const films = [
+export default [
   {
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -86,17 +76,3 @@ const films = [
     img: `img/mindhunter.jpg`,
   },
 ];
-
-const init = () => {
-  ReactDOM.render(
-      <App
-        name={data.name}
-        genre={data.genre}
-        reliseDate={data.reliseDate}
-        films={films}
-      />,
-      document.querySelector(`#root`)
-  );
-};
-
-init();
