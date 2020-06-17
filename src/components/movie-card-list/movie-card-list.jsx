@@ -9,16 +9,19 @@ class MovieCardList extends PureComponent {
     this.state = {
       movieOnFocus: {}
     };
+
+    this.onMouseLeave = () => {
+      this.setState({movieOnFocus: {}});
+    };
+
+    this.onMouseEnter = (movieOnFocus) => {
+      this.setState({movieOnFocus});
+    };
   }
 
   render() {
     const {films} = this.props;
-    const onMouseEnter = (movieOnFocus) => {
-      this.setState({movieOnFocus});
-    };
-    const onMouseLeave = () => {
-      this.setState({movieOnFocus: {}});
-    };
+    const {onMouseEnter, onMouseLeave} = this;
 
     return (
       films.map((movie) =>
