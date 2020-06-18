@@ -1,8 +1,8 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment} from 'react';
+import {Fragment, useState} from 'react';
 
 const Main = (props) => {
-  const {name, genre, reliseDate, films} = props;
+  const {name, genre, reliseDate, films, onClick} = props;
 
   return <Fragment>
     <section className="movie-card">
@@ -98,7 +98,10 @@ const Main = (props) => {
         </ul>
 
         <div className="catalog__movies-list">
-          <MovieCardList films={films} />
+          <MovieCardList
+            films={films}
+            onClick={onClick}
+          />
         </div>
 
         <div className="catalog__more">
