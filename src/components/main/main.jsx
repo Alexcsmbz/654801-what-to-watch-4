@@ -2,7 +2,7 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {Fragment, useState} from 'react';
 
 const Main = (props) => {
-  const {name, genre, reliseDate, films, onClick} = props;
+  const {name, genre, releaseDate, films, onClick} = props;
 
   return <Fragment>
     <section className="movie-card">
@@ -38,7 +38,7 @@ const Main = (props) => {
             <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{reliseDate}</span>
+              <span className="movie-card__year">{releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -129,7 +129,7 @@ const Main = (props) => {
 Main.propTypes = {
   name: propTypes.string.isRequired,
   genre: propTypes.string.isRequired,
-  reliseDate: propTypes.string.isRequired,
+  releaseDate: propTypes.string.isRequired,
   films: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     img: propTypes.string,

@@ -3,7 +3,7 @@ import MoviePage from './movie-page.jsx';
 const movie = {
   name: `name`,
   genre: `genre`,
-  reliseDate: `reliseDate`,
+  releaseDate: `releaseDate`,
   promo: `promo`,
   poster: `poster`,
 };

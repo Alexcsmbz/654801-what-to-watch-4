@@ -4,7 +4,7 @@ import {useState} from 'react';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 
 const App = (props) => {
-  const {name, genre, reliseDate, films} = props;
+  const {name, genre, releaseDate, films} = props;
   const [activeMovie, setActiveMovie] = useState({});
   const onClick = (movie) => {
     window.scrollTo(0, 0);
@@ -17,7 +17,7 @@ const App = (props) => {
         <Main
           name={name}
           genre={genre}
-          reliseDate={reliseDate}
+          releaseDate={releaseDate}
           films={films}
           onClick={onClick}
         />
@@ -32,7 +32,7 @@ const App = (props) => {
 App.propTypes = {
   name: propTypes.string.isRequired,
   genre: propTypes.string.isRequired,
-  reliseDate: propTypes.string.isRequired,
+  releaseDate: propTypes.string.isRequired,
   films: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     img: propTypes.string,

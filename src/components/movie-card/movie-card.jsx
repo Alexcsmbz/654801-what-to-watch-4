@@ -24,7 +24,7 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   movie: propTypes.shape({
     genre: propTypes.string,
-    reliseDate: propTypes.string,
+    releaseDate: propTypes.string,
     promo: propTypes.string,
     poster: propTypes.string,
     name: propTypes.string,

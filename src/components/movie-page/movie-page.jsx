@@ -1,7 +1,7 @@
 import {Fragment} from 'react';
 
 const MoviePage = (props) => {
-  const {name, genre, reliseDate, promo, poster} = props.movie;
+  const {name, genre, releaseDate, promo, poster} = props.movie;
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -33,7 +33,7 @@ const MoviePage = (props) => {
             <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{reliseDate}</span>
+              <span className="movie-card__year">{releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -162,7 +162,7 @@ MoviePage.propTypes = {
   movie: propTypes.shape({
     name: propTypes.string,
     genre: propTypes.string,
-    reliseDate: propTypes.string,
+    releaseDate: propTypes.string,
     promo: propTypes.string,
     poster: propTypes.string,
   }).isRequired,

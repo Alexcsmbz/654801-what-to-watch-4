@@ -85,7 +85,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              reliseDate
+              releaseDate
             </span>
           </p>
           <div

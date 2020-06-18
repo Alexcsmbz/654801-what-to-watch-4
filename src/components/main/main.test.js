@@ -3,7 +3,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 const name = `Whatever film`;
 const genre = `Criminal`;
-const reliseDate = `1999`;
+const releaseDate = `1999`;
 const films = [
   {
     name: `Film 1`,
@@ -30,7 +30,7 @@ describe(`Main snapshot test`, () => {
           <Main
             name={name}
             genre={genre}
-            reliseDate={reliseDate}
+            releaseDate={releaseDate}
             films={films}
           />
         </Router>

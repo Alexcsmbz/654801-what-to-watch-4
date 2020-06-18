@@ -5,14 +5,14 @@ import films from 'mock/films.js';
 const data = {
   name: `The Grand Budapest Hotel`,
   genre: `Drama`,
-  reliseDate: `2014`,
+  releaseDate: `2014`,
 };
 
 ReactDOM.render(
     <App
       name={data.name}
       genre={data.genre}
-      reliseDate={data.reliseDate}
+      releaseDate={data.releaseDate}
       films={films}
     />,
     document.querySelector(`#root`)
