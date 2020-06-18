@@ -26,14 +26,12 @@ const films = [
 describe(`App snapshot test`, () => {
   it(`App should render Main component with films name, genre, relise date, films list`, () => {
     const tree = renderer.create(
-
         <App
           name={name}
           genre={genre}
           reliseDate={reliseDate}
           films={films}
         />
-
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

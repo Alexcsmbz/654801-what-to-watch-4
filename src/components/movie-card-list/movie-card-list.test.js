@@ -1,8 +1,5 @@
 import MovieCardList from './movie-card-list.jsx';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const films = [
   {
@@ -31,7 +28,6 @@ describe(`MovieCardList snapshot test`, () => {
             films={films}
           />
         </Router>
-
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

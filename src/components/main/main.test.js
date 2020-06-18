@@ -1,7 +1,5 @@
 import Main from './main.jsx';
-import {
-  BrowserRouter as Router
-} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const name = `Whatever film`;
 const genre = `Criminal`;
@@ -36,7 +34,6 @@ describe(`Main snapshot test`, () => {
             films={films}
           />
         </Router>
-
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -1,7 +1,5 @@
 import MovieCard from './movie-card.jsx';
-import {
-  BrowserRouter as Router, Route
-} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const movie = {
   name: `Film 1`,
@@ -18,7 +16,6 @@ describe(`MovieCard snapshot test`, () => {
             onMouseLeave={() => {}}
           />
         </Router>
-
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
