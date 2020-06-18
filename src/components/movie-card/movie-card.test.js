@@ -1,4 +1,7 @@
 import MovieCard from './movie-card.jsx';
+import {
+  BrowserRouter as Router, Route
+} from 'react-router-dom';
 
 const movie = {
   name: `Film 1`,
@@ -8,11 +11,14 @@ const movie = {
 describe(`MovieCard snapshot test`, () => {
   it(`MovieCard should render movie`, () => {
     const tree = renderer.create(
-        <MovieCard
-          movie={movie}
-          onMouseEnter={() => {}}
-          onMouseLeave={() => {}}
-        />
+        <Router>
+          <MovieCard
+            movie={movie}
+            onMouseEnter={() => {}}
+            onMouseLeave={() => {}}
+          />
+        </Router>
+
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

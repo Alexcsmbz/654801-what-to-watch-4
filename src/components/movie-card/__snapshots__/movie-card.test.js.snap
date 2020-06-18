@@ -21,7 +21,8 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/movie-page/film-1"
+      onClick={[Function]}
     >
       Film 1
     </a>
