@@ -6,7 +6,10 @@ import MoviePage from 'components/movie-page/movie-page.jsx';
 const App = (props) => {
   const {name, genre, reliseDate, films} = props;
   const [activeMovie, setActiveMovie] = useState({});
-  const onClick = (movie) => setActiveMovie(movie);
+  const onClick = (movie) => {
+    window.scrollTo(0, 0);
+    setActiveMovie(movie);
+  };
 
   return <BrowserRouter>
     <Switch>
