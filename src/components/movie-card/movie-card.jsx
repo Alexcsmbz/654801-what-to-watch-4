@@ -20,8 +20,12 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   movie: propTypes.shape({
-    name: propTypes.string.isRequired,
-    thumbnail: propTypes.string.isRequired,
+    genre: propTypes.string,
+    reliseDate: propTypes.string,
+    promo: propTypes.string,
+    poster: propTypes.string,
+    name: propTypes.string,
+    thumbnail: propTypes.string,
   }).isRequired,
   onClick: propTypes.func,
   onMouseEnter: propTypes.func,
