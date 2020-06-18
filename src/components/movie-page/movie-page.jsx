@@ -160,12 +160,12 @@ const MoviePage = (props) => {
 
 MoviePage.propTypes = {
   movie: propTypes.shape({
-    name: propTypes.string.isRequired,
-    genre: propTypes.string.isRequired,
-    reliseDate: propTypes.string.isRequired,
-    promo: propTypes.string.isRequired,
-    poster: propTypes.string.isRequired,
-  }),
+    name: propTypes.string,
+    genre: propTypes.string,
+    reliseDate: propTypes.string,
+    promo: propTypes.string,
+    poster: propTypes.string,
+  }).isRequired,
 };
 
 export default MoviePage;

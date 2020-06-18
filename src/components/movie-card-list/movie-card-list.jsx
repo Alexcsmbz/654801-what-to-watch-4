@@ -5,7 +5,7 @@ const MovieCardList = (props) => {
   const {films, onClick} = props;
   const [movieOnFocus, setMovieOnFocus] = useState({});
 
-  const onMouseEnter = (movie) => setMovieOnFocus({movieOnFocus: movie});
+  const onMouseEnter = (movie) => setMovieOnFocus(movie);
   const onMouseLeave = () => setMovieOnFocus({});
 
   return films.map((movie) =>

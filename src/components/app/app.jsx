@@ -1,20 +1,12 @@
 import Main from 'components/main/main.jsx';
-import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {useState} from 'react';
 import MoviePage from 'components/movie-page/movie-page.jsx';
-
-const movie = {
-  name: `Name`,
-  genre: `genre`,
-  reliseDate: `2014`,
-  promo: `promo`,
-  poster: `poster`,
-};
 
 const App = (props) => {
   const {name, genre, reliseDate, films} = props;
   const [activeMovie, setActiveMovie] = useState({});
-  const onClick = (m) => setActiveMovie({activeMovie: m});
+  const onClick = (movie) => setActiveMovie(movie);
 
   return <BrowserRouter>
     <Switch>
@@ -27,10 +19,8 @@ const App = (props) => {
           onClick={onClick}
         />
       </Route>
-      <Route exact path="/movie-page">
-        <MoviePage
-          movie={movie}
-        />
+      <Route exact path="/movie-page/:id">
+        <MoviePage movie={activeMovie} />
       </Route>
     </Switch>
   </BrowserRouter>;
