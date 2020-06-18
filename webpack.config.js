@@ -12,11 +12,13 @@ module.exports = {
     contentBase: path.join(__dirname, `public`),
     open: true,
     port: 1337,
+    historyApiFallback: true,
   },
   resolve: {
     alias: {
       components: path.resolve(__dirname, `./src/components`),
       mock: path.resolve(__dirname, `./src/mock`),
+      utils: path.resolve(__dirname, `./src/utils`),
     },
     extensions: [`.js`, `.jsx`, `ts`, `tsx`],
   },

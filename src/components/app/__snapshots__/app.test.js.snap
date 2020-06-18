@@ -259,6 +259,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -268,7 +269,6 @@ Array [
             <img
               alt="Film 1"
               height="175"
-              src="img/img-1.jpg"
               width="280"
             />
           </div>
@@ -277,7 +277,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/movie-page/film-1"
+              onClick={[Function]}
             >
               Film 1
             </a>
@@ -285,6 +286,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -294,7 +296,6 @@ Array [
             <img
               alt="Film 2"
               height="175"
-              src="img/img-2.jpg"
               width="280"
             />
           </div>
@@ -303,7 +304,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/movie-page/film-2"
+              onClick={[Function]}
             >
               Film 2
             </a>
@@ -311,6 +313,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -320,7 +323,6 @@ Array [
             <img
               alt="Film 3"
               height="175"
-              src="img/img-3.jpg"
               width="280"
             />
           </div>
@@ -329,7 +331,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/movie-page/film-3"
+              onClick={[Function]}
             >
               Film 3
             </a>
@@ -337,6 +340,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -346,7 +350,6 @@ Array [
             <img
               alt="Film 4"
               height="175"
-              src="img/img-4.jpg"
               width="280"
             />
           </div>
@@ -355,7 +358,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/movie-page/film-4"
+              onClick={[Function]}
             >
               Film 4
             </a>

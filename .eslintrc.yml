@@ -8,6 +8,7 @@ extends: ['htmlacademy/es6', 'plugin:react/recommended']
 
 rules:
   react/react-in-jsx-scope: 0
+  no-unused-vars: 0
 
 globals:
   React: true

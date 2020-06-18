@@ -3,6 +3,7 @@
 exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -12,7 +13,6 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
     <img
       alt="Film 1"
       height="175"
-      src="img/img-1.jpg"
       width="280"
     />
   </div>
@@ -21,7 +21,8 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/movie-page/film-1"
+      onClick={[Function]}
     >
       Film 1
     </a>

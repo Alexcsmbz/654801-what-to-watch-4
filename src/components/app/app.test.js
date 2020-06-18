@@ -1,8 +1,9 @@
 import App from './app.jsx';
 
+
 const name = `Whatever film`;
 const genre = `Criminal`;
-const reliseDate = `1999`;
+const releaseDate = `1999`;
 const films = [
   {
     name: `Film 1`,
@@ -28,7 +29,7 @@ describe(`App snapshot test`, () => {
         <App
           name={name}
           genre={genre}
-          reliseDate={reliseDate}
+          releaseDate={releaseDate}
           films={films}
         />
     ).toJSON();
