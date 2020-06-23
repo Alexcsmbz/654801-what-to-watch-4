@@ -5,7 +5,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Bohemian Rhapsody`,
@@ -13,7 +15,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/bohemian-rhapsody.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Macbeth`,
@@ -21,7 +25,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/macbeth.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Aviator`,
@@ -29,7 +35,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/aviator.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `We need to talk about Kevin`,
@@ -37,7 +45,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/we-need-to-talk-about-kevin.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `What We Do in the Shadows`,
@@ -45,7 +55,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/what-we-do-in-the-shadows.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Revenant`,
@@ -53,7 +65,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/revenant.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Johnny English`,
@@ -61,7 +75,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/johnny-english.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Shutter Island`,
@@ -69,7 +85,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/shutter-island.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Pulp Fiction`,
@@ -77,7 +95,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/pulp-fiction.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `No Country for Old Men`,
@@ -85,7 +105,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/no-country-for-old-men.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Snatch`,
@@ -93,7 +115,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/snatch.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Moonrise Kingdom`,
@@ -101,7 +125,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/moonrise-kingdom.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Seven Years in Tibet`,
@@ -109,7 +135,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/seven-years-in-tibet.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Midnight Special`,
@@ -117,7 +145,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/midnight-special.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `War of the Worlds`,
@@ -125,7 +155,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/war-of-the-worlds.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Dardjeeling Limited`,
@@ -133,7 +165,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/dardjeeling-limited.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Orlando`,
@@ -141,7 +175,9 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/orlando.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     name: `Mindhunter`,
@@ -149,6 +185,8 @@ export default [
     genre: `genre`,
     releaseDate: `2014`,
     promo: `promo`,
-    poster: `poster`,
+    poster: `img/mindhunter.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
 ];
