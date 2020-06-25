@@ -12,27 +12,24 @@ const movie = {
 };
 
 describe(`MoviePlayer e2e test`, () => {
-  const onMouseEnter = jest.fn(() => true);
+  const onMouseEnter = jest.fn();
   const onMouseLeave = jest.fn(() => false);
 
   const onClick = jest.fn(() => {});
 
-  const moviePlayer = shallow(
+  const moviePlayer = mount(
       <MoviePlayer
         movie={movie}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onClick={onClick}
       />
   );
 
   const instance = moviePlayer.instance();
 
-  // const video = moviePlayer.find(`.movie-player`);
+  const video = moviePlayer.find(`.movie-player`);
 
   it(`MoviePlayer should have play state`, () => {
     // instance.onClick();
-    moviePlayer.find(`.movie-player`).simulate(`mouseenter`);
+    video.find(`.movie-player`).simulate(`mouseenter`);
     expect(onMouseEnter.mock.calls.length).toBe(1);
   });
 
