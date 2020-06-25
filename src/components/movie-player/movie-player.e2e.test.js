@@ -31,8 +31,9 @@ describe(`MoviePlayer e2e test`, () => {
   // const video = moviePlayer.find(`.movie-player`);
 
   it(`MoviePlayer should have play state`, () => {
-    moviePlayer.find(`.movie-player`).simulate(`click`);
-    expect(onClick.mock.calls.length).toBe(1);
+    // instance.onClick();
+    moviePlayer.find(`.movie-player`).simulate(`mouseenter`);
+    expect(onMouseEnter.mock.calls.length).toBe(1);
   });
 
 //   it(`MoviePlayer should have pause state`, () => {
