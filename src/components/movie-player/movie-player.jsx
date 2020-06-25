@@ -1,14 +1,28 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 
 const MoviePlayer = (props) => {
   const {previewMp4, previewWebm, poster} = props.movie;
   const videoRef = useRef(null);
+  const [isMoviePlay, setIsMoviePlay] = useState(false);
 
-  const onMouseEnter = () => setTimeout(() => videoRef.current.play(), 1000);
-  const onMouseLeave = () => videoRef.current.load();
+  const onMouseEnter = () => {
+    setIsMoviePlay(true);
+    setTimeout(() => videoRef.current.play(), 1000);
+    return isMoviePlay;
+  };
+
+  const onMouseLeave = () => {
+    setIsMoviePlay(false);
+    setTimeout(() => videoRef.current.load(), 1000);
+    return isMoviePlay;
+  };
+
+  const onClick = () => {};
 
   return (
     <video
+      className="movie-player"
+      onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       ref={videoRef}

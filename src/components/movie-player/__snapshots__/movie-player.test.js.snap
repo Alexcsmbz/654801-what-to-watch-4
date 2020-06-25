@@ -2,8 +2,10 @@
 
 exports[`MoviePlayer snapshot test MoviePlayer should render movie info 1`] = `
 <video
+  className="movie-player"
   controls={true}
   height="175"
+  onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   poster="poster"

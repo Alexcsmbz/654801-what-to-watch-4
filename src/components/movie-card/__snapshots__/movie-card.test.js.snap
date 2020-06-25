@@ -8,8 +8,10 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
   onMouseLeave={[Function]}
 >
   <video
+    className="movie-player"
     controls={true}
     height="175"
+    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     width="280"

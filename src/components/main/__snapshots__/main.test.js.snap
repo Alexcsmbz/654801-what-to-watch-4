@@ -264,8 +264,10 @@ Array [
           onMouseLeave={[Function]}
         >
           <video
+            className="movie-player"
             controls={true}
             height="175"
+            onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             width="280"
@@ -296,8 +298,10 @@ Array [
           onMouseLeave={[Function]}
         >
           <video
+            className="movie-player"
             controls={true}
             height="175"
+            onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             width="280"
@@ -328,8 +332,10 @@ Array [
           onMouseLeave={[Function]}
         >
           <video
+            className="movie-player"
             controls={true}
             height="175"
+            onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             width="280"
@@ -360,8 +366,10 @@ Array [
           onMouseLeave={[Function]}
         >
           <video
+            className="movie-player"
             controls={true}
             height="175"
+            onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             width="280"
