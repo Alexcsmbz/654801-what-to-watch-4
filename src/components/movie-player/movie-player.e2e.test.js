@@ -26,10 +26,12 @@ describe(`MoviePlayer e2e test`, () => {
       />
   );
 
-  const video = moviePlayer.find(`.movie-player`);
+  const instance = moviePlayer.instance();
+
+  // const video = moviePlayer.find(`.movie-player`);
 
   it(`MoviePlayer should have play state`, () => {
-    video.simulate(`click`);
+    moviePlayer.find(`.movie-player`).simulate(`click`);
     expect(onClick.mock.calls.length).toBe(1);
   });
 
