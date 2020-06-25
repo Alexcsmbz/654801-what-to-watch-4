@@ -7,15 +7,20 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <div
-    className="small-movie-card__image"
+  <video
+    controls={true}
+    height="175"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    width="280"
   >
-    <img
-      alt="Film 1"
-      height="175"
-      width="280"
+    <source
+      type="video/webm"
     />
-  </div>
+    <source
+      type="video/mp4"
+    />
+  </video>
   <h3
     className="small-movie-card__title"
   >

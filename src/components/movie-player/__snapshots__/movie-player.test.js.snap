@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePlayer snapshot test MoviePlayer should render movie info 1`] = `
+<video
+  controls={true}
+  height="175"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  poster="poster"
+  width="280"
+>
+  <source
+    src=".webm"
+    type="video/webm"
+  />
+  <source
+    src=".mp4"
+    type="video/mp4"
+  />
+</video>
+`;

@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import MoviePlayer from 'components/movie-player/movie-player.jsx';
 import {formatNameToPath} from 'utils/utils.js';
 
 const MovieCard = (props) => {
@@ -11,9 +12,7 @@ const MovieCard = (props) => {
       onMouseEnter={() => onMouseEnter(movie)}
       onMouseLeave={() => onMouseLeave()}
     >
-      <div className="small-movie-card__image">
-        <img src={movie.thumbnail} alt={movie.name} width="280" height="175" />
-      </div>
+      <MoviePlayer movie={movie} />
       <h3 className="small-movie-card__title">
         <Link className="small-movie-card__link" to={`/movie-page/${formatNameToPath(movie.name)}`}>{movie.name}</Link>
       </h3>
@@ -29,6 +28,8 @@ MovieCard.propTypes = {
     poster: propTypes.string,
     name: propTypes.string,
     thumbnail: propTypes.string,
+    previewMp4: propTypes.string,
+    previewWebm: propTypes.string,
   }).isRequired,
   onClick: propTypes.func,
   onMouseEnter: propTypes.func,
