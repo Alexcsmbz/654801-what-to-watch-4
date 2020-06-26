@@ -1,4 +1,5 @@
 import {Fragment} from 'react';
+import {NavTabs} from 'components/nav-tabs/nav-tabs.jsx';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
@@ -62,19 +63,9 @@ const MoviePage = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <nav className="movie-nav movie-card__nav">
-              <ul className="movie-nav__list">
-                <li className="movie-nav__item movie-nav__item--active">
-                  <a href="#" className="movie-nav__link">Overview</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Details</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Reviews</a>
-                </li>
-              </ul>
-            </nav>
+            <NavTabs>
+
+            </NavTabs>
 
             <div className="movie-rating">
               <div className="movie-rating__score">8,9</div>
