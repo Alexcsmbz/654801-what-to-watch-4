@@ -8,27 +8,18 @@ const MovieCardList = (props) => {
   const onMouseEnter = (movie) => setMovieOnFocus(movie);
   const onMouseLeave = () => setMovieOnFocus({});
 
-  return activeMovie
-    ? films.map((movie) => {
-      if (movie.genre === activeMovie.genre) {
-        return <MovieCard
-          key={movie.name}
-          movie={movie}
-          onClick={onClick}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-        />;
-      }
-      return null;
-    })
-    : films.map((movie) =>
-      <MovieCard
-        key={movie.name}
-        movie={movie}
-        onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      />);
+  const showMovies = activeMovie
+    ? films.filter((movie) => movie.genre === activeMovie.genre)
+    : films;
+
+  return showMovies.map((movie) =>
+    <MovieCard
+      key={movie.name}
+      movie={movie}
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    />);
 };
 
 MovieCardList.propTypes = {

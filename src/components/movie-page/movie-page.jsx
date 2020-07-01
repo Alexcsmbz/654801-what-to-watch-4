@@ -12,7 +12,7 @@ import films from 'mock/films.js';
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
   const {onClick} = props;
-  const initTabs = [
+  const tabs = [
     {
       name: `Overview`,
       isActive: true,
@@ -31,22 +31,6 @@ const MoviePage = (props) => {
   ];
 
   const [activeIdx, setActiveIdx] = useState(0);
-  const [tabs, setActiveTabs] = useState(initTabs);
-
-  const switchActiveTab = (tab) => {
-    let newTabs = [...tabs];
-    newTabs.forEach((t) => (t.isActive = false));
-    tab.isActive = true;
-
-    setActiveIdx(tab.idx);
-    setActiveTabs(newTabs);
-  };
-
-  const getTabsByStatus = (component) =>
-    component.isActive
-      ? <NavTabActive onClick={switchActiveTab} key={component.name} tab={component} />
-      : <NavTab onClick={switchActiveTab} key={component.name} tab={component} />
-    ;
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -108,7 +92,9 @@ const MoviePage = (props) => {
 
           <div className="movie-card__desc">
             <NavTabs>
-              {tabs.map((t) => getTabsByStatus(t))}
+              {tabs.map((tab) => tab.idx === activeIdx
+                ? <NavTabActive onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />
+                : <NavTab onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />)}
             </NavTabs>
 
             <Subpages idx={activeIdx}>

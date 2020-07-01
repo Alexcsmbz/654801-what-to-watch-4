@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavTabActive snapshot test NavTabActive should render nav tab active 1`] = `
+<li
+  className="movie-nav__item movie-nav__item--active "
+  onClick={[Function]}
+>
+  <div
+    className="movie-nav__link"
+  >
+    Overview
+  </div>
+</li>
+`;
