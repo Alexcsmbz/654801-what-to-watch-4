@@ -1,12 +1,12 @@
 import MovieCard from './movie-card.jsx';
 
 const movieOnFocus = {
-  name: `Film 1`,
+  name: `movie 1`,
   img: `img/img-1.jpg`,
 };
 
 const movie = {
-  name: `Film 1`,
+  name: `movie 1`,
   img: `img/img-1.jpg`,
 };
 

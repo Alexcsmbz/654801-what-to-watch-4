@@ -7,7 +7,7 @@ import Details from 'components/details/details.jsx';
 import Reviews from 'components/reviews/reviews.jsx';
 import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import films from 'mock/films.js';
+import movies from 'mock/movies.js';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
@@ -113,7 +113,7 @@ const MoviePage = (props) => {
 
         <div className="catalog__movies-list">
           <MovieCardList
-            films={films}
+            movies={movies}
             activeMovie={props.movie}
             onClick={onClick}
           />

@@ -2,7 +2,7 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {Fragment, useState} from 'react';
 
 const Main = (props) => {
-  const {name, genre, releaseDate, films, onClick} = props;
+  const {name, genre, releaseDate, movies, onClick} = props;
 
   return <Fragment>
     <section className="movie-card">
@@ -99,7 +99,7 @@ const Main = (props) => {
 
         <div className="catalog__movies-list">
           <MovieCardList
-            films={films}
+            movies={movies}
             onClick={onClick}
           />
         </div>
@@ -130,7 +130,7 @@ Main.propTypes = {
   name: propTypes.string.isRequired,
   genre: propTypes.string.isRequired,
   releaseDate: propTypes.string.isRequired,
-  films: propTypes.arrayOf(propTypes.shape({
+  movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     img: propTypes.string,
   })).isRequired,

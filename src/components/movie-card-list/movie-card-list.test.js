@@ -1,21 +1,21 @@
 import MovieCardList from './movie-card-list.jsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-const films = [
+const movies = [
   {
-    name: `Film 1`,
+    name: `movie 1`,
     img: `img/img-1.jpg`,
   },
   {
-    name: `Film 2`,
+    name: `movie 2`,
     img: `img/img-2.jpg`,
   },
   {
-    name: `Film 3`,
+    name: `movie 3`,
     img: `img/img-3.jpg`,
   },
   {
-    name: `Film 4`,
+    name: `movie 4`,
     img: `img/img-4.jpg`,
   },
 ];
@@ -25,7 +25,7 @@ describe(`MovieCardList snapshot test`, () => {
     const tree = renderer.create(
         <Router>
           <MovieCardList
-            films={films}
+            movies={movies}
           />
         </Router>
     ).toJSON();
