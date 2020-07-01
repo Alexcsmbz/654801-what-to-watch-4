@@ -9,7 +9,7 @@ const MovieCardList = (props) => {
   const onMouseLeave = () => setMovieOnFocus({});
 
   const showMovies = activeMovie
-    ? films.filter((movie) => movie.genre === activeMovie.genre)
+    ? films.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
     : films;
 
   return showMovies.map((movie) =>
