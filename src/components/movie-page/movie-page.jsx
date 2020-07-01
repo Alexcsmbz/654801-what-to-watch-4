@@ -1,8 +1,42 @@
-import {Fragment} from 'react';
-import {NavTabs} from 'components/nav-tabs/nav-tabs.jsx';
+import {Fragment, useState} from 'react';
+import NavTabs from 'components/nav-tabs/nav-tabs.jsx';
+import NavTabActive from 'components/nav-tab-active/nav-tab-active.jsx';
+import NavTab from 'components/nav-tab/nav-tab.jsx';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
+  const initTabs = [
+    {
+      name: `Overview`,
+      isActive: true,
+    },
+    {
+      name: `Details`,
+      isActive: false,
+    },
+    {
+      name: `Reviews`,
+      isActive: false,
+    },
+  ];
+
+  const [tabs, setActiveTabs] = useState(initTabs);
+
+  const switchActiveTab = (tab) => {
+    let newTabs = [...tabs];
+    newTabs.forEach((t) => (t.isActive = false));
+    tab.isActive = true;
+    setActiveTabs(newTabs);
+  };
+
+  const getComponentByStatus = (component) => {
+    switch (component.isActive) {
+      case true:
+        return <NavTabActive onClick={switchActiveTab} key={component.name} tab={component} />;
+      default:
+        return <NavTab onClick={switchActiveTab} key={component.name} tab={component} />;
+    }
+  };
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -64,7 +98,7 @@ const MoviePage = (props) => {
 
           <div className="movie-card__desc">
             <NavTabs>
-
+              {tabs.map((t) => getComponentByStatus(t))}
             </NavTabs>
 
             <div className="movie-rating">
@@ -87,7 +121,7 @@ const MoviePage = (props) => {
           </div>
         </div>
       </div>
-    </section >
+    </section>
 
     <div className="page-content">
       <section className="catalog catalog--like-this">

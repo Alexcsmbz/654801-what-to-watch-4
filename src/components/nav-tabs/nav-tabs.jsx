@@ -1,5 +1,3 @@
-import {NavLink} from 'components/nav-link/nav-link.jsx';
-
 const NavTabs = (props) => {
   const {children} = props;
 
@@ -11,10 +9,9 @@ const NavTabs = (props) => {
     </nav>
   );
 };
-//  {/* <li className="movie-nav__item">
-//           <a href="#" className="movie-nav__link">Details</a>
-//         </li>
-//         <li className="movie-nav__item">
-//           <a href="#" className="movie-nav__link">Reviews</a>
-//         </li>
-//        */}
+
+NavTabs.propTypes = {
+  children: propTypes.arrayOf(propTypes.element).isRequired,
+};
+
+export default NavTabs;
