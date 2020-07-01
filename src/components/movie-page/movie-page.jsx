@@ -5,30 +5,40 @@ import NavTab from 'components/nav-tab/nav-tab.jsx';
 import Overview from 'components/overview/overview.jsx';
 import Details from 'components/details/details.jsx';
 import Reviews from 'components/reviews/reviews.jsx';
+import Subpages from 'components/subpages/subpages.jsx';
+import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import films from 'mock/films.js';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
+  const {onClick} = props;
   const initTabs = [
     {
       name: `Overview`,
       isActive: true,
+      idx: 0,
     },
     {
       name: `Details`,
       isActive: false,
+      idx: 1,
     },
     {
       name: `Reviews`,
       isActive: false,
+      idx: 2,
     },
   ];
 
+  const [activeIdx, setActiveIdx] = useState(0);
   const [tabs, setActiveTabs] = useState(initTabs);
 
   const switchActiveTab = (tab) => {
     let newTabs = [...tabs];
     newTabs.forEach((t) => (t.isActive = false));
     tab.isActive = true;
+
+    setActiveIdx(tab.idx);
     setActiveTabs(newTabs);
   };
 
@@ -101,9 +111,11 @@ const MoviePage = (props) => {
               {tabs.map((t) => getTabsByStatus(t))}
             </NavTabs>
 
-            <Overview />
-            <Details />
-            <Reviews />
+            <Subpages idx={activeIdx}>
+              <Overview />
+              <Details />
+              <Reviews />
+            </Subpages>
           </div>
         </div>
       </div>
@@ -114,41 +126,11 @@ const MoviePage = (props) => {
         <h2 className="catalog__title">More like this</h2>
 
         <div className="catalog__movies-list">
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-            </h3>
-          </article>
+          <MovieCardList
+            films={films}
+            activeMovie={props.movie}
+            onClick={onClick}
+          />
         </div>
       </section>
 
@@ -177,6 +159,7 @@ MoviePage.propTypes = {
     promo: propTypes.string,
     poster: propTypes.string,
   }).isRequired,
+  onClick: propTypes.func,
 };
 
 export default MoviePage;
