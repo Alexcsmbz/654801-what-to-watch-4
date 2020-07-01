@@ -23,7 +23,10 @@ const App = (props) => {
         />
       </Route>
       <Route exact path="/movie-page/:id">
-        <MoviePage movie={activeMovie} />
+        <MoviePage
+          movie={activeMovie}
+          onClick={onClick}
+        />
       </Route>
     </Switch>
   </BrowserRouter>;

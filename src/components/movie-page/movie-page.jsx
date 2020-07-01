@@ -1,7 +1,36 @@
-import {Fragment} from 'react';
+import {Fragment, useState} from 'react';
+import NavTabs from 'components/nav-tabs/nav-tabs.jsx';
+import NavTabActive from 'components/nav-tab-active/nav-tab-active.jsx';
+import NavTab from 'components/nav-tab/nav-tab.jsx';
+import Overview from 'components/overview/overview.jsx';
+import Details from 'components/details/details.jsx';
+import Reviews from 'components/reviews/reviews.jsx';
+import Subpages from 'components/subpages/subpages.jsx';
+import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import films from 'mock/films.js';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
+  const {onClick} = props;
+  const tabs = [
+    {
+      name: `Overview`,
+      isActive: true,
+      idx: 0,
+    },
+    {
+      name: `Details`,
+      isActive: false,
+      idx: 1,
+    },
+    {
+      name: `Reviews`,
+      isActive: false,
+      idx: 2,
+    },
+  ];
+
+  const [activeIdx, setActiveIdx] = useState(0);
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -62,82 +91,32 @@ const MoviePage = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <nav className="movie-nav movie-card__nav">
-              <ul className="movie-nav__list">
-                <li className="movie-nav__item movie-nav__item--active">
-                  <a href="#" className="movie-nav__link">Overview</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Details</a>
-                </li>
-                <li className="movie-nav__item">
-                  <a href="#" className="movie-nav__link">Reviews</a>
-                </li>
-              </ul>
-            </nav>
+            <NavTabs>
+              {tabs.map((tab) => tab.idx === activeIdx
+                ? <NavTabActive onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />
+                : <NavTab onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />)}
+            </NavTabs>
 
-            <div className="movie-rating">
-              <div className="movie-rating__score">8,9</div>
-              <p className="movie-rating__meta">
-                <span className="movie-rating__level">Very good</span>
-                <span className="movie-rating__count">240 ratings</span>
-              </p>
-            </div>
-
-            <div className="movie-card__text">
-              <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege.</p>
-
-              <p>Gustave prides himself on providing first-class service to the hotels guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustaves lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-              <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-              <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
-            </div>
+            <Subpages idx={activeIdx}>
+              <Overview />
+              <Details />
+              <Reviews />
+            </Subpages>
           </div>
         </div>
       </div>
-    </section >
+    </section>
 
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
         <div className="catalog__movies-list">
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-            </h3>
-          </article>
+          <MovieCardList
+            films={films}
+            activeMovie={props.movie}
+            onClick={onClick}
+          />
         </div>
       </section>
 
@@ -166,6 +145,7 @@ MoviePage.propTypes = {
     promo: propTypes.string,
     poster: propTypes.string,
   }).isRequired,
+  onClick: propTypes.func,
 };
 
 export default MoviePage;
