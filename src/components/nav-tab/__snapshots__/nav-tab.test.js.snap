@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavTab snapshot test NavTab should render nav tab 1`] = `
+<li
+  className="movie-nav__item undefined"
+  onClick={[Function]}
+>
+  <div
+    className="movie-nav__link"
+  >
+    tab
+  </div>
+</li>
+`;
