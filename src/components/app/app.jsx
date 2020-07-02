@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import ActionCreator from 'store/action-creator.js';
 
 const App = (props) => {
-  const {name, genre, releaseDate, movies, onFilterClick} = props;
+  const {name, genre, releaseDate, movies, onFilterClick, genres} = props;
   const [activeMovie, setActiveMovie] = useState({});
   const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
@@ -21,6 +21,7 @@ const App = (props) => {
           genre={genre}
           releaseDate={releaseDate}
           movies={movies}
+          genres={genres}
           onMovieCardClick={onMovieCardClick}
           onFilterClick={onFilterClick}
         />
@@ -28,7 +29,7 @@ const App = (props) => {
       <Route exact path="/movie-page/:id">
         <MoviePage
           movie={activeMovie}
-          onClick={onMovieCardClick}
+          onMovieCardClick={onMovieCardClick}
         />
       </Route>
     </Switch>
@@ -48,11 +49,13 @@ App.propTypes = {
     previewMp4: propTypes.string,
     previewWebm: propTypes.string,
   })).isRequired,
+  genres: propTypes.arrayOf(propTypes.string).isRequired,
   onFilterClick: propTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
+  genres: state.genres,
 });
 
 const mapDispatchToProps = (dispatch) => ({

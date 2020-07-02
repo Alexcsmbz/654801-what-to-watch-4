@@ -3,15 +3,13 @@ const GenreListItem = (props) => {
 
   return (
     <li onClick={onClick} className={`catalog__genres-item ${className}`}>
-      <div className="catalog__genres-link">{item.name}</div>
+      <div className="catalog__genres-link">{item}</div>
     </li>
   );
 };
 
 GenreListItem.propTypes = {
-  item: propTypes.shape({
-    name: propTypes.string,
-  }).isRequired,
+  item: propTypes.string.isRequired,
   className: propTypes.string,
   onClick: propTypes.func,
 };

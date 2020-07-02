@@ -13,12 +13,13 @@ const Main = (props) => {
     movies,
     onMovieCardClick,
     onFilterClick,
+    genres,
   } = props;
 
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const onGenreItemClick = ({name}, idx) => {
-    onFilterClick(name);
+  const onGenreItemClick = (item, idx) => {
+    onFilterClick(item);
     setActiveIdx(idx);
   };
 
@@ -77,14 +78,14 @@ const Main = (props) => {
         </div>
       </div >
     </section >
-    <button onClick={() => {}}>onFilterClick</button>
+
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         <GenreList>
-          {genreList.map((g, idx) => idx === activeIdx
-            ? <GenreListItemActive onClick={() => onGenreItemClick(g, idx)} key={g.name} item={g} />
-            : <GenreListItem onClick={() => onGenreItemClick(g, idx)} key={g.name} item={g} />)}
+          {genres.map((g, idx) => idx === activeIdx
+            ? <GenreListItemActive onClick={() => onGenreItemClick(g, idx)} key={g} item={g} />
+            : <GenreListItem onClick={() => onGenreItemClick(g, idx)} key={g} item={g} />)}
         </GenreList>
 
         <div className="catalog__movies-list">
@@ -124,6 +125,7 @@ Main.propTypes = {
     name: propTypes.string,
     img: propTypes.string,
   })).isRequired,
+  genres: propTypes.arrayOf(propTypes.string).isRequired,
   onMovieCardClick: propTypes.func,
   onFilterClick: propTypes.func,
 };

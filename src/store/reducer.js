@@ -5,6 +5,7 @@ import {extend} from 'utils/utils.js';
 const initialState = {
   genre: `All genres`,
   movies,
+  genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
 };
 
 export default (state = initialState, action) => {

@@ -30,16 +30,6 @@ export default [
     previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
-    name: `Documentary`,
-    thumbnail: `img/aviator.jpg`,
-    genre: `drama`,
-    releaseDate: `2014`,
-    promo: `promo`,
-    poster: `img/aviator.jpg`,
-    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
-  },
-  {
     name: `We need to talk about Kevin`,
     thumbnail: `img/we-need-to-talk-about-kevin.jpg`,
     genre: `Documentary`,
