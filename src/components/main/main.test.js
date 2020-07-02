@@ -28,7 +28,7 @@ describe(`Main snapshot test`, () => {
     const tree = renderer.create(
         <Router>
           <Main
-            name={name}
+            movieName={name}
             genre={genre}
             releaseDate={releaseDate}
             movies={movies}

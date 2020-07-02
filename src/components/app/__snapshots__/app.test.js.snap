@@ -139,6 +139,11 @@ Array [
       </div>
     </div>
   </section>,
+  <button
+    onClick={[Function]}
+  >
+    onFilterClick
+  </button>,
   <div
     className="page-content"
   >
@@ -154,104 +159,104 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item catalog__genres-item--active"
+          className="catalog__genres-item catalog__genres-item--active "
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             All genres
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Comedies
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Crime
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Documentary
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Dramas
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Horror
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Kids & Family
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Romance
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Sci-Fi
-          </a>
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Thrillers
-          </a>
+          </div>
         </li>
       </ul>
       <div

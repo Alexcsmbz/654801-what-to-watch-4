@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {useState} from 'react';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import ActionCreator from 'store/action-creator.js';
 
 const App = (props) => {
   const {name, genre, releaseDate, movies, onFilterClick} = props;
@@ -17,7 +17,7 @@ const App = (props) => {
     <Switch>
       <Route exact path="/">
         <Main
-          name={name}
+          movieName={name}
           genre={genre}
           releaseDate={releaseDate}
           movies={movies}
@@ -56,7 +56,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onFilterClick: (genre) => dispatch(ActionCreator.changeFilterByGenre(genre)),
+  onFilterClick: (genre) => {
+    dispatch(ActionCreator.changeFilterByGenre(genre));
+    dispatch(ActionCreator.getMovieListByGenre(genre));
+  },
 });
 
 export {App};

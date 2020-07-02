@@ -8,27 +8,11 @@ import Reviews from 'components/reviews/reviews.jsx';
 import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import movies from 'mock/movies.js';
+import {moviePageTabs} from 'config';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
   const {onMovieCardClick} = props;
-  const tabs = [
-    {
-      name: `Overview`,
-      isActive: true,
-      idx: 0,
-    },
-    {
-      name: `Details`,
-      isActive: false,
-      idx: 1,
-    },
-    {
-      name: `Reviews`,
-      isActive: false,
-      idx: 2,
-    },
-  ];
 
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -92,9 +76,9 @@ const MoviePage = (props) => {
 
           <div className="movie-card__desc">
             <NavTabs>
-              {tabs.map((tab) => tab.idx === activeIdx
-                ? <NavTabActive onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />
-                : <NavTab onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />)}
+              {moviePageTabs.map((tab, idx) => idx === activeIdx
+                ? <NavTabActive onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />
+                : <NavTab onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />)}
             </NavTabs>
 
             <Subpages idx={activeIdx}>

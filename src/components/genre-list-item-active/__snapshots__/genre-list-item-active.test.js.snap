@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreListItemActive snapshot test GenreListItemActive should render genre active 1`] = `
+<li
+  className="catalog__genres-item catalog__genres-item--active "
+  onClick={[Function]}
+>
+  <div
+    className="catalog__genres-link"
+  >
+    genre
+  </div>
+</li>
+`;

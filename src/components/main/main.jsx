@@ -1,15 +1,26 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {Fragment, useState} from 'react';
+import GenreList from 'components/genre-list/genre-list.jsx';
+import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
+import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
+import {genreList} from 'config';
 
 const Main = (props) => {
   const {
-    name,
+    movieName,
     genre,
     releaseDate,
     movies,
     onMovieCardClick,
     onFilterClick,
   } = props;
+
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const onGenreItemClick = ({name}, idx) => {
+    onFilterClick(name);
+    setActiveIdx(idx);
+  };
 
   return <Fragment>
     <section className="movie-card">
@@ -42,7 +53,7 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{name}</h2>
+            <h2 className="movie-card__title">{movieName}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
               <span className="movie-card__year">{releaseDate}</span>
@@ -66,43 +77,15 @@ const Main = (props) => {
         </div>
       </div >
     </section >
-    <button onClick={onFilterClick}>onFilterClick</button>
+    <button onClick={() => {}}>onFilterClick</button>
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-        <ul className="catalog__genres-list">
-          <li className="catalog__genres-item catalog__genres-item--active">
-            <a href="#" className="catalog__genres-link">All genres</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Comedies</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Crime</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Documentary</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Dramas</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Horror</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Kids & Family</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Romance</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Sci-Fi</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Thrillers</a>
-          </li>
-        </ul>
+        <GenreList>
+          {genreList.map((g, idx) => idx === activeIdx
+            ? <GenreListItemActive onClick={() => onGenreItemClick(g, idx)} key={g.name} item={g} />
+            : <GenreListItem onClick={() => onGenreItemClick(g, idx)} key={g.name} item={g} />)}
+        </GenreList>
 
         <div className="catalog__movies-list">
           <MovieCardList
@@ -134,7 +117,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  name: propTypes.string.isRequired,
+  movieName: propTypes.string.isRequired,
   genre: propTypes.string.isRequired,
   releaseDate: propTypes.string.isRequired,
   movies: propTypes.arrayOf(propTypes.shape({

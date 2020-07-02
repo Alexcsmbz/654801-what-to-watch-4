@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreList snapshot test GenreList should render genre list 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item undefined"
+  >
+    <div
+      className="catalog__genres-link"
+    >
+      genre
+    </div>
+  </li>
+  <li
+    className="catalog__genres-item undefined"
+  >
+    <div
+      className="catalog__genres-link"
+    >
+      genre
+    </div>
+  </li>
+  <li
+    className="catalog__genres-item undefined"
+  >
+    <div
+      className="catalog__genres-link"
+    >
+      genre
+    </div>
+  </li>
+</ul>
+`;

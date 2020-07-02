@@ -5,9 +5,7 @@ const NavTabActive = (props) => {
   const restProps = Object.assign({}, props);
   delete restProps.className;
 
-  return (
-    <NavTab className={className} {...restProps}/>
-  );
+  return <NavTab className={className} {...restProps}/>;
 };
 
 NavTabActive.propTypes = {
