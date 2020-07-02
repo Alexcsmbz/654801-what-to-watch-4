@@ -2,7 +2,14 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {Fragment, useState} from 'react';
 
 const Main = (props) => {
-  const {name, genre, releaseDate, movies, onClick} = props;
+  const {
+    name,
+    genre,
+    releaseDate,
+    movies,
+    onMovieCardClick,
+    onFilterClick,
+  } = props;
 
   return <Fragment>
     <section className="movie-card">
@@ -59,7 +66,7 @@ const Main = (props) => {
         </div>
       </div >
     </section >
-
+    <button onClick={onFilterClick}>onFilterClick</button>
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -100,7 +107,7 @@ const Main = (props) => {
         <div className="catalog__movies-list">
           <MovieCardList
             movies={movies}
-            onClick={onClick}
+            onClick={onMovieCardClick}
           />
         </div>
 
@@ -134,7 +141,8 @@ Main.propTypes = {
     name: propTypes.string,
     img: propTypes.string,
   })).isRequired,
-  onClick: propTypes.func,
+  onMovieCardClick: propTypes.func,
+  onFilterClick: propTypes.func,
 };
 
 export default Main;

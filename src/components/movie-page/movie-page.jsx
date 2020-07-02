@@ -11,7 +11,7 @@ import movies from 'mock/movies.js';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
-  const {onClick} = props;
+  const {onMovieCardClick} = props;
   const tabs = [
     {
       name: `Overview`,
@@ -115,7 +115,7 @@ const MoviePage = (props) => {
           <MovieCardList
             movies={movies}
             activeMovie={props.movie}
-            onClick={onClick}
+            onClick={onMovieCardClick}
           />
         </div>
       </section>
@@ -145,7 +145,7 @@ MoviePage.propTypes = {
     promo: propTypes.string,
     poster: propTypes.string,
   }).isRequired,
-  onClick: propTypes.func,
+  onMovieCardClick: propTypes.func,
 };
 
 export default MoviePage;
