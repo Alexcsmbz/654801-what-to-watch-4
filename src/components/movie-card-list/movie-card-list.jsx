@@ -2,15 +2,15 @@ import MovieCard from 'components/movie-card/movie-card.jsx';
 import {useState} from 'react';
 
 const MovieCardList = (props) => {
-  const {films, onClick, activeMovie} = props;
+  const {movies, onClick, activeMovie} = props;
   const [movieOnFocus, setMovieOnFocus] = useState({});
 
   const onMouseEnter = (movie) => setMovieOnFocus(movie);
   const onMouseLeave = () => setMovieOnFocus({});
 
   const showMovies = activeMovie
-    ? films.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
-    : films;
+    ? movies.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
+    : movies;
 
   return showMovies.map((movie) =>
     <MovieCard
@@ -23,7 +23,7 @@ const MovieCardList = (props) => {
 };
 
 MovieCardList.propTypes = {
-  films: propTypes.arrayOf(propTypes.shape({
+  movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     img: propTypes.string,
   })).isRequired,

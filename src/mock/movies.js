@@ -2,7 +2,7 @@ export default [
   {
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
     thumbnail: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    genre: `drama`,
+    genre: `Comedies`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -12,7 +12,7 @@ export default [
   {
     name: `Bohemian Rhapsody`,
     thumbnail: `img/bohemian-rhapsody.jpg`,
-    genre: `drama`,
+    genre: `Crime`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/bohemian-rhapsody.jpg`,
@@ -22,7 +22,7 @@ export default [
   {
     name: `Macbeth`,
     thumbnail: `img/macbeth.jpg`,
-    genre: `drama`,
+    genre: `Crime`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/macbeth.jpg`,
@@ -30,19 +30,9 @@ export default [
     previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
-    name: `Aviator`,
-    thumbnail: `img/aviator.jpg`,
-    genre: `drama`,
-    releaseDate: `2014`,
-    promo: `promo`,
-    poster: `img/aviator.jpg`,
-    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
-  },
-  {
     name: `We need to talk about Kevin`,
     thumbnail: `img/we-need-to-talk-about-kevin.jpg`,
-    genre: `criminal`,
+    genre: `Documentary`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/we-need-to-talk-about-kevin.jpg`,
@@ -52,7 +42,7 @@ export default [
   {
     name: `What We Do in the Shadows`,
     thumbnail: `img/what-we-do-in-the-shadows.jpg`,
-    genre: `criminal`,
+    genre: `Dramas`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/what-we-do-in-the-shadows.jpg`,
@@ -62,7 +52,7 @@ export default [
   {
     name: `Revenant`,
     thumbnail: `img/revenant.jpg`,
-    genre: `criminal`,
+    genre: `Dramas`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/revenant.jpg`,
@@ -72,7 +62,7 @@ export default [
   {
     name: `Johnny English`,
     thumbnail: `img/johnny-english.jpg`,
-    genre: `criminal`,
+    genre: `Horror`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/johnny-english.jpg`,
@@ -82,7 +72,7 @@ export default [
   {
     name: `Shutter Island`,
     thumbnail: `img/shutter-island.jpg`,
-    genre: `comedy`,
+    genre: `Horror`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/shutter-island.jpg`,
@@ -92,7 +82,7 @@ export default [
   {
     name: `Pulp Fiction`,
     thumbnail: `img/pulp-fiction.jpg`,
-    genre: `comedy`,
+    genre: `Kids & Family`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/pulp-fiction.jpg`,
@@ -102,7 +92,7 @@ export default [
   {
     name: `No Country for Old Men`,
     thumbnail: `img/no-country-for-old-men.jpg`,
-    genre: `comedy`,
+    genre: `Romance`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/no-country-for-old-men.jpg`,
@@ -112,7 +102,7 @@ export default [
   {
     name: `Snatch`,
     thumbnail: `img/snatch.jpg`,
-    genre: `comedy`,
+    genre: `Sci-Fi`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/snatch.jpg`,
@@ -122,7 +112,7 @@ export default [
   {
     name: `Moonrise Kingdom`,
     thumbnail: `img/moonrise-kingdom.jpg`,
-    genre: `action`,
+    genre: `Sci-Fi`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/moonrise-kingdom.jpg`,
@@ -132,7 +122,7 @@ export default [
   {
     name: `Seven Years in Tibet`,
     thumbnail: `img/seven-years-in-tibet.jpg`,
-    genre: `action`,
+    genre: `Thrillers`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/seven-years-in-tibet.jpg`,
@@ -142,7 +132,7 @@ export default [
   {
     name: `Midnight Special`,
     thumbnail: `img/midnight-special.jpg`,
-    genre: `action`,
+    genre: `Thrillers`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/midnight-special.jpg`,
@@ -152,7 +142,7 @@ export default [
   {
     name: `War of the Worlds`,
     thumbnail: `img/war-of-the-worlds.jpg`,
-    genre: `action`,
+    genre: `Documentary`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/war-of-the-worlds.jpg`,
@@ -162,7 +152,7 @@ export default [
   {
     name: `Dardjeeling Limited`,
     thumbnail: `img/dardjeeling-limited.jpg`,
-    genre: `action`,
+    genre: `Horror`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/dardjeeling-limited.jpg`,
@@ -172,7 +162,7 @@ export default [
   {
     name: `Orlando`,
     thumbnail: `img/orlando.jpg`,
-    genre: `triller`,
+    genre: `Crime`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/orlando.jpg`,
@@ -182,7 +172,7 @@ export default [
   {
     name: `Mindhunter`,
     thumbnail: `img/mindhunter.jpg`,
-    genre: `triller`,
+    genre: `Comedies`,
     releaseDate: `2014`,
     promo: `promo`,
     poster: `img/mindhunter.jpg`,

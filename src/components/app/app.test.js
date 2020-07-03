@@ -1,36 +1,43 @@
-import App from './app.jsx';
+import {App} from './app.jsx';
 
 
-const name = `Whatever film`;
+const name = `Whatever movie`;
 const genre = `Criminal`;
 const releaseDate = `1999`;
-const films = [
+const movies = [
   {
-    name: `Film 1`,
+    name: `movie 1`,
     img: `img/img-1.jpg`,
   },
   {
-    name: `Film 2`,
+    name: `movie 2`,
     img: `img/img-2.jpg`,
   },
   {
-    name: `Film 3`,
+    name: `movie 3`,
     img: `img/img-3.jpg`,
   },
   {
-    name: `Film 4`,
+    name: `movie 4`,
     img: `img/img-4.jpg`,
   },
 ];
 
+const genres = [
+  `Comedy`,
+  `Drama`,
+  `Crime`,
+];
+
 describe(`App snapshot test`, () => {
-  it(`App should render Main component with films name, genre, relise date, films list`, () => {
+  it(`App should render Main component with movies name, genre, relise date, movies list`, () => {
     const tree = renderer.create(
         <App
           name={name}
           genre={genre}
           releaseDate={releaseDate}
-          films={films}
+          movies={movies}
+          genres={genres}
         />
     ).toJSON();
 

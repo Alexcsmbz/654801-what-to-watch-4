@@ -1,37 +1,43 @@
 import Main from './main.jsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-const name = `Whatever film`;
+const name = `Whatever movie`;
 const genre = `Criminal`;
 const releaseDate = `1999`;
-const films = [
+const movies = [
   {
-    name: `Film 1`,
+    name: `movie 1`,
     img: `img/img-1.jpg`,
   },
   {
-    name: `Film 2`,
+    name: `movie 2`,
     img: `img/img-2.jpg`,
   },
   {
-    name: `Film 3`,
+    name: `movie 3`,
     img: `img/img-3.jpg`,
   },
   {
-    name: `Film 4`,
+    name: `movie 4`,
     img: `img/img-4.jpg`,
   },
 ];
+const genres = [
+  `Comedy`,
+  `Drama`,
+  `Crime`,
+];
 
 describe(`Main snapshot test`, () => {
-  it(`Main should render films name, genre, relise date, films list`, () => {
+  it(`Main should render movies name, genre, relise date, movies list`, () => {
     const tree = renderer.create(
         <Router>
           <Main
-            name={name}
+            genres={genres}
+            movieName={name}
             genre={genre}
             releaseDate={releaseDate}
-            films={films}
+            movies={movies}
           />
         </Router>
     ).toJSON();

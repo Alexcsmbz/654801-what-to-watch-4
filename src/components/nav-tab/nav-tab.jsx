@@ -11,7 +11,6 @@ const NavTab = (props) => {
 NavTab.propTypes = {
   tab: propTypes.shape({
     name: propTypes.string,
-    isActive: propTypes.boolean,
   }),
   className: propTypes.string,
   onClick: propTypes.func,

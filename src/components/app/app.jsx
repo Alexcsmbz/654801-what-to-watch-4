@@ -2,11 +2,13 @@ import Main from 'components/main/main.jsx';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {useState} from 'react';
 import MoviePage from 'components/movie-page/movie-page.jsx';
+import {connect} from 'react-redux';
+import ActionCreator from 'store/action-creator.js';
 
 const App = (props) => {
-  const {name, genre, releaseDate, films} = props;
+  const {name, genre, releaseDate, movies, onFilterClick, genres} = props;
   const [activeMovie, setActiveMovie] = useState({});
-  const onClick = (movie) => {
+  const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
     setActiveMovie(movie);
   };
@@ -15,17 +17,19 @@ const App = (props) => {
     <Switch>
       <Route exact path="/">
         <Main
-          name={name}
+          movieName={name}
           genre={genre}
           releaseDate={releaseDate}
-          films={films}
-          onClick={onClick}
+          movies={movies}
+          genres={genres}
+          onMovieCardClick={onMovieCardClick}
+          onFilterClick={onFilterClick}
         />
       </Route>
       <Route exact path="/movie-page/:id">
         <MoviePage
           movie={activeMovie}
-          onClick={onClick}
+          onMovieCardClick={onMovieCardClick}
         />
       </Route>
     </Switch>
@@ -36,10 +40,30 @@ App.propTypes = {
   name: propTypes.string.isRequired,
   genre: propTypes.string.isRequired,
   releaseDate: propTypes.string.isRequired,
-  films: propTypes.arrayOf(propTypes.shape({
+  movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
-    img: propTypes.string,
+    genre: propTypes.string,
+    releaseDate: propTypes.string,
+    promo: propTypes.string,
+    poster: propTypes.string,
+    previewMp4: propTypes.string,
+    previewWebm: propTypes.string,
   })).isRequired,
+  genres: propTypes.arrayOf(propTypes.string).isRequired,
+  onFilterClick: propTypes.func,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  genres: state.genres,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilterClick: (genre) => {
+    dispatch(ActionCreator.changeFilterByGenre(genre));
+    dispatch(ActionCreator.getMovieListByGenre(genre));
+  },
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

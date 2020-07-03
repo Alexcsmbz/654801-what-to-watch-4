@@ -7,28 +7,12 @@ import Details from 'components/details/details.jsx';
 import Reviews from 'components/reviews/reviews.jsx';
 import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import films from 'mock/films.js';
+import movies from 'mock/movies.js';
+import {moviePageTabs} from 'config';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
-  const {onClick} = props;
-  const tabs = [
-    {
-      name: `Overview`,
-      isActive: true,
-      idx: 0,
-    },
-    {
-      name: `Details`,
-      isActive: false,
-      idx: 1,
-    },
-    {
-      name: `Reviews`,
-      isActive: false,
-      idx: 2,
-    },
-  ];
+  const {onMovieCardClick} = props;
 
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -92,9 +76,9 @@ const MoviePage = (props) => {
 
           <div className="movie-card__desc">
             <NavTabs>
-              {tabs.map((tab) => tab.idx === activeIdx
-                ? <NavTabActive onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />
-                : <NavTab onClick={() => setActiveIdx(tab.idx)} key={tab.idx} tab={tab} />)}
+              {moviePageTabs.map((tab, idx) => idx === activeIdx
+                ? <NavTabActive onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />
+                : <NavTab onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />)}
             </NavTabs>
 
             <Subpages idx={activeIdx}>
@@ -113,9 +97,9 @@ const MoviePage = (props) => {
 
         <div className="catalog__movies-list">
           <MovieCardList
-            films={films}
+            movies={movies}
             activeMovie={props.movie}
-            onClick={onClick}
+            onClick={onMovieCardClick}
           />
         </div>
       </section>
@@ -145,7 +129,7 @@ MoviePage.propTypes = {
     promo: propTypes.string,
     poster: propTypes.string,
   }).isRequired,
-  onClick: propTypes.func,
+  onMovieCardClick: propTypes.func,
 };
 
 export default MoviePage;

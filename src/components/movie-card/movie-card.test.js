@@ -2,7 +2,7 @@ import MovieCard from './movie-card.jsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 const movie = {
-  name: `Film 1`,
+  name: `movie 1`,
   img: `img/img-1.jpg`,
 };
 

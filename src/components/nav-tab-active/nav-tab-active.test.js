@@ -2,8 +2,6 @@ import NavTabActive from './nav-tab-active.jsx';
 
 const tab = {
   name: `Overview`,
-  isActive: true,
-  idx: 0,
 };
 
 describe(`NavTabActive snapshot test`, () => {

@@ -26,10 +26,10 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="/movie-page/film-1"
+      href="/movie-page/movie-1"
       onClick={[Function]}
     >
-      Film 1
+      movie 1
     </a>
   </h3>
 </article>

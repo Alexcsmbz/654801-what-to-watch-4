@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App snapshot test App should render Main component with films name, genre, relise date, films list 1`] = `
+exports[`App snapshot test App should render Main component with movies name, genre, relise date, movies list 1`] = `
 Array [
   <section
     className="movie-card"
@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Whatever film
+            Whatever movie
           </h2>
           <p
             className="movie-card__meta"
@@ -154,104 +154,34 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item catalog__genres-item--active"
+          className="catalog__genres-item catalog__genres-item--active "
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
-            All genres
-          </a>
+            Comedy
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
-            Comedies
-          </a>
+            Drama
+          </div>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item undefined"
+          onClick={[Function]}
         >
-          <a
+          <div
             className="catalog__genres-link"
-            href="#"
           >
             Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Documentary
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Horror
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Kids & Family
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
-          </a>
+          </div>
         </li>
       </ul>
       <div
@@ -282,10 +212,10 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/movie-page/film-1"
+              href="/movie-page/movie-1"
               onClick={[Function]}
             >
-              Film 1
+              movie 1
             </a>
           </h3>
         </article>
@@ -314,10 +244,10 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/movie-page/film-2"
+              href="/movie-page/movie-2"
               onClick={[Function]}
             >
-              Film 2
+              movie 2
             </a>
           </h3>
         </article>
@@ -346,10 +276,10 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/movie-page/film-3"
+              href="/movie-page/movie-3"
               onClick={[Function]}
             >
-              Film 3
+              movie 3
             </a>
           </h3>
         </article>
@@ -378,10 +308,10 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/movie-page/film-4"
+              href="/movie-page/movie-4"
               onClick={[Function]}
             >
-              Film 4
+              movie 4
             </a>
           </h3>
         </article>
