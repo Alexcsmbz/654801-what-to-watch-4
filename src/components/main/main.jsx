@@ -3,7 +3,7 @@ import {Fragment, useState} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
-import {genreList} from 'config';
+import Button from 'components/button/button.jsx';
 
 const Main = (props) => {
   const {
@@ -16,12 +16,23 @@ const Main = (props) => {
     genres,
   } = props;
 
+  const DEFAULT_MOVIE_SHOW = 8;
+
   const [activeIdx, setActiveIdx] = useState(0);
+  const [movieShow, setMovieShow] = useState(DEFAULT_MOVIE_SHOW);
+
+  const isMaxMovieShow = (moviesArray, movieShowCtn) => moviesArray.length > movieShowCtn;
 
   const onGenreItemClick = (item, idx) => {
     onFilterClick(item);
     setActiveIdx(idx);
+    setMovieShow(DEFAULT_MOVIE_SHOW);
   };
+
+  const showMoreMovies = () =>
+    isMaxMovieShow(movies, movieShow)
+      ? setMovieShow(movieShow + DEFAULT_MOVIE_SHOW)
+      : undefined;
 
   return <Fragment>
     <section className="movie-card">
@@ -92,11 +103,12 @@ const Main = (props) => {
           <MovieCardList
             movies={movies}
             onClick={onMovieCardClick}
+            movieShow={movieShow}
           />
         </div>
 
         <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
+          <Button onClick={showMoreMovies} className="catalog__button" name="Show more" />
         </div>
       </section>
 
