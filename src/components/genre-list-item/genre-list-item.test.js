@@ -1,8 +1,6 @@
 import GenreListItem from './genre-list-item.jsx';
 
-const genre = {
-  name: `genre`
-};
+const genre = `genre`;
 
 describe(`GenreListItem snapshot test`, () => {
   it(`GenreListItem should render genre`, () => {

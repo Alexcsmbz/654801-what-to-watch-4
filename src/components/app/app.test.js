@@ -23,6 +23,12 @@ const movies = [
   },
 ];
 
+const genres = [
+  `Comedy`,
+  `Drama`,
+  `Crime`,
+];
+
 describe(`App snapshot test`, () => {
   it(`App should render Main component with movies name, genre, relise date, movies list`, () => {
     const tree = renderer.create(
@@ -31,6 +37,7 @@ describe(`App snapshot test`, () => {
           genre={genre}
           releaseDate={releaseDate}
           movies={movies}
+          genres={genres}
         />
     ).toJSON();
 

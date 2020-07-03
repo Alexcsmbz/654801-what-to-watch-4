@@ -1,8 +1,6 @@
 import GenreListItemActive from './genre-list-item-active.jsx';
 
-const genre = {
-  name: `genre`
-};
+const genre = `genre`;
 
 describe(`GenreListItemActive snapshot test`, () => {
   it(`GenreListItemActive should render genre active`, () => {

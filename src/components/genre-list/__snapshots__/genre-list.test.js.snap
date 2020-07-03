@@ -10,7 +10,7 @@ exports[`GenreList snapshot test GenreList should render genre list 1`] = `
     <div
       className="catalog__genres-link"
     >
-      genre
+      Comedy
     </div>
   </li>
   <li
@@ -19,7 +19,7 @@ exports[`GenreList snapshot test GenreList should render genre list 1`] = `
     <div
       className="catalog__genres-link"
     >
-      genre
+      Drama
     </div>
   </li>
   <li
@@ -28,7 +28,7 @@ exports[`GenreList snapshot test GenreList should render genre list 1`] = `
     <div
       className="catalog__genres-link"
     >
-      genre
+      Crime
     </div>
   </li>
 </ul>

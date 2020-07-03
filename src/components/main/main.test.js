@@ -22,12 +22,18 @@ const movies = [
     img: `img/img-4.jpg`,
   },
 ];
+const genres = [
+  `Comedy`,
+  `Drama`,
+  `Crime`,
+];
 
 describe(`Main snapshot test`, () => {
   it(`Main should render movies name, genre, relise date, movies list`, () => {
     const tree = renderer.create(
         <Router>
           <Main
+            genres={genres}
             movieName={name}
             genre={genre}
             releaseDate={releaseDate}
