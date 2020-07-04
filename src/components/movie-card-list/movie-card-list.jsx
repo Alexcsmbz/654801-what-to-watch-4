@@ -2,24 +2,25 @@ import MovieCard from 'components/movie-card/movie-card.jsx';
 import {useState} from 'react';
 
 const MovieCardList = (props) => {
-  const {movies, onClick, activeMovie} = props;
+  const {movies, onClick, activeMovie, moviesAmount} = props;
   const [movieOnFocus, setMovieOnFocus] = useState({});
 
   const onMouseEnter = (movie) => setMovieOnFocus(movie);
   const onMouseLeave = () => setMovieOnFocus({});
 
-  const showMovies = activeMovie
+  const resultMovies = activeMovie
     ? movies.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
     : movies;
 
-  return showMovies.map((movie) =>
-    <MovieCard
-      key={movie.name}
-      movie={movie}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    />);
+  return resultMovies.map((movie, idx) =>
+    idx < moviesAmount ?
+      <MovieCard
+        key={movie.name}
+        movie={movie}
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      /> : null);
 };
 
 MovieCardList.propTypes = {
@@ -37,7 +38,8 @@ MovieCardList.propTypes = {
     poster: propTypes.string,
     previewMp4: propTypes.string,
     previewWebm: propTypes.string,
-  })
+  }),
+  moviesAmount: propTypes.number,
 };
 
 export default MovieCardList;

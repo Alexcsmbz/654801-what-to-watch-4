@@ -19,6 +19,7 @@ const movies = [
     img: `img/img-4.jpg`,
   },
 ];
+const movieShow = 8;
 
 describe(`MovieCardList snapshot test`, () => {
   it(`MovieCardList should render movie list`, () => {
@@ -26,6 +27,7 @@ describe(`MovieCardList snapshot test`, () => {
         <Router>
           <MovieCardList
             movies={movies}
+            movieShow={movieShow}
           />
         </Router>
     ).toJSON();
