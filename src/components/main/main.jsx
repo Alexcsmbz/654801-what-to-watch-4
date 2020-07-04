@@ -16,22 +16,22 @@ const Main = (props) => {
     genres,
   } = props;
 
-  const DEFAULT_MOVIE_SHOW = 8;
+  const DEFAULT_MOVIES_AMOUNT = 8;
 
   const [activeIdx, setActiveIdx] = useState(0);
-  const [movieShow, setMovieShow] = useState(DEFAULT_MOVIE_SHOW);
+  const [moviesAmount, setMoviesAmount] = useState(DEFAULT_MOVIES_AMOUNT);
 
   const isMaxMovieShow = (moviesArray, movieShowCtn) => moviesArray.length > movieShowCtn;
 
   const onGenreItemClick = (item, idx) => {
     onFilterClick(item);
     setActiveIdx(idx);
-    setMovieShow(DEFAULT_MOVIE_SHOW);
+    setMoviesAmount(DEFAULT_MOVIES_AMOUNT);
   };
 
   const showMoreMovies = () =>
-    isMaxMovieShow(movies, movieShow)
-      ? setMovieShow(movieShow + DEFAULT_MOVIE_SHOW)
+    isMaxMovieShow(movies, moviesAmount)
+      ? setMoviesAmount(moviesAmount + DEFAULT_MOVIES_AMOUNT)
       : undefined;
 
   return <Fragment>
@@ -103,12 +103,19 @@ const Main = (props) => {
           <MovieCardList
             movies={movies}
             onClick={onMovieCardClick}
-            movieShow={movieShow}
+            moviesAmount={moviesAmount}
           />
         </div>
 
         <div className="catalog__more">
-          <Button onClick={showMoreMovies} className="catalog__button" name="Show more" />
+          {
+            isMaxMovieShow(movies, moviesAmount) &&
+            <Button
+              onClick={showMoreMovies}
+              className="catalog__button"
+              name="Show more"
+            />
+          }
         </div>
       </section>
 
