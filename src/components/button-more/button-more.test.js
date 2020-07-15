@@ -1,12 +1,12 @@
-import Button from './button.jsx';
+import ButtonMore from './button-more.jsx';
 
 const className = `catalog__button`;
 const name = `Show more`;
 
-describe(`Button snapshot test`, () => {
-  it(`Button should render button`, () => {
+describe(`ButtonMore snapshot test`, () => {
+  it(`ButtonMore should render button`, () => {
     const tree = renderer.create(
-        <Button
+        <ButtonMore
           onClick={() => { }}
           className={className}
           name={name}

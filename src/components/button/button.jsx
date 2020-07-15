@@ -1,19 +1,38 @@
 const Button = (props) => {
-  const {className, name, onClick} = props;
+  const {name, onClick, className} = props.button;
+  const {iconKey, width, height} = props.icon;
 
   return (
     <button
-      onClick={onClick}
-      className={className}
+      className={`${className} btn movie-card__button`}
       type="button"
-    >{name}</button>
+      onClick={onClick}
+    >
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        width={width}
+        height={height}
+      >
+        <use xlinkHref={iconKey} />
+      </svg>
+      <span>{name}</span>
+    </button>
   );
 };
 
 Button.propTypes = {
-  className: propTypes.string.isRequired,
-  name: propTypes.string.isRequired,
-  onClick: propTypes.func,
+  button: propTypes.shape({
+    name: propTypes.string,
+    onClick: propTypes.func,
+    className: propTypes.string,
+  }),
+  icon: propTypes.shape({
+    iconKey: propTypes.string,
+    width: propTypes.string,
+    height: propTypes.string,
+  })
 };
 
 export default Button;
+
+// #play-s

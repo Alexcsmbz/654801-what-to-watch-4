@@ -3,6 +3,7 @@ import {Fragment, useState} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
+import ButtonMore from 'components/button-more/button-more.jsx';
 import Button from 'components/button/button.jsx';
 
 const Main = (props) => {
@@ -73,18 +74,30 @@ const Main = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <Button
+                button={{
+                  name: `Play`,
+                  onClick: () => console.log(`click`),
+                  className: `btn--play`
+                }}
+                icon={{
+                  iconKey: `#play-s`,
+                  width: `19`,
+                  height: `19`,
+                }}
+              />
+              <Button
+                button={{
+                  name: `My list`,
+                  onClick: () => console.log(`click`),
+                  className: `btn--list`
+                }}
+                icon={{
+                  iconKey: `#add`,
+                  width: `19`,
+                  height: `20`,
+                }}
+              />
             </div>
           </div>
         </div>
@@ -111,7 +124,7 @@ const Main = (props) => {
         <div className="catalog__more">
           {
             isMaxMovieShow(movies, moviesAmount) &&
-            <Button
+            <ButtonMore
               onClick={showMoreMovies}
               className="catalog__button"
               name="Show more"

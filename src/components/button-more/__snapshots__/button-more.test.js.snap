@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button snapshot test Button should render button 1`] = `
+exports[`ButtonMore snapshot test ButtonMore should render button 1`] = `
 <button
   className="catalog__button"
   onClick={[Function]}
