@@ -4,8 +4,6 @@ exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onClick={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <video
     controls={true}

@@ -11,7 +11,11 @@ const movie = {
 describe(`MoviePage snapshot test`, () => {
   it(`MoviePage should render movie info`, () => {
     const tree = renderer.create(
-        <MoviePage movie={movie} />
+        <MoviePage
+          movie={movie}
+          activeIdx={0}
+          setActiveIdx={() => {}}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

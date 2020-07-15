@@ -1,13 +1,15 @@
 import Main from 'components/main/main.jsx';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {useState} from 'react';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
 import ActionCreator from 'store/action-creator.js';
+import withActiveItem from 'hocs/with-active-item.jsx';
+
+const MoviePageWrapped = withActiveItem(MoviePage);
+const MainWrapped = withActiveItem(Main);
 
 const App = (props) => {
-  const {name, genre, releaseDate, movies, onFilterClick, genres} = props;
-  const [activeMovie, setActiveMovie] = useState({});
+  const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie} = props;
   const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
     setActiveMovie(movie);
@@ -16,7 +18,7 @@ const App = (props) => {
   return <BrowserRouter>
     <Switch>
       <Route exact path="/">
-        <Main
+        <MainWrapped
           movieName={name}
           genre={genre}
           releaseDate={releaseDate}
@@ -27,7 +29,7 @@ const App = (props) => {
         />
       </Route>
       <Route exact path="/movie-page/:id">
-        <MoviePage
+        <MoviePageWrapped
           movie={activeMovie}
           onMovieCardClick={onMovieCardClick}
         />
@@ -51,6 +53,16 @@ App.propTypes = {
   })).isRequired,
   genres: propTypes.arrayOf(propTypes.string).isRequired,
   onFilterClick: propTypes.func,
+  activeMovie: propTypes.shape({
+    name: propTypes.string,
+    genre: propTypes.string,
+    releaseDate: propTypes.string,
+    promo: propTypes.string,
+    poster: propTypes.string,
+    previewMp4: propTypes.string,
+    previewWebm: propTypes.string,
+  }),
+  setActiveMovie: propTypes.func,
 };
 
 const mapStateToProps = (state) => ({

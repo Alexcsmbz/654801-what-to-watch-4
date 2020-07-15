@@ -1,12 +1,7 @@
 import MovieCard from 'components/movie-card/movie-card.jsx';
-import {useState} from 'react';
 
 const MovieCardList = (props) => {
   const {movies, onClick, activeMovie, moviesAmount} = props;
-  const [movieOnFocus, setMovieOnFocus] = useState({});
-
-  const onMouseEnter = (movie) => setMovieOnFocus(movie);
-  const onMouseLeave = () => setMovieOnFocus({});
 
   const resultMovies = activeMovie
     ? movies.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
@@ -18,8 +13,6 @@ const MovieCardList = (props) => {
         key={movie.name}
         movie={movie}
         onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
       /> : null);
 };
 

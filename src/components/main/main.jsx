@@ -14,11 +14,12 @@ const Main = (props) => {
     onMovieCardClick,
     onFilterClick,
     genres,
+    activeIdx,
+    setActiveIdx,
   } = props;
 
   const DEFAULT_MOVIES_AMOUNT = 8;
 
-  const [activeIdx, setActiveIdx] = useState(0);
   const [moviesAmount, setMoviesAmount] = useState(DEFAULT_MOVIES_AMOUNT);
 
   const isMaxMovieShow = (moviesArray, movieShowCtn) => moviesArray.length > movieShowCtn;
@@ -147,6 +148,8 @@ Main.propTypes = {
   genres: propTypes.arrayOf(propTypes.string).isRequired,
   onMovieCardClick: propTypes.func,
   onFilterClick: propTypes.func,
+  activeIdx: propTypes.number.isRequired,
+  setActiveIdx: propTypes.func,
 };
 
 export default Main;

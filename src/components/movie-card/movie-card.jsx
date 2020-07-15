@@ -3,14 +3,12 @@ import MoviePlayer from 'components/movie-player/movie-player.jsx';
 import {formatNameToPath} from 'utils/utils.js';
 
 const MovieCard = (props) => {
-  const {movie, onClick, onMouseEnter, onMouseLeave} = props;
+  const {movie, onClick} = props;
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
       onClick={() => onClick(movie)}
-      onMouseEnter={() => onMouseEnter(movie)}
-      onMouseLeave={() => onMouseLeave()}
     >
       <MoviePlayer movie={movie} />
       <h3 className="small-movie-card__title">
@@ -32,8 +30,6 @@ MovieCard.propTypes = {
     previewWebm: propTypes.string,
   }).isRequired,
   onClick: propTypes.func,
-  onMouseEnter: propTypes.func,
-  onMouseLeave: propTypes.func,
 };
 
 export default MovieCard;
