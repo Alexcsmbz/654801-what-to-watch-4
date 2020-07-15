@@ -4,9 +4,10 @@ import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
 import ActionCreator from 'store/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
+import withMaxAmount from 'hocs/with-max-amount.jsx';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
-const MainWrapped = withActiveItem(Main);
+const MainWrapped = withMaxAmount(withActiveItem(Main));
 
 const App = (props) => {
   const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie} = props;
