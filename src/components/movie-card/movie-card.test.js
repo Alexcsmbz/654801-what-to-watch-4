@@ -7,13 +7,14 @@ const movie = {
 };
 
 describe(`MovieCard snapshot test`, () => {
+  const onClick = jest.fn(() => {});
+
   it(`MovieCard should render movie`, () => {
     const tree = renderer.create(
         <Router>
           <MovieCard
             movie={movie}
-            onMouseEnter={() => {}}
-            onMouseLeave={() => {}}
+            onClick={onClick}
           />
         </Router>
     ).toJSON();

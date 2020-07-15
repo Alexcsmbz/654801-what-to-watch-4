@@ -3,6 +3,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from 'store/reducer.js';
 import App from 'components/app/app.jsx';
+import withActiveMovie from 'hocs/with-active-movie.jsx';
 
 const data = {
   name: `The Grand Budapest Hotel`,
@@ -15,9 +16,11 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const AppWrapped = withActiveMovie(App);
+
 ReactDOM.render(
     <Provider store={store}>
-      <App
+      <AppWrapped
         name={data.name}
         genre={data.genre}
         releaseDate={data.releaseDate}

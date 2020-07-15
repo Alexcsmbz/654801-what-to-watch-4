@@ -38,6 +38,10 @@ describe(`Main snapshot test`, () => {
             genre={genre}
             releaseDate={releaseDate}
             movies={movies}
+            activeIdx={0}
+            setActiveIdx={() => {}}
+            moviesAmount={8}
+            setMoviesAmount={() => {}}
           />
         </Router>
     ).toJSON();

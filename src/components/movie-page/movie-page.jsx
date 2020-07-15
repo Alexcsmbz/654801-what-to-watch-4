@@ -1,4 +1,4 @@
-import {Fragment, useState} from 'react';
+import {Fragment} from 'react';
 import NavTabs from 'components/nav-tabs/nav-tabs.jsx';
 import NavTabActive from 'components/nav-tab-active/nav-tab-active.jsx';
 import NavTab from 'components/nav-tab/nav-tab.jsx';
@@ -12,9 +12,7 @@ import {moviePageTabs} from 'config';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
-  const {onMovieCardClick} = props;
-
-  const [activeIdx, setActiveIdx] = useState(0);
+  const {onMovieCardClick, activeIdx, setActiveIdx} = props;
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -130,6 +128,8 @@ MoviePage.propTypes = {
     poster: propTypes.string,
   }).isRequired,
   onMovieCardClick: propTypes.func,
+  activeIdx: propTypes.number.isRequired,
+  setActiveIdx: propTypes.func,
 };
 
 export default MoviePage;
