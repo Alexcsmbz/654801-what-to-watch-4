@@ -40,6 +40,8 @@ describe(`Main snapshot test`, () => {
             movies={movies}
             activeIdx={0}
             setActiveIdx={() => {}}
+            moviesAmount={8}
+            setMoviesAmount={() => {}}
           />
         </Router>
     ).toJSON();

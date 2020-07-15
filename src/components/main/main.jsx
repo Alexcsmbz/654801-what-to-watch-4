@@ -1,5 +1,5 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment, useState} from 'react';
+import {Fragment} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
@@ -16,11 +16,11 @@ const Main = (props) => {
     genres,
     activeIdx,
     setActiveIdx,
+    moviesAmount,
+    setMoviesAmount
   } = props;
 
   const DEFAULT_MOVIES_AMOUNT = 8;
-
-  const [moviesAmount, setMoviesAmount] = useState(DEFAULT_MOVIES_AMOUNT);
 
   const isMaxMovieShow = (moviesArray, movieShowCtn) => moviesArray.length > movieShowCtn;
 
@@ -150,6 +150,8 @@ Main.propTypes = {
   onFilterClick: propTypes.func,
   activeIdx: propTypes.number.isRequired,
   setActiveIdx: propTypes.func,
+  moviesAmount: propTypes.number.isRequired,
+  setMoviesAmount: propTypes.func,
 };
 
 export default Main;
