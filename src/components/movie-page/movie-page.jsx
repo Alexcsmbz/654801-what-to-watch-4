@@ -9,6 +9,8 @@ import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import movies from 'mock/movies.js';
 import {moviePageTabs} from 'config';
+import Logo from 'components/logo/logo.jsx';
+import Button from 'components/button/button.jsx';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
@@ -24,13 +26,7 @@ const MoviePage = (props) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header movie-card__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo />
 
           <div className="user-block">
             <div className="user-block__avatar">
@@ -48,18 +44,31 @@ const MoviePage = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <Button
+                button={{
+                  name: `Play`,
+                  onClick: () => console.log(`click`),
+                  className: `btn--play`
+                }}
+                icon={{
+                  iconKey: `#play-s`,
+                  width: `19`,
+                  height: `19`,
+                }}
+              />
+              <Button
+                button={{
+                  name: `My list`,
+                  onClick: () => console.log(`click`),
+                  className: `btn--list`
+                }}
+                icon={{
+                  iconKey: `#add`,
+                  width: `19`,
+                  height: `20`,
+                }}
+              />
+
               <a href="add-review.html" className="btn movie-card__button">Add review</a>
             </div>
           </div>
@@ -103,13 +112,7 @@ const MoviePage = (props) => {
       </section>
 
       <footer className="page-footer">
-        <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo className="logo__link--light" />
 
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>

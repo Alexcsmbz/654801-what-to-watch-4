@@ -1,10 +1,12 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment} from 'react';
+import {Fragment, useEffect} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
 import ButtonMore from 'components/button-more/button-more.jsx';
 import Button from 'components/button/button.jsx';
+import Logo from 'components/logo/logo.jsx';
+import MoviePlayer from 'components/movie-player/movie-player.jsx';
 
 const Main = (props) => {
   const {
@@ -18,12 +20,29 @@ const Main = (props) => {
     activeIdx,
     setActiveIdx,
     moviesAmount,
-    setMoviesAmount
+    setMoviesAmount,
+    isFullscreen,
+    setIsFullscreen
   } = props;
 
   const DEFAULT_MOVIES_AMOUNT = 8;
 
-  const isMaxMovieShow = (moviesArray, movieShowCtn) => moviesArray.length > movieShowCtn;
+  const movie = {
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    thumbnail: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    genre: `Comedies`,
+    releaseDate: `2014`,
+    promo: `promo`,
+    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  };
+
+  const openMovie = () => setIsFullscreen(true);
+  const closeMovie = () => console.log(`close movie`);
+  const onFullscreenChange = () => isFullscreen ? setIsFullscreen(false) : setIsFullscreen(true);
+
+  const isMaxMovieShow = (moviesArray, amount) => moviesArray.length > amount;
 
   const onGenreItemClick = (item, idx) => {
     onFilterClick(item);
@@ -37,6 +56,9 @@ const Main = (props) => {
       : undefined;
 
   return <Fragment>
+    <div className="visually-hidden">
+      {isFullscreen && <MoviePlayer onFullscreenChange={onFullscreenChange} movie={movie} isFullscreen={isFullscreen} />}
+    </div>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -45,13 +67,7 @@ const Main = (props) => {
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
-        <div className="logo">
-          <a className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo />
 
         <div className="user-block">
           <div className="user-block__avatar">
@@ -77,7 +93,7 @@ const Main = (props) => {
               <Button
                 button={{
                   name: `Play`,
-                  onClick: () => console.log(`click`),
+                  onClick: openMovie,
                   className: `btn--play`
                 }}
                 icon={{
@@ -134,13 +150,7 @@ const Main = (props) => {
       </section>
 
       <footer className="page-footer">
-        <div className="logo">
-          <a className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo className="logo__link--light" />
 
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
@@ -165,6 +175,8 @@ Main.propTypes = {
   setActiveIdx: propTypes.func,
   moviesAmount: propTypes.number.isRequired,
   setMoviesAmount: propTypes.func,
+  isFullscreen: propTypes.bool,
+  setIsFullscreen: propTypes.func,
 };
 
 export default Main;
