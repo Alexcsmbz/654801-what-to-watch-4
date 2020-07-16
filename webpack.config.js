@@ -22,6 +22,7 @@ module.exports = {
       config: path.resolve(__dirname, `./src/config.js`),
       store: path.resolve(__dirname, `./src/store`),
       hocs: path.resolve(__dirname, `./src/hocs`),
+      sagas: path.resolve(__dirname, `./src/sagas`),
     },
     extensions: [`.js`, `.jsx`, `ts`, `tsx`],
   },
