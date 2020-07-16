@@ -2,6 +2,23 @@
 
 exports[`MoviePage snapshot test MoviePage should render movie info 1`] = `
 Array [
+  <div
+    className="visually-hidden"
+  >
+    <video
+      controls={true}
+      height="175"
+      poster="poster"
+      width="280"
+    >
+      <source
+        type="video/webm"
+      />
+      <source
+        type="video/mp4"
+      />
+    </video>
+  </div>,
   <section
     className="movie-card movie-card--full"
   >

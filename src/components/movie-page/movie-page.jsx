@@ -11,12 +11,22 @@ import movies from 'mock/movies.js';
 import {moviePageTabs} from 'config';
 import Logo from 'components/logo/logo.jsx';
 import Button from 'components/button/button.jsx';
+import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
-  const {onMovieCardClick, activeIdx, setActiveIdx} = props;
+  const {onMovieCardClick, activeIdx, setActiveIdx, isFullscreen, setIsFullscreen, movie} = props;
+
+  const openFullscreen = () => setIsFullscreen(true);
 
   return <Fragment>
+    <div className="visually-hidden">
+      <MoviePlayerFullscreen
+        setIsFullscreen={setIsFullscreen}
+        movie={movie}
+        isFullscreen={isFullscreen}
+      />
+    </div>
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
         <div className="movie-card__bg">
@@ -47,7 +57,7 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `Play`,
-                  onClick: () => {},
+                  onClick: openFullscreen,
                   className: `btn--play`
                 }}
                 icon={{
@@ -133,6 +143,8 @@ MoviePage.propTypes = {
   onMovieCardClick: propTypes.func,
   activeIdx: propTypes.number.isRequired,
   setActiveIdx: propTypes.func,
+  isFullscreen: propTypes.bool,
+  setIsFullscreen: propTypes.func,
 };
 
 export default MoviePage;
