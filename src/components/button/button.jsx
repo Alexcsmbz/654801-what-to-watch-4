@@ -34,5 +34,3 @@ Button.propTypes = {
 };
 
 export default Button;
-
-// #play-s

@@ -1,41 +1,11 @@
-import {useRef, useEffect} from 'react';
+import {useRef} from 'react';
 
 const MoviePlayer = (props) => {
   const {previewMp4, previewWebm, poster} = props.movie;
-  const {isFullscreen, onFullscreenChange} = props;
   const videoRef = useRef(null);
 
-  const onMouseEnter = () => !isFullscreen ? setTimeout(() => videoRef.current.play(), 1000) : undefined;
-  const onMouseLeave = () => !isFullscreen ? setTimeout(() => videoRef.current.load(), 1000) : undefined;
-
-  useEffect(() => {
-
-    if (isFullscreen) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      } else if (videoRef.current.mozRequestFullScreen) {
-        videoRef.current.mozRequestFullScreen();
-      } else if (videoRef.current.webkitRequestFullscreen) {
-        videoRef.current.webkitRequestFullscreen();
-      } else if (videoRef.current.msRequestFullscreen) {
-        videoRef.current.msRequestFullscreen();
-      }
-    }
-
-    onFullscreenChange();
-
-    // if (document.exitFullscreen) {
-    //   console.log(`exit`);
-    // }
-    // videoRef.current.onfullscreenchange = () => {
-    //   if (isFullscreen) {
-    //     onFullscreenChange();
-
-    //   }
-    //   // console.log(`on change fullscreen`);
-    // };
-
-  });
+  const onMouseEnter = () => setTimeout(() => videoRef.current.play(), 1000);
+  const onMouseLeave = () => setTimeout(() => videoRef.current.load(), 1000);
 
   return (
     <video
@@ -63,8 +33,6 @@ MoviePlayer.propTypes = {
     previewMp4: propTypes.string,
     previewWebm: propTypes.string,
   }).isRequired,
-  isFullscreen: propTypes.bool,
-  onFullscreenChange: propTypes.func,
 };
 
 export default MoviePlayer;

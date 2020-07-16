@@ -28,8 +28,9 @@ Array [
           className="logo"
         >
           <a
-            className="logo__link"
-            href="main.html"
+            className="logo__link undefined"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -92,7 +93,8 @@ Array [
             className="movie-card__buttons"
           >
             <button
-              className="btn btn--play movie-card__button"
+              className="btn--play btn movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -109,7 +111,8 @@ Array [
               </span>
             </button>
             <button
-              className="btn btn--list movie-card__button"
+              className="btn--list btn movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -266,7 +269,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
-          href="main.html"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

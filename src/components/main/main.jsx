@@ -1,12 +1,12 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment, useEffect} from 'react';
+import {Fragment} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
 import ButtonMore from 'components/button-more/button-more.jsx';
 import Button from 'components/button/button.jsx';
 import Logo from 'components/logo/logo.jsx';
-import MoviePlayer from 'components/movie-player/movie-player.jsx';
+import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
 
 const Main = (props) => {
   const {
@@ -38,9 +38,7 @@ const Main = (props) => {
     previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   };
 
-  const openMovie = () => setIsFullscreen(true);
-  const closeMovie = () => console.log(`close movie`);
-  const onFullscreenChange = () => isFullscreen ? setIsFullscreen(false) : setIsFullscreen(true);
+  const openFullscreen = () => setIsFullscreen(true);
 
   const isMaxMovieShow = (moviesArray, amount) => moviesArray.length > amount;
 
@@ -57,7 +55,11 @@ const Main = (props) => {
 
   return <Fragment>
     <div className="visually-hidden">
-      {isFullscreen && <MoviePlayer onFullscreenChange={onFullscreenChange} movie={movie} isFullscreen={isFullscreen} />}
+      <MoviePlayerFullscreen
+        setIsFullscreen={setIsFullscreen}
+        movie={movie}
+        isFullscreen={isFullscreen}
+      />
     </div>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -93,7 +95,7 @@ const Main = (props) => {
               <Button
                 button={{
                   name: `Play`,
-                  onClick: openMovie,
+                  onClick: openFullscreen,
                   className: `btn--play`
                 }}
                 icon={{
@@ -105,7 +107,7 @@ const Main = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => console.log(`click`),
+                  onClick: () => {},
                   className: `btn--list`
                 }}
                 icon={{

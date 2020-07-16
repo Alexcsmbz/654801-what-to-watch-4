@@ -2,6 +2,25 @@
 
 exports[`App snapshot test App should render Main component with movies name, genre, relise date, movies list 1`] = `
 Array [
+  <div
+    className="visually-hidden"
+  >
+    <video
+      controls={true}
+      height="175"
+      poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      width="280"
+    >
+      <source
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        type="video/webm"
+      />
+      <source
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>,
   <section
     className="movie-card"
   >
@@ -25,7 +44,9 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link"
+          className="logo__link undefined"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -322,6 +343,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

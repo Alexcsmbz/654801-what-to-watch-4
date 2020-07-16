@@ -47,7 +47,7 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `Play`,
-                  onClick: () => console.log(`click`),
+                  onClick: () => {},
                   className: `btn--play`
                 }}
                 icon={{
@@ -59,7 +59,7 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => console.log(`click`),
+                  onClick: () => {},
                   className: `btn--list`
                 }}
                 icon={{
