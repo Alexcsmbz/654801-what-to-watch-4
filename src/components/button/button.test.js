@@ -1,15 +1,19 @@
 import Button from './button.jsx';
 
-const className = `catalog__button`;
-const name = `Show more`;
-
 describe(`Button snapshot test`, () => {
   it(`Button should render button`, () => {
     const tree = renderer.create(
         <Button
-          onClick={() => { }}
-          className={className}
-          name={name}
+          button={{
+            name: `name`,
+            onClick: () => {},
+            className: `className`
+          }}
+          icon={{
+            iconKey: `#icon-key`,
+            width: `19`,
+            height: `19`,
+          }}
         />
     ).toJSON();
 

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePlayerFullscreen snapshot test MoviePlayerFullscreen should render fullscreen movie player 1`] = `
+<video
+  controls={true}
+  height="175"
+  poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+  width="280"
+>
+  <source
+    src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+    type="video/webm"
+  />
+  <source
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+    type="video/mp4"
+  />
+</video>
+`;

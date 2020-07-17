@@ -1,9 +1,10 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
 import Button from 'components/button/button.jsx';
+import Logo from 'components/logo/logo.jsx';
+import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
 
 const Main = (props) => {
   const {
@@ -17,12 +18,26 @@ const Main = (props) => {
     activeIdx,
     setActiveIdx,
     moviesAmount,
-    setMoviesAmount
+    setMoviesAmount,
+    isFullscreen,
+    setIsFullscreen,
+    openFullscreen,
   } = props;
 
   const DEFAULT_MOVIES_AMOUNT = 8;
 
-  const isMaxMovieShow = (moviesArray, movieShowCtn) => moviesArray.length > movieShowCtn;
+  const movie = {
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    thumbnail: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    genre: `Comedies`,
+    releaseDate: `2014`,
+    promo: `promo`,
+    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  };
+
+  const isMaxMovieShow = (moviesArray, amount) => moviesArray.length > amount;
 
   const onGenreItemClick = (item, idx) => {
     onFilterClick(item);
@@ -35,7 +50,14 @@ const Main = (props) => {
       ? setMoviesAmount(moviesAmount + DEFAULT_MOVIES_AMOUNT)
       : undefined;
 
-  return <Fragment>
+  return <>
+    <div className="visually-hidden">
+      <MoviePlayerFullscreen
+        setIsFullscreen={setIsFullscreen}
+        movie={movie}
+        isFullscreen={isFullscreen}
+      />
+    </div>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -44,13 +66,7 @@ const Main = (props) => {
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
-        <div className="logo">
-          <a className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo />
 
         <div className="user-block">
           <div className="user-block__avatar">
@@ -73,18 +89,30 @@ const Main = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
+              <Button
+                button={{
+                  name: `Play`,
+                  onClick: openFullscreen,
+                  className: `btn--play btn movie-card__button`
+                }}
+                icon={{
+                  iconKey: `#play-s`,
+                  width: `19`,
+                  height: `19`,
+                }}
+              />
+              <Button
+                button={{
+                  name: `My list`,
+                  onClick: () => {},
+                  className: `btn--list btn movie-card__button`
+                }}
+                icon={{
+                  iconKey: `#add`,
+                  width: `19`,
+                  height: `20`,
+                }}
+              />
             </div>
           </div>
         </div>
@@ -112,29 +140,25 @@ const Main = (props) => {
           {
             isMaxMovieShow(movies, moviesAmount) &&
             <Button
-              onClick={showMoreMovies}
-              className="catalog__button"
-              name="Show more"
+              button={{
+                onClick: showMoreMovies,
+                className: `catalog__button`,
+                name: `Show more`
+              }}
             />
           }
         </div>
       </section>
 
       <footer className="page-footer">
-        <div className="logo">
-          <a className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo className="logo__link--light" />
 
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>
       </footer>
     </div>
-  </Fragment>;
+  </>;
 };
 
 Main.propTypes = {
@@ -152,6 +176,9 @@ Main.propTypes = {
   setActiveIdx: propTypes.func,
   moviesAmount: propTypes.number.isRequired,
   setMoviesAmount: propTypes.func,
+  isFullscreen: propTypes.bool,
+  setIsFullscreen: propTypes.func,
+  openFullscreen: propTypes.func,
 };
 
 export default Main;

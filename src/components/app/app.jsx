@@ -5,9 +5,10 @@ import {connect} from 'react-redux';
 import ActionCreator from 'store/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
+import withFullscreen from 'hocs/with-fullscreen.jsx';
 
-const MoviePageWrapped = withActiveItem(MoviePage);
-const MainWrapped = withMaxAmount(withActiveItem(Main));
+const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
+const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 
 const App = (props) => {
   const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie} = props;

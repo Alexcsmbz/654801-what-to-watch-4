@@ -1,3 +1,4 @@
+import {BrowserRouter as Router} from 'react-router-dom';
 import MoviePage from './movie-page.jsx';
 
 const movie = {
@@ -11,11 +12,13 @@ const movie = {
 describe(`MoviePage snapshot test`, () => {
   it(`MoviePage should render movie info`, () => {
     const tree = renderer.create(
-        <MoviePage
-          movie={movie}
-          activeIdx={0}
-          setActiveIdx={() => {}}
-        />
+        <Router>
+          <MoviePage
+            movie={movie}
+            activeIdx={0}
+            setActiveIdx={() => {}}
+          />
+        </Router>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
