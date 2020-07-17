@@ -1,5 +1,3 @@
-import {Fragment} from 'react';
-
 const Details = (props) => {
 
   return <div className="movie-card__text movie-card__row">

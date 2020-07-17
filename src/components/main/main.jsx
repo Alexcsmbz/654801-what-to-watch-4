@@ -1,5 +1,4 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
@@ -51,7 +50,7 @@ const Main = (props) => {
       ? setMoviesAmount(moviesAmount + DEFAULT_MOVIES_AMOUNT)
       : undefined;
 
-  return <Fragment>
+  return <>
     <div className="visually-hidden">
       <MoviePlayerFullscreen
         setIsFullscreen={setIsFullscreen}
@@ -159,7 +158,7 @@ const Main = (props) => {
         </div>
       </footer>
     </div>
-  </Fragment>;
+  </>;
 };
 
 Main.propTypes = {

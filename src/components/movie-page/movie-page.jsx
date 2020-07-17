@@ -1,4 +1,3 @@
-import {Fragment} from 'react';
 import NavTabs from 'components/nav-tabs/nav-tabs.jsx';
 import NavTabActive from 'components/nav-tab-active/nav-tab-active.jsx';
 import NavTab from 'components/nav-tab/nav-tab.jsx';
@@ -25,7 +24,7 @@ const MoviePage = (props) => {
     openFullscreen,
   } = props;
 
-  return <Fragment>
+  return <>
     <div className="visually-hidden">
       <MoviePlayerFullscreen
         setIsFullscreen={setIsFullscreen}
@@ -135,7 +134,7 @@ const MoviePage = (props) => {
         </div>
       </footer>
     </div>
-  </Fragment>;
+  </>;
 };
 
 MoviePage.propTypes = {
