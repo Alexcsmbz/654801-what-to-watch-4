@@ -15,9 +15,15 @@ import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-play
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
-  const {onMovieCardClick, activeIdx, setActiveIdx, isFullscreen, setIsFullscreen, movie} = props;
-
-  const openFullscreen = () => setIsFullscreen(true);
+  const {
+    onMovieCardClick,
+    activeIdx,
+    setActiveIdx,
+    isFullscreen,
+    setIsFullscreen,
+    movie,
+    openFullscreen,
+  } = props;
 
   return <Fragment>
     <div className="visually-hidden">
@@ -58,7 +64,7 @@ const MoviePage = (props) => {
                 button={{
                   name: `Play`,
                   onClick: openFullscreen,
-                  className: `btn--play`
+                  className: `btn--play btn movie-card__button`
                 }}
                 icon={{
                   iconKey: `#play-s`,
@@ -70,7 +76,7 @@ const MoviePage = (props) => {
                 button={{
                   name: `My list`,
                   onClick: () => {},
-                  className: `btn--list`
+                  className: `btn--list btn movie-card__button`
                 }}
                 icon={{
                   iconKey: `#add`,
@@ -145,6 +151,7 @@ MoviePage.propTypes = {
   setActiveIdx: propTypes.func,
   isFullscreen: propTypes.bool,
   setIsFullscreen: propTypes.func,
+  openFullscreen: propTypes.func,
 };
 
 export default MoviePage;

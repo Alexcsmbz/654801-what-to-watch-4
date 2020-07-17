@@ -2,7 +2,7 @@
 
 exports[`Button snapshot test Button should render button 1`] = `
 <button
-  className="className btn movie-card__button"
+  className="className"
   onClick={[Function]}
   type="button"
 >
