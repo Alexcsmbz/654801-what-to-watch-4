@@ -111,7 +111,6 @@ Array [
           >
             <button
               className="btn--play btn movie-card__button"
-              onClick={[Function]}
               type="button"
             >
               <svg

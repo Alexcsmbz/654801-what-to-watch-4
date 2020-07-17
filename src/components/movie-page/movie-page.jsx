@@ -1,4 +1,3 @@
-import {Fragment} from 'react';
 import NavTabs from 'components/nav-tabs/nav-tabs.jsx';
 import NavTabActive from 'components/nav-tab-active/nav-tab-active.jsx';
 import NavTab from 'components/nav-tab/nav-tab.jsx';
@@ -15,11 +14,17 @@ import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-play
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster} = props.movie;
-  const {onMovieCardClick, activeIdx, setActiveIdx, isFullscreen, setIsFullscreen, movie} = props;
+  const {
+    onMovieCardClick,
+    activeIdx,
+    setActiveIdx,
+    isFullscreen,
+    setIsFullscreen,
+    movie,
+    openFullscreen,
+  } = props;
 
-  const openFullscreen = () => setIsFullscreen(true);
-
-  return <Fragment>
+  return <>
     <div className="visually-hidden">
       <MoviePlayerFullscreen
         setIsFullscreen={setIsFullscreen}
@@ -58,7 +63,7 @@ const MoviePage = (props) => {
                 button={{
                   name: `Play`,
                   onClick: openFullscreen,
-                  className: `btn--play`
+                  className: `btn--play btn movie-card__button`
                 }}
                 icon={{
                   iconKey: `#play-s`,
@@ -70,7 +75,7 @@ const MoviePage = (props) => {
                 button={{
                   name: `My list`,
                   onClick: () => {},
-                  className: `btn--list`
+                  className: `btn--list btn movie-card__button`
                 }}
                 icon={{
                   iconKey: `#add`,
@@ -129,7 +134,7 @@ const MoviePage = (props) => {
         </div>
       </footer>
     </div>
-  </Fragment>;
+  </>;
 };
 
 MoviePage.propTypes = {
@@ -145,6 +150,7 @@ MoviePage.propTypes = {
   setActiveIdx: propTypes.func,
   isFullscreen: propTypes.bool,
   setIsFullscreen: propTypes.func,
+  openFullscreen: propTypes.func,
 };
 
 export default MoviePage;

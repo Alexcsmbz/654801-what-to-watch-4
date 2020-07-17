@@ -1,9 +1,7 @@
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import {Fragment} from 'react';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
-import ButtonMore from 'components/button-more/button-more.jsx';
 import Button from 'components/button/button.jsx';
 import Logo from 'components/logo/logo.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
@@ -22,7 +20,8 @@ const Main = (props) => {
     moviesAmount,
     setMoviesAmount,
     isFullscreen,
-    setIsFullscreen
+    setIsFullscreen,
+    openFullscreen,
   } = props;
 
   const DEFAULT_MOVIES_AMOUNT = 8;
@@ -38,8 +37,6 @@ const Main = (props) => {
     previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   };
 
-  const openFullscreen = () => setIsFullscreen(true);
-
   const isMaxMovieShow = (moviesArray, amount) => moviesArray.length > amount;
 
   const onGenreItemClick = (item, idx) => {
@@ -53,7 +50,7 @@ const Main = (props) => {
       ? setMoviesAmount(moviesAmount + DEFAULT_MOVIES_AMOUNT)
       : undefined;
 
-  return <Fragment>
+  return <>
     <div className="visually-hidden">
       <MoviePlayerFullscreen
         setIsFullscreen={setIsFullscreen}
@@ -96,7 +93,7 @@ const Main = (props) => {
                 button={{
                   name: `Play`,
                   onClick: openFullscreen,
-                  className: `btn--play`
+                  className: `btn--play btn movie-card__button`
                 }}
                 icon={{
                   iconKey: `#play-s`,
@@ -108,7 +105,7 @@ const Main = (props) => {
                 button={{
                   name: `My list`,
                   onClick: () => {},
-                  className: `btn--list`
+                  className: `btn--list btn movie-card__button`
                 }}
                 icon={{
                   iconKey: `#add`,
@@ -142,10 +139,12 @@ const Main = (props) => {
         <div className="catalog__more">
           {
             isMaxMovieShow(movies, moviesAmount) &&
-            <ButtonMore
-              onClick={showMoreMovies}
-              className="catalog__button"
-              name="Show more"
+            <Button
+              button={{
+                onClick: showMoreMovies,
+                className: `catalog__button`,
+                name: `Show more`
+              }}
             />
           }
         </div>
@@ -159,7 +158,7 @@ const Main = (props) => {
         </div>
       </footer>
     </div>
-  </Fragment>;
+  </>;
 };
 
 Main.propTypes = {
@@ -179,6 +178,7 @@ Main.propTypes = {
   setMoviesAmount: propTypes.func,
   isFullscreen: propTypes.bool,
   setIsFullscreen: propTypes.func,
+  openFullscreen: propTypes.func,
 };
 
 export default Main;

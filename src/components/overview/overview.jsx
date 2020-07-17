@@ -1,8 +1,6 @@
-import {Fragment} from 'react';
-
 const Overview = (props) => {
 
-  return <Fragment>
+  return <>
     <div className="movie-rating">
       <div className="movie-rating__score">8,9</div>
       <p className="movie-rating__meta">
@@ -20,7 +18,7 @@ const Overview = (props) => {
 
       <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
     </div>
-  </Fragment>;
+  </>;
 };
 
 export default Overview;
