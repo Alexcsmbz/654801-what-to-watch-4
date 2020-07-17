@@ -5,7 +5,11 @@ import {extend} from 'utils/utils.js';
 const initialState = {
   genre: `All genres`,
   movies,
-  genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
+  genres: [`All genres`, ...new Set(movies.map((m) => m.genre))],
+
+  loading: false,
+  error: false,
+  moviesBackend: [],
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +26,27 @@ export default (state = initialState, action) => {
 
       return extend(state, {
         movies: showMovies
+      });
+
+    case ActionType.REQUEST_MOVIES:
+      return extend(state, {
+        moviesBackend: [],
+        loading: true,
+        error: false,
+      });
+
+    case ActionType.REQUEST_MOVIES_SUCCEEDED:
+      return extend(state, {
+        moviesBackend: action.payload,
+        loading: false,
+        error: false,
+      });
+
+    case ActionType.REQUEST_MOVIES_FAILED:
+      return extend(state, {
+        moviesBackend: [],
+        loading: false,
+        error: true,
       });
   }
 

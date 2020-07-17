@@ -1,3 +1,4 @@
+import {useEffect, useLayoutEffect} from 'react';
 import Main from 'components/main/main.jsx';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
@@ -11,15 +12,38 @@ const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 
 const App = (props) => {
-  const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie} = props;
+  const {
+    name,
+    genre,
+    releaseDate,
+    movies,
+    onFilterClick,
+    genres,
+    activeMovie,
+    setActiveMovie,
+    error,
+    loading,
+    getMovies,
+    // eslint-disable-next-line react/prop-types
+    moviesBackend,
+  } = props;
+
   const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
     setActiveMovie(movie);
   };
 
+  useEffect(() => {
+    // getMovies();
+  });
+
   return <BrowserRouter>
     <Switch>
       <Route exact path="/">
+        <button type="button" onClick={getMovies}>getMovies</button>
+        <span>error: {error}</span>
+        <span>loading: {loading}</span>
+
         <MainWrapped
           movieName={name}
           genre={genre}
@@ -65,9 +89,16 @@ App.propTypes = {
     previewWebm: propTypes.string,
   }),
   setActiveMovie: propTypes.func,
+
+  loading: propTypes.bool,
+  error: propTypes.bool,
+  getMovies: propTypes.func,
 };
 
 const mapStateToProps = (state) => ({
+  moviesBackend: state.moviesBackend,
+  loading: state.loading,
+  error: state.error,
   movies: state.movies,
   genres: state.genres,
 });
@@ -76,6 +107,9 @@ const mapDispatchToProps = (dispatch) => ({
   onFilterClick: (genre) => {
     dispatch(ActionCreator.changeFilterByGenre(genre));
     dispatch(ActionCreator.getMovieListByGenre(genre));
+  },
+  getMovies: () => {
+    dispatch(ActionCreator.getMovies());
   },
 });
 

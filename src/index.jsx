@@ -5,7 +5,7 @@ import reducer from 'store/reducer.js';
 import App from 'components/app/app.jsx';
 import withActiveMovie from 'hocs/with-active-movie.jsx';
 import createSagaMiddleware from 'redux-saga';
-import sagas from 'sagas';
+import {getMovies} from 'sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -24,7 +24,7 @@ const store = createStore(
 
 const AppWrapped = withActiveMovie(App);
 
-sagaMiddleware.run(sagas);
+sagaMiddleware.run(getMovies);
 
 ReactDOM.render(
     <Provider store={store}>
