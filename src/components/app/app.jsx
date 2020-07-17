@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect} from 'react';
+import {useEffect, useLayoutEffect, useRef} from 'react';
 import Main from 'components/main/main.jsx';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
@@ -34,16 +34,12 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    // getMovies();
-  });
+    getMovies();
+  }, []);
 
   return <BrowserRouter>
     <Switch>
       <Route exact path="/">
-        <button type="button" onClick={getMovies}>getMovies</button>
-        <span>error: {error}</span>
-        <span>loading: {loading}</span>
-
         <MainWrapped
           movieName={name}
           genre={genre}
