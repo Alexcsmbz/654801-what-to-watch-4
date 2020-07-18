@@ -3,12 +3,14 @@ import ActionType from 'store/action-types.js';
 import ActionCreator from 'store/action-creator.js';
 import axios from 'axios';
 
+// ({ payload }) may be there
 function* getMoviesAsync() {
   try {
     yield put(ActionCreator.requestMovies());
-    // async/await
-    // Зачем здесь нужен call?
-    const data = yield axios.get(`https://4.react.pages.academy/wtw/films`).then((res) => res.data);
+    const data = yield call(() =>
+      axios
+        .get(`https://4.react.pages.academy/wtw/films`)
+        .then((res) => res.data));
     yield put(ActionCreator.requestMoviesSuccess(data));
   } catch (error) {
     yield put(ActionCreator.requestMoviesError());
