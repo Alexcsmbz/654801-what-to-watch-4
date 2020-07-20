@@ -5,7 +5,8 @@ import {extend} from 'utils/utils.js';
 const initialState = {
   genre: `All genres`,
   movies,
-  genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
+  genres: [`All genres`, ...new Set(movies.map((m) => m.genre))],
+  backMovies: [],
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +23,11 @@ export default (state = initialState, action) => {
 
       return extend(state, {
         movies: showMovies
+      });
+
+    case ActionType.GET_MOVIES:
+      return extend(state, {
+        backMovies: action.payload
       });
   }
 

@@ -1,9 +1,12 @@
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from 'store/reducer.js';
 import App from 'components/app/app.jsx';
 import withActiveMovie from 'hocs/with-active-movie.jsx';
+import thunk from 'redux-thunk';
+import {createAPI} from './api.js';
+import ActionCreator from 'store/action-creator.js';
 
 const data = {
   name: `The Grand Budapest Hotel`,
@@ -11,9 +14,14 @@ const data = {
   releaseDate: `2014`,
 };
 
+const api = createAPI();
+
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(
+        applyMiddleware(thunk.withExtraArgument(api)),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
 );
 
 const AppWrapped = withActiveMovie(App);
