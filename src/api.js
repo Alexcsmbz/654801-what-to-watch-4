@@ -8,11 +8,11 @@ export const createAPI = (dispatch) => axios.create({
 
 const api = createAPI();
 
-export const onGetRequest = async (url, dispatch) => {
-  try {
-    const data = await api.get(url);
-    console.log(data)
-  } catch(e) {
-    console.log(e)
-  }
-};
+// export const onGetRequest = async (url, dispatch) => {
+//   try {
+//     const data = await api.get(url);
+//     console.log(data)
+//   } catch(e) {
+//     console.log(e)
+//   }
+// };
