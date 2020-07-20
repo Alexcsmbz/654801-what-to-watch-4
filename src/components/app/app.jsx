@@ -80,6 +80,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeFilterByGenre(genre));
     dispatch(ActionCreator.getMovieListByGenre(genre));
   },
+  getMovie: () => {
+    dispatch(ActionCreator.getMovie());
+  }
 });
 
 export {App};

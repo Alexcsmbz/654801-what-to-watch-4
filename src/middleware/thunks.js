@@ -8,6 +8,7 @@ export const getMovie = () => async (dispatch) => {
   // console.log(`asd`);
   try {
     const data = await api.get(`/films`);
+    // console.log(data)
     dispatch(ActionCreator.getMovie(data));
   } catch (e) {
     console.log(e);
