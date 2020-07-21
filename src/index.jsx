@@ -6,7 +6,7 @@ import App from 'components/app/app.jsx';
 import withActiveMovie from 'hocs/with-active-movie.jsx';
 import thunk from 'redux-thunk';
 import {createAPI} from './api.js';
-import ActionCreator from 'store/action-creator.js';
+import {getMovies} from './middleware/thunks.js';
 
 const data = {
   name: `The Grand Budapest Hotel`,
@@ -23,6 +23,8 @@ const store = createStore(
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 );
+
+store.dispatch(getMovies());
 
 const AppWrapped = withActiveMovie(App);
 

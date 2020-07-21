@@ -5,14 +5,3 @@ export const createAPI = (dispatch) => axios.create({
   timeout: 1000 * 5,
   withCredentials: true,
 });
-
-const api = createAPI();
-
-// export const onGetRequest = async (url, dispatch) => {
-//   try {
-//     const data = await api.get(url);
-//     console.log(data)
-//   } catch(e) {
-//     console.log(e)
-//   }
-// };

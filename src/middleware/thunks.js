@@ -3,10 +3,10 @@ import {createAPI} from '../api.js';
 
 const api = createAPI();
 
-export const getMovie = () => async (dispatch) => {
+export const getMovies = () => async (dispatch) => {
   try {
-    const data = await api.get(`/films`);
-    dispatch(ActionCreator.getMovie(data));
+    const response = await api.get(`/films`);
+    dispatch(ActionCreator.getMovies(response.data));
   } catch (e) {
     console.log(e);
   }

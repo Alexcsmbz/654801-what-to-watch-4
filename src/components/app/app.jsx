@@ -7,7 +7,7 @@ import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
 
-import {getMovie} from '../../middleware/thunks.js';
+import {getMovies} from '../../middleware/thunks.js';
 
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
@@ -20,7 +20,7 @@ const App = (props) => {
   };
 
   return <BrowserRouter>
-    <button onClick={getMovie(ActionCreator.GET_MOVIE)}>onClick</button>
+    <button onClick={getMovies()}>onClick</button>
     <Switch>
       <Route exact path="/">
         <MainWrapped
@@ -80,8 +80,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeFilterByGenre(genre));
     dispatch(ActionCreator.getMovieListByGenre(genre));
   },
-  getMovie: () => {
-    dispatch(ActionCreator.getMovie());
+  getMovies: () => {
+    dispatch(ActionCreator.getMovies());
   }
 });
 
