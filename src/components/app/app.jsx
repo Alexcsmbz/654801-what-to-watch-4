@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import Main from 'components/main/main.jsx';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
@@ -6,21 +7,23 @@ import ActionCreator from 'store/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
-
-import {getMovies} from '../../middleware/thunks.js';
+import {getMoviesAsync} from 'middleware/thunks.js';
 
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 
 const App = (props) => {
-  const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie} = props;
+  const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie, getMovies} = props;
   const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
     setActiveMovie(movie);
   };
 
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return <BrowserRouter>
-    <button onClick={getMovies()}>onClick</button>
     <Switch>
       <Route exact path="/">
         <MainWrapped
@@ -68,6 +71,7 @@ App.propTypes = {
     previewWebm: propTypes.string,
   }),
   setActiveMovie: propTypes.func,
+  getMovies: propTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -81,7 +85,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.getMovieListByGenre(genre));
   },
   getMovies: () => {
-    dispatch(ActionCreator.getMovies());
+    dispatch(getMoviesAsync());
   }
 });
 

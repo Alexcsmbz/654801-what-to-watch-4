@@ -5,8 +5,6 @@ import reducer from 'store/reducer.js';
 import App from 'components/app/app.jsx';
 import withActiveMovie from 'hocs/with-active-movie.jsx';
 import thunk from 'redux-thunk';
-import {createAPI} from './api.js';
-import {getMovies} from './middleware/thunks.js';
 
 const data = {
   name: `The Grand Budapest Hotel`,
@@ -14,17 +12,13 @@ const data = {
   releaseDate: `2014`,
 };
 
-const api = createAPI();
-
 const store = createStore(
     reducer,
     compose(
-        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(thunk),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 );
-
-store.dispatch(getMovies());
 
 const AppWrapped = withActiveMovie(App);
 

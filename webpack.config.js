@@ -22,6 +22,7 @@ module.exports = {
       config: path.resolve(__dirname, `./src/config.js`),
       store: path.resolve(__dirname, `./src/store`),
       hocs: path.resolve(__dirname, `./src/hocs`),
+      middleware: path.resolve(__dirname, `./src/middleware`),
     },
     extensions: [`.js`, `.jsx`, `ts`, `tsx`],
   },
