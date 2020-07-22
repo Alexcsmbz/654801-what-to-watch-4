@@ -43,7 +43,6 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Popup />
           <Loader isLoading={isLoading} />
           <MainWrapped
             movieName={name}
