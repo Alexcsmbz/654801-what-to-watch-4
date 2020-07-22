@@ -1,19 +1,26 @@
-import {PopupStyled} from './styles.js';
+import {PopupStyled, Icon, Overlay} from './styles.js';
 import Button from 'components/button/button.jsx';
 
 const Popup = (props) => {
   const {message} = props;
 
-  return <PopupStyled>
-    <span>{message}</span>
-    <Button
-      button={{
-        name: `Reload app`,
-        onClick: () => {},
-        className: `btn`
-      }}
-    />
-  </PopupStyled>;
+  return <>
+    <Overlay />
+    <PopupStyled>
+      <span>{message}</span>
+      <Icon>&#128169;</Icon>
+
+      <Button
+        button={{
+          name: `Reload app`,
+          onClick: () => {
+            location.reload();
+          },
+          className: `btn`
+        }}
+      />
+    </PopupStyled>
+  </>;
 };
 
 Popup.propTypes = {

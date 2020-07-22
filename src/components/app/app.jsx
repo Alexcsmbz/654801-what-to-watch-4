@@ -37,9 +37,9 @@ const App = (props) => {
   useEffect(() => {
     getMovies();
   }, []);
-  const mes = `network err`;
+
   return <>
-    <Popup message={mes} />
+    {errors.length !== 0 && <Popup message={errors[0]} />}
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
