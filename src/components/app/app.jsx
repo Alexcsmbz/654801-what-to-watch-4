@@ -39,30 +39,33 @@ const App = (props) => {
   }, []);
 
   return <>
-    {errors.length !== 0 && <Popup message={errors[0]} />}
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Loader isLoading={isLoading} />
-          <MainWrapped
-            movieName={name}
-            genre={genre}
-            releaseDate={releaseDate}
-            movies={movies}
-            genres={genres}
-            onMovieCardClick={onMovieCardClick}
-            onFilterClick={onFilterClick}
-            isLoading={isLoading}
-          />
-        </Route>
-        <Route exact path="/movie-page/:id">
-          <MoviePageWrapped
-            movie={activeMovie}
-            onMovieCardClick={onMovieCardClick}
-          />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <Loader isLoading={isLoading} />
+    {
+      errors.length !== 0 &&
+      <Popup message={errors[0]} /> ||
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <MainWrapped
+              movieName={name}
+              genre={genre}
+              releaseDate={releaseDate}
+              movies={movies}
+              genres={genres}
+              onMovieCardClick={onMovieCardClick}
+              onFilterClick={onFilterClick}
+              isLoading={isLoading}
+            />
+          </Route>
+          <Route exact path="/movie-page/:id">
+            <MoviePageWrapped
+              movie={activeMovie}
+              onMovieCardClick={onMovieCardClick}
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    }
   </>;
 };
 
