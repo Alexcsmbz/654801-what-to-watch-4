@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
 
     case ActionType.GET_MOVIES_FAILED:
       return extend(state, {
-        errors: [action.payload],
+        errors: [action.payload, ...state.errors],
         isLoading: false,
       });
   }
