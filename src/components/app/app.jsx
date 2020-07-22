@@ -8,12 +8,27 @@ import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
 import {getMoviesAsync} from 'middleware/thunks.js';
+import Loader from 'components/loader/loader.jsx';
+import Popup from 'components/popup/popup.jsx';
 
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 
 const App = (props) => {
-  const {name, genre, releaseDate, movies, onFilterClick, genres, activeMovie, setActiveMovie, getMovies} = props;
+  const {
+    name,
+    genre,
+    releaseDate,
+    movies,
+    onFilterClick,
+    genres,
+    activeMovie,
+    setActiveMovie,
+    getMovies,
+    isLoading,
+    errors,
+  } = props;
+
   const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
     setActiveMovie(movie);
@@ -22,28 +37,34 @@ const App = (props) => {
   useEffect(() => {
     getMovies();
   }, []);
-
-  return <BrowserRouter>
-    <Switch>
-      <Route exact path="/">
-        <MainWrapped
-          movieName={name}
-          genre={genre}
-          releaseDate={releaseDate}
-          movies={movies}
-          genres={genres}
-          onMovieCardClick={onMovieCardClick}
-          onFilterClick={onFilterClick}
-        />
-      </Route>
-      <Route exact path="/movie-page/:id">
-        <MoviePageWrapped
-          movie={activeMovie}
-          onMovieCardClick={onMovieCardClick}
-        />
-      </Route>
-    </Switch>
-  </BrowserRouter>;
+  const mes = `network err`;
+  return <>
+    <Popup message={mes} />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Popup />
+          <Loader isLoading={isLoading} />
+          <MainWrapped
+            movieName={name}
+            genre={genre}
+            releaseDate={releaseDate}
+            movies={movies}
+            genres={genres}
+            onMovieCardClick={onMovieCardClick}
+            onFilterClick={onFilterClick}
+            isLoading={isLoading}
+          />
+        </Route>
+        <Route exact path="/movie-page/:id">
+          <MoviePageWrapped
+            movie={activeMovie}
+            onMovieCardClick={onMovieCardClick}
+          />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  </>;
 };
 
 App.propTypes = {
@@ -72,11 +93,15 @@ App.propTypes = {
   }),
   setActiveMovie: propTypes.func,
   getMovies: propTypes.func,
+  isLoading: propTypes.bool,
+  errors: propTypes.arrayOf(propTypes.string),
 };
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
   genres: state.genres,
+  isLoading: state.isLoading,
+  errors: state.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

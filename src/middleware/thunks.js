@@ -10,10 +10,11 @@ const createAPI = () => axios.create({
 const api = createAPI();
 
 export const getMoviesAsync = () => async (dispatch) => {
+  dispatch(ActionCreator.getMoviesRequest());
   try {
     const response = await api.get(`/films`);
-    dispatch(ActionCreator.getMovies(response.data));
+    dispatch(ActionCreator.getMoviesSuccess(response.data));
   } catch (e) {
-    // console.log(e);
+    dispatch(ActionCreator.getMoviesFailed(e.message));
   }
 };

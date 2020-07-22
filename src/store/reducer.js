@@ -7,6 +7,8 @@ const initialState = {
   movies,
   genres: [`All genres`, ...new Set(movies.map((m) => m.genre))],
   backMovies: [],
+  isLoading: false,
+  errors: [],
 };
 
 export default (state = initialState, action) => {
@@ -25,9 +27,21 @@ export default (state = initialState, action) => {
         movies: showMovies
       });
 
-    case ActionType.GET_MOVIES:
+    case ActionType.GET_MOVIES_REQUEST:
       return extend(state, {
-        backMovies: action.payload
+        isLoading: true,
+      });
+
+    case ActionType.GET_MOVIES_SUCCESS:
+      return extend(state, {
+        backMovies: action.payload,
+        isLoading: false,
+      });
+
+    case ActionType.GET_MOVIES_FAILED:
+      return extend(state, {
+        errors: [action.payload],
+        isLoading: false,
       });
   }
 
