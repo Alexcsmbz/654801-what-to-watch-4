@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
 import Main from 'components/main/main.jsx';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
-import ActionCreator from 'store/action-creator.js';
+import ActionCreator from 'ducks/app/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
@@ -43,7 +43,7 @@ const App = (props) => {
     {
       errors.length !== 0 &&
       <Popup message={errors[0]} /> ||
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route exact path="/">
             <MainWrapped
@@ -64,15 +64,15 @@ const App = (props) => {
             />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     }
   </>;
 };
 
 App.propTypes = {
-  name: propTypes.string.isRequired,
-  genre: propTypes.string.isRequired,
-  releaseDate: propTypes.string.isRequired,
+  name: propTypes.string,
+  genre: propTypes.string,
+  releaseDate: propTypes.string,
   movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     genre: propTypes.string,
@@ -81,8 +81,8 @@ App.propTypes = {
     poster: propTypes.string,
     previewMp4: propTypes.string,
     previewWebm: propTypes.string,
-  })).isRequired,
-  genres: propTypes.arrayOf(propTypes.string).isRequired,
+  })),
+  genres: propTypes.arrayOf(propTypes.string),
   onFilterClick: propTypes.func,
   activeMovie: propTypes.shape({
     name: propTypes.string,

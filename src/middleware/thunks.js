@@ -1,4 +1,4 @@
-import ActionCreator from 'store/action-creator.js';
+import ActionCreator from 'ducks/app/action-creator.js';
 import axios from 'axios';
 
 const createAPI = () => axios.create({

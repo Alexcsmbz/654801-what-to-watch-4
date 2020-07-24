@@ -3,8 +3,9 @@ import GenreList from 'components/genre-list/genre-list.jsx';
 import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
 import GenreListItemActive from 'components/genre-list-item-active/genre-list-item-active.jsx';
 import Button from 'components/button/button.jsx';
-import Logo from 'components/logo/logo.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
+import Header from 'components/header/header.jsx';
+import Footer from 'components/footer/footer.jsx';
 
 const Main = (props) => {
   const {
@@ -62,32 +63,19 @@ const Main = (props) => {
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
       </div>
-
       <h1 className="visually-hidden">WTW</h1>
-
-      <header className="page-header movie-card__head">
-        <Logo />
-
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
             <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
           </div>
-
           <div className="movie-card__desc">
             <h2 className="movie-card__title">{movieName}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
               <span className="movie-card__year">{releaseDate}</span>
             </p>
-
             <div className="movie-card__buttons">
               <Button
                 button={{
@@ -116,9 +104,8 @@ const Main = (props) => {
             </div>
           </div>
         </div>
-      </div >
-    </section >
-
+      </div>
+    </section>
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -127,7 +114,6 @@ const Main = (props) => {
             ? <GenreListItemActive onClick={() => onGenreItemClick(g, idx)} key={g} item={g} />
             : <GenreListItem onClick={() => onGenreItemClick(g, idx)} key={g} item={g} />)}
         </GenreList>
-
         <div className="catalog__movies-list">
           <MovieCardList
             movies={movies}
@@ -135,7 +121,6 @@ const Main = (props) => {
             moviesAmount={moviesAmount}
           />
         </div>
-
         <div className="catalog__more">
           {
             isMaxMovieShow(movies, moviesAmount) &&
@@ -149,14 +134,7 @@ const Main = (props) => {
           }
         </div>
       </section>
-
-      <footer className="page-footer">
-        <Logo className="logo__link--light" />
-
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   </>;
 };
