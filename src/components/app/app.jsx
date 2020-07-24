@@ -27,6 +27,7 @@ const App = (props) => {
     getMovies,
     isLoading,
     errors,
+    filteredMovies,
   } = props;
 
   const onMovieCardClick = (movie) => {
@@ -50,7 +51,7 @@ const App = (props) => {
               movieName={name}
               genre={genre}
               releaseDate={releaseDate}
-              movies={movies}
+              movies={filteredMovies}
               genres={genres}
               onMovieCardClick={onMovieCardClick}
               onFilterClick={onFilterClick}
@@ -70,6 +71,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  filteredMovies: propTypes.arrayOf(propTypes.object),
   name: propTypes.string,
   genre: propTypes.string,
   releaseDate: propTypes.string,
@@ -99,11 +101,12 @@ App.propTypes = {
   errors: propTypes.arrayOf(propTypes.string),
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-  genres: state.genres,
-  isLoading: state.isLoading,
-  errors: state.errors,
+const mapStateToProps = (s) => ({
+  movies: s.app.movies,
+  filteredMovies: s.app.filteredMovies,
+  genres: s.app.genres,
+  isLoading: s.app.isLoading,
+  errors: s.app.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

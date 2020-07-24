@@ -1,10 +1,12 @@
 import ActionType from './action-types.js';
 import {extend} from 'utils/utils.js';
+import {adapterMovies} from 'utils/utils.js';
 
 const initialState = {
   selectedGenre: `All genres`,
   genres: [],
   movies: [],
+  filteredMovies: [],
   isLoading: false,
   errors: [],
 };
@@ -22,7 +24,7 @@ export default (state = initialState, action) => {
         : state.movies.filter((m) => m.genre === action.payload);
 
       return extend(state, {
-        movies: showMovies
+        filteredMovies: showMovies
       });
 
     case ActionType.GET_MOVIES_REQUEST:
@@ -33,6 +35,7 @@ export default (state = initialState, action) => {
     case ActionType.GET_MOVIES_SUCCESS:
       return extend(state, {
         movies: action.payload,
+        filteredMovies: action.payload,
         genres: [`All genres`, ...new Set(action.payload.map((movie) => movie.genre))],
         isLoading: false,
       });
