@@ -1,4 +1,4 @@
-import ActionType from 'store/action-types.js';
+import ActionType from './action-types.js';
 
 export default {
   changeFilterByGenre: (payload) => ({type: ActionType.CHANGE_FILTER_BY_GENRE, payload}),

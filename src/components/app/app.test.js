@@ -40,6 +40,8 @@ describe(`App snapshot test`, () => {
           genres={genres}
           activeMovie={{}}
           setActiveMovie={() => {}}
+          errors={[]}
+          isLoading={false}
         />
     ).toJSON();
 

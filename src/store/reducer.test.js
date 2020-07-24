@@ -7,7 +7,10 @@ describe(`Reducer test`, () => {
     expect(reducer(void 0, {})).toEqual({
       genre: `All genres`,
       movies,
-      genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
+      genres: [`All genres`, ...new Set(movies.map((m) => m.genre))],
+      backMovies: [],
+      isLoading: false,
+      errors: [],
     });
   });
 
