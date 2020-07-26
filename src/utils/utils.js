@@ -19,3 +19,5 @@ export const adapterMovies = (movies) => {
   const resultMovies = moviesEntries.map((m) => Object.fromEntries(m));
   return resultMovies;
 };
+
+export const goNext = (isLoading, next) => isLoading ? next() : null;

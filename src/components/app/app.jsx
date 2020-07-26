@@ -7,7 +7,7 @@ import ActionCreator from 'ducks/app/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
-import {getMoviesAsync} from 'middleware/thunks.js';
+import {getMoviesAsync, getAuthStatusAsync, authAsync} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
 
@@ -25,6 +25,8 @@ const App = (props) => {
     activeMovie,
     setActiveMovie,
     getMovies,
+    getAuthStatus,
+    auth,
     isLoading,
     errors,
     filteredMovies,
@@ -37,6 +39,8 @@ const App = (props) => {
 
   useEffect(() => {
     getMovies();
+    getAuthStatus();
+    auth();
   }, []);
 
   return <>
@@ -97,6 +101,8 @@ App.propTypes = {
   }),
   setActiveMovie: propTypes.func,
   getMovies: propTypes.func,
+  getAuthStatus: propTypes.func,
+  auth: propTypes.func,
   isLoading: propTypes.bool,
   errors: propTypes.arrayOf(propTypes.string),
 };
@@ -116,6 +122,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getMovies: () => {
     dispatch(getMoviesAsync());
+  },
+  getAuthStatus: () => {
+    dispatch(getAuthStatusAsync());
+  },
+  auth: () => {
+    dispatch(authAsync());
   }
 });
 

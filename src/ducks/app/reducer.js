@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
         filteredMovies: showMovies
       });
 
-    case ActionType.GET_MOVIES_REQUEST:
+    case ActionType.GET_REQUEST:
       return extend(state, {
         isLoading: true,
       });
