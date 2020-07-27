@@ -23,6 +23,8 @@ const Main = (props) => {
     isFullscreen,
     setIsFullscreen,
     openFullscreen,
+    isAuth,
+    user,
   } = props;
 
   const DEFAULT_MOVIES_AMOUNT = 8;
@@ -64,7 +66,7 @@ const Main = (props) => {
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
       </div>
       <h1 className="visually-hidden">WTW</h1>
-      <Header />
+      <Header user={user} isAuth={isAuth} />
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
@@ -157,6 +159,8 @@ Main.propTypes = {
   isFullscreen: propTypes.bool,
   setIsFullscreen: propTypes.func,
   openFullscreen: propTypes.func,
+  isAuth: propTypes.bool,
+  user: propTypes.object,
 };
 
 export default Main;

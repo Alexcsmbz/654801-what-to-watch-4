@@ -11,13 +11,22 @@ export const toCamel = (s) => {
   });
 };
 
-export const adapterMovies = (movies) => {
-  const moviesEntries = movies.map((m) => (Object.entries(m)));
-  moviesEntries.forEach((m) => m.forEach((_m) => {
-    _m[0] = toCamel(_m[0]);
+export const adapterKeys = (target) => {
+  if (typeof target === Array) {
+    const targetEntries = target.map((t) => (Object.entries(t)));
+    targetEntries.forEach((t) => t.forEach((_t) => {
+      _t[0] = toCamel(_t[0]);
+    }));
+    const resultTarget = targetEntries.map((t) => Object.fromEntries(t));
+    return resultTarget;
+  }
+
+  const targetEntries = Object.entries(target);
+  targetEntries.forEach((t) => t.forEach((_t) => {
+    _t[0] = toCamel(_t[0]);
   }));
-  const resultMovies = moviesEntries.map((m) => Object.fromEntries(m));
-  return resultMovies;
+  // const resultTarget = Object.fromEntries(t);
+  return targetEntries;
 };
 
 export const goNext = (isLoading, next) => isLoading ? next() : null;

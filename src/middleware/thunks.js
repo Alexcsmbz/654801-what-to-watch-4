@@ -1,4 +1,5 @@
-import ActionCreator from 'ducks/app/action-creator.js';
+import ActionCreatorApp from 'ducks/app/action-creator.js';
+import ActionCreatorUser from 'ducks/user/action-creator.js';
 import axios from 'axios';
 
 const createAPI = () => axios.create({
@@ -10,32 +11,38 @@ const createAPI = () => axios.create({
 const api = createAPI();
 
 export const getMoviesAsync = () => async (dispatch) => {
-  dispatch(ActionCreator.getRequest());
+  dispatch(ActionCreatorApp.startLoading());
   try {
     const response = await api.get(`/films`);
-    dispatch(ActionCreator.getMoviesSuccess(response.data));
+    dispatch(ActionCreatorApp.getMoviesSuccess(response.data));
   } catch (e) {
-    dispatch(ActionCreator.getMoviesFailed(e.message));
+    dispatch(ActionCreatorApp.getMoviesFailed(e.message));
+  } finally {
+    dispatch(ActionCreatorApp.stopLoading());
   }
 };
 
 export const getAuthStatusAsync = () => async (dispatch) => {
-  dispatch(ActionCreator.getRequest());
+  dispatch(ActionCreatorApp.startLoading());
   try {
     const response = await api.get(`/login`);
+    dispatch(ActionCreatorUser.getAuthStatus(response.data));
   } catch (e) {
-    console.log(e);
+    dispatch(ActionCreatorUser.authFailed(e.message));
+  } finally {
+    dispatch(ActionCreatorApp.stopLoading());
   }
 };
 
-export const authAsync = () => async (dispatch) => {
-  dispatch(ActionCreator.getRequest());
+export const authAsync = (email, password) => async (dispatch) => {
+  dispatch(ActionCreatorApp.startLoading());
   try {
-    const response = await api.post(`/login`, {
-      email: `email@email.ru`,
-      password: `password`,
-    });
+    const response = await api.post(`/login`, {email, password});
+    dispatch(ActionCreatorUser.authSuccess(response.data));
+    history.push(`/`);
   } catch (e) {
-    console.log(e);
+    dispatch(ActionCreatorUser.authFailed(e.message));
+  } finally {
+    dispatch(ActionCreatorApp.stopLoading());
   }
 };

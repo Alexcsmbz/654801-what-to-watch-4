@@ -23,6 +23,8 @@ const MoviePage = (props) => {
     setIsFullscreen,
     movie,
     openFullscreen,
+    isAuth,
+    user,
   } = props;
 
   return <>
@@ -39,7 +41,7 @@ const MoviePage = (props) => {
           <img src={promo} alt={name} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
-        <Header />
+        <Header user={user} isAuth={isAuth} />
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
             <h2 className="movie-card__title">{name}</h2>
@@ -114,6 +116,8 @@ const MoviePage = (props) => {
 };
 
 MoviePage.propTypes = {
+  isAuth: propTypes.bool,
+  user: propTypes.object,
   movie: propTypes.shape({
     name: propTypes.string,
     genre: propTypes.string,

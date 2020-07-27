@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import Main from 'components/main/main.jsx';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
 import ActionCreator from 'ducks/app/action-creator.js';
@@ -10,9 +10,11 @@ import withFullscreen from 'hocs/with-fullscreen.jsx';
 import {getMoviesAsync, getAuthStatusAsync, authAsync} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
+import SignIn from 'components/sign-in/sign-in.jsx';
 
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
+const SignInWrapped = withRouter(SignIn);
 
 const App = (props) => {
   const {
@@ -30,6 +32,8 @@ const App = (props) => {
     isLoading,
     errors,
     filteredMovies,
+    isAuth,
+    user,
   } = props;
 
   const onMovieCardClick = (movie) => {
@@ -40,7 +44,6 @@ const App = (props) => {
   useEffect(() => {
     getMovies();
     getAuthStatus();
-    auth();
   }, []);
 
   return <>
@@ -60,13 +63,20 @@ const App = (props) => {
               onMovieCardClick={onMovieCardClick}
               onFilterClick={onFilterClick}
               isLoading={isLoading}
+              isAuth={isAuth}
+              user={user}
             />
           </Route>
           <Route exact path="/movie-page/:id">
             <MoviePageWrapped
               movie={activeMovie}
               onMovieCardClick={onMovieCardClick}
+              isAuth={isAuth}
+              user={user}
             />
+          </Route>
+          <Route exact path="/sign-in">
+            <SignInWrapped onSignIn={auth} />
           </Route>
         </Switch>
       </Router>
@@ -79,6 +89,7 @@ App.propTypes = {
   name: propTypes.string,
   genre: propTypes.string,
   releaseDate: propTypes.string,
+  isAuth: propTypes.bool,
   movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     genre: propTypes.string,
@@ -105,9 +116,12 @@ App.propTypes = {
   auth: propTypes.func,
   isLoading: propTypes.bool,
   errors: propTypes.arrayOf(propTypes.string),
+  user: propTypes.object,
 };
 
 const mapStateToProps = (s) => ({
+  isAuth: s.user.isAuth,
+  user: s.user.user,
   movies: s.app.movies,
   filteredMovies: s.app.filteredMovies,
   genres: s.app.genres,
@@ -126,8 +140,8 @@ const mapDispatchToProps = (dispatch) => ({
   getAuthStatus: () => {
     dispatch(getAuthStatusAsync());
   },
-  auth: () => {
-    dispatch(authAsync());
+  auth: (email, password) => {
+    dispatch(authAsync(email, password));
   }
 });
 

@@ -1,6 +1,6 @@
 import ActionType from './action-types.js';
 import {extend} from 'utils/utils.js';
-import {adapterMovies} from 'utils/utils.js';
+import {adapterKeys} from 'utils/utils.js';
 
 const initialState = {
   selectedGenre: `All genres`,
@@ -27,9 +27,14 @@ export default (state = initialState, action) => {
         filteredMovies: showMovies
       });
 
-    case ActionType.GET_REQUEST:
+    case ActionType.START_LOADING:
       return extend(state, {
         isLoading: true,
+      });
+
+    case ActionType.STOP_LOADING:
+      return extend(state, {
+        isLoading: false,
       });
 
     case ActionType.GET_MOVIES_SUCCESS:
@@ -37,13 +42,11 @@ export default (state = initialState, action) => {
         movies: action.payload,
         filteredMovies: action.payload,
         genres: [`All genres`, ...new Set(action.payload.map((movie) => movie.genre))],
-        isLoading: false,
       });
 
     case ActionType.GET_MOVIES_FAILED:
       return extend(state, {
         errors: [action.payload, ...state.errors],
-        isLoading: false,
       });
   }
 
