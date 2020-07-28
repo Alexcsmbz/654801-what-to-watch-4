@@ -39,7 +39,6 @@ export const authAsync = (email, password) => async (dispatch) => {
   try {
     const response = await api.post(`/login`, {email, password});
     dispatch(ActionCreatorUser.authSuccess(response.data));
-    history.push(`/`);
   } catch (e) {
     dispatch(ActionCreatorUser.authFailed(e.message));
   } finally {

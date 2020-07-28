@@ -119,14 +119,14 @@ App.propTypes = {
   user: propTypes.object,
 };
 
-const mapStateToProps = (s) => ({
-  isAuth: s.user.isAuth,
-  user: s.user.user,
-  movies: s.app.movies,
-  filteredMovies: s.app.filteredMovies,
-  genres: s.app.genres,
-  isLoading: s.app.isLoading,
-  errors: s.app.errors,
+const mapStateToProps = ({app, user}) => ({
+  isAuth: user.isAuth,
+  user: user.user,
+  movies: app.movies,
+  filteredMovies: app.filteredMovies,
+  genres: app.genres,
+  isLoading: app.isLoading,
+  errors: app.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

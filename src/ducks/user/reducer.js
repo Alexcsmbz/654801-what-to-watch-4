@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
 
     case ActionType.AUTH_SUCCESS:
       return extend(state, {
+        isAuth: true,
         user: action.payload,
       });
 

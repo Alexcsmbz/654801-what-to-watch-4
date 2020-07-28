@@ -4,15 +4,15 @@ import Logo from 'components/logo/logo.jsx';
 import Footer from 'components/footer/footer.jsx';
 import Button from 'components/button/button.jsx';
 
-const SignIn = (props, context) => {
+const SignIn = (props) => {
   const {onSignIn} = props;
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const history = useHistory();
+  const {push} = useHistory();
 
   const onSubmit = () => {
     onSignIn(emailRef.current.value, passwordRef.current.value);
-    history.push(`/`);
+    push(`/`);
   };
 
   return <div className="user-page">
