@@ -1,6 +1,7 @@
 import ActionCreatorApp from 'ducks/app/action-creator.js';
 import ActionCreatorUser from 'ducks/user/action-creator.js';
 import axios from 'axios';
+import {requestFlow} from 'utils/utils.js';
 
 const createAPI = () => axios.create({
   baseURL: `https://4.react.pages.academy/wtw`,
@@ -10,38 +11,29 @@ const createAPI = () => axios.create({
 
 const api = createAPI();
 
-export const getMoviesAsync = () => async (dispatch) => {
-  dispatch(ActionCreatorApp.startLoading());
-  try {
-    const response = await api.get(`/films`);
-    dispatch(ActionCreatorApp.getMoviesSuccess(response.data));
-  } catch (e) {
-    dispatch(ActionCreatorApp.getMoviesFailed(e.message));
-  } finally {
-    dispatch(ActionCreatorApp.stopLoading());
-  }
+export const getMoviesAsync = () => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.getMoviesSuccess,
+    failed: ActionCreatorApp.getMoviesFailed,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/films`, api);
 };
 
-export const getAuthStatusAsync = () => async (dispatch) => {
-  dispatch(ActionCreatorApp.startLoading());
-  try {
-    const response = await api.get(`/login`);
-    dispatch(ActionCreatorUser.getAuthStatus(response.data));
-  } catch (e) {
-    dispatch(ActionCreatorUser.authFailed(e.message));
-  } finally {
-    dispatch(ActionCreatorApp.stopLoading());
-  }
+export const getAuthStatusAsync = () => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorUser.getAuthStatus,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/login`, api);
 };
 
-export const authAsync = (email, password) => async (dispatch) => {
-  dispatch(ActionCreatorApp.startLoading());
-  try {
-    const response = await api.post(`/login`, {email, password});
-    dispatch(ActionCreatorUser.authSuccess(response.data));
-  } catch (e) {
-    dispatch(ActionCreatorUser.authFailed(e.message));
-  } finally {
-    dispatch(ActionCreatorApp.stopLoading());
-  }
+export const authAsync = (email, password) => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorUser.authSuccess,
+    failed: ActionCreatorUser.authFailed,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/login`, api, `post`, {email, password});
 };

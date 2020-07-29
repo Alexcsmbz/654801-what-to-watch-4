@@ -14,12 +14,14 @@ export default (state = initialState, action) => {
       return extend(state, {
         isAuth: true,
         user: action.payload,
+        errors: [],
       });
 
     case ActionType.AUTH_SUCCESS:
       return extend(state, {
         isAuth: true,
         user: action.payload,
+        errors: [],
       });
 
     case ActionType.AUTH_FAILED:

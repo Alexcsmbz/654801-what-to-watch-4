@@ -30,7 +30,8 @@ const App = (props) => {
     getAuthStatus,
     auth,
     isLoading,
-    errors,
+    appErrors,
+    userErrors,
     filteredMovies,
     isAuth,
     user,
@@ -49,8 +50,8 @@ const App = (props) => {
   return <>
     <Loader isLoading={isLoading} />
     {
-      errors.length !== 0 &&
-      <Popup message={errors[0]} /> ||
+      appErrors.length !== 0 &&
+      <Popup message={appErrors[0]} /> ||
       <Router>
         <Switch>
           <Route exact path="/">
@@ -76,7 +77,7 @@ const App = (props) => {
             />
           </Route>
           <Route exact path="/sign-in">
-            <SignInWrapped onSignIn={auth} />
+            <SignInWrapped message={userErrors[0]} isAuth={isAuth} onSignIn={auth} />
           </Route>
         </Switch>
       </Router>
@@ -115,7 +116,8 @@ App.propTypes = {
   getAuthStatus: propTypes.func,
   auth: propTypes.func,
   isLoading: propTypes.bool,
-  errors: propTypes.arrayOf(propTypes.string),
+  appErrors: propTypes.arrayOf(propTypes.string),
+  userErrors: propTypes.arrayOf(propTypes.string),
   user: propTypes.object,
 };
 
@@ -126,7 +128,8 @@ const mapStateToProps = ({app, user}) => ({
   filteredMovies: app.filteredMovies,
   genres: app.genres,
   isLoading: app.isLoading,
-  errors: app.errors,
+  appErrors: app.errors,
+  userErrors: user.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

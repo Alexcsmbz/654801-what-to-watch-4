@@ -30,3 +30,36 @@ export const adapterKeys = (target) => {
 };
 
 export const goNext = (isLoading, next) => isLoading ? next() : null;
+
+export const requestFlow = async (
+  dispatch,
+  {
+    start,
+    success,
+    failed,
+    stop,
+  },
+  uri,
+  api,
+  method = `get`,
+  requestBody = {},
+) => {
+  dispatch(start());
+  try {
+    switch (method) {
+      case `get`:
+        const getResponse = await api.get(uri);
+        dispatch(success(getResponse.data));
+        break;
+
+      case `post`:
+        const postResponse = await api.post(uri, requestBody);
+        dispatch(success(postResponse.data));
+        break;
+    }
+  } catch (e) {
+    dispatch(failed(e.message));
+  } finally {
+    dispatch(stop());
+  }
+};
