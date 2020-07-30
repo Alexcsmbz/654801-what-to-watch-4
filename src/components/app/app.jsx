@@ -7,14 +7,16 @@ import ActionCreator from 'ducks/app/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
-import {getMoviesAsync, getAuthStatusAsync, authAsync} from 'middleware/thunks.js';
+import {getMoviesAsync, getAuthStatusAsync, authAsync, sendReviewAsync} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
 import SignIn from 'components/sign-in/sign-in.jsx';
+import AddReviewPage from 'components/add-review-page/add-review-page.jsx';
 
-const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
+const MoviePageWrapped = withRouter(withFullscreen(withActiveItem(MoviePage)));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 const SignInWrapped = withRouter(SignIn);
+// TODO: Create page catalog with pages
 
 const App = (props) => {
   const {
@@ -35,6 +37,7 @@ const App = (props) => {
     filteredMovies,
     isAuth,
     user,
+    sendReview,
   } = props;
 
   const onMovieCardClick = (movie) => {
@@ -83,6 +86,9 @@ const App = (props) => {
               onSignIn={auth}
             />
           </Route>
+          <Route exact path="/add-review-page">
+            <AddReviewPage sendReview={sendReview} />
+          </Route>
         </Switch>
       </Router>
     }
@@ -123,6 +129,7 @@ App.propTypes = {
   appErrors: propTypes.arrayOf(propTypes.string),
   userErrors: propTypes.arrayOf(propTypes.string),
   user: propTypes.object,
+  sendReview: propTypes.func,
 };
 
 const mapStateToProps = ({app, user}) => ({
@@ -149,6 +156,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   auth: (email, password) => {
     dispatch(authAsync(email, password));
+  },
+  sendReview: (review) => {
+    dispatch(sendReviewAsync(review));
   }
 });
 

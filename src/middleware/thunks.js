@@ -37,3 +37,13 @@ export const authAsync = (email, password) => (dispatch) => {
     stop: ActionCreatorApp.stopLoading,
   }, `/login`, api, `post`, {email, password});
 };
+
+export const sendReviewAsync = ({rating, comment}) => (dispatch) => {
+  console.log(rating, comment);
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.createReview,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/comments/42`, api, `post`, {rating, comment});
+};

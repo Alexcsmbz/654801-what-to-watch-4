@@ -7,4 +7,5 @@ export default {
   stopLoading: () => ({type: ActionType.STOP_LOADING}),
   getMoviesSuccess: (payload) => ({type: ActionType.GET_MOVIES_SUCCESS, payload}),
   getMoviesFailed: (payload) => ({type: ActionType.GET_MOVIES_FAILED, payload}),
+  createReview: (payload) => ({type: ActionType.CREATE_REVIEW, payload}),
 };

@@ -9,6 +9,10 @@ const initialState = {
   filteredMovies: [],
   isLoading: false,
   errors: [],
+  review: {
+    point: 5,
+    message: ``,
+  },
 };
 
 export default (state = initialState, action) => {
@@ -47,6 +51,11 @@ export default (state = initialState, action) => {
     case ActionType.GET_MOVIES_FAILED:
       return extend(state, {
         errors: [action.payload, ...state.errors],
+      });
+
+    case ActionType.CREATE_REVIEW:
+      return extend(state, {
+        review: action.payload,
       });
   }
 
