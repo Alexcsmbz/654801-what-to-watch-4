@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popup snapshot test Popup should render popup 1`] = `
+Array [
+  <div
+    className="sc-AxiKw eWEzSA"
+  />,
+  <div
+    className="sc-AxjAm freQmy"
+  >
+    <span>
+      message
+    </span>
+    <div
+      className="sc-AxirZ jpowrm"
+    >
+      💩
+    </div>
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        Reload app
+      </span>
+    </button>
+  </div>,
+]
+`;

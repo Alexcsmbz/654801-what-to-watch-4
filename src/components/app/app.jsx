@@ -1,18 +1,20 @@
 import {useEffect} from 'react';
 import Main from 'components/main/main.jsx';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
-import ActionCreator from 'store/action-creator.js';
+import ActionCreator from 'ducks/app/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
-import {getMoviesAsync} from 'middleware/thunks.js';
+import {getMoviesAsync, getAuthStatusAsync, authAsync} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
+import SignIn from 'components/sign-in/sign-in.jsx';
 
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
+const SignInWrapped = withRouter(SignIn);
 
 const App = (props) => {
   const {
@@ -25,8 +27,14 @@ const App = (props) => {
     activeMovie,
     setActiveMovie,
     getMovies,
+    getAuthStatus,
+    auth,
     isLoading,
-    errors,
+    appErrors,
+    userErrors,
+    filteredMovies,
+    isAuth,
+    user,
   } = props;
 
   const onMovieCardClick = (movie) => {
@@ -36,43 +44,57 @@ const App = (props) => {
 
   useEffect(() => {
     getMovies();
+    getAuthStatus();
   }, []);
 
   return <>
     <Loader isLoading={isLoading} />
     {
-      errors.length !== 0 &&
-      <Popup message={errors[0]} /> ||
-      <BrowserRouter>
+      appErrors.length !== 0 &&
+      <Popup message={appErrors[0]} /> ||
+      <Router>
         <Switch>
           <Route exact path="/">
             <MainWrapped
               movieName={name}
               genre={genre}
               releaseDate={releaseDate}
-              movies={movies}
+              movies={filteredMovies}
               genres={genres}
               onMovieCardClick={onMovieCardClick}
               onFilterClick={onFilterClick}
               isLoading={isLoading}
+              isAuth={isAuth}
+              user={user}
             />
           </Route>
           <Route exact path="/movie-page/:id">
             <MoviePageWrapped
               movie={activeMovie}
               onMovieCardClick={onMovieCardClick}
+              isAuth={isAuth}
+              user={user}
+            />
+          </Route>
+          <Route exact path="/sign-in">
+            <SignInWrapped
+              message={userErrors[0]}
+              isAuth={isAuth}
+              onSignIn={auth}
             />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     }
   </>;
 };
 
 App.propTypes = {
-  name: propTypes.string.isRequired,
-  genre: propTypes.string.isRequired,
-  releaseDate: propTypes.string.isRequired,
+  filteredMovies: propTypes.arrayOf(propTypes.object),
+  name: propTypes.string,
+  genre: propTypes.string,
+  releaseDate: propTypes.string,
+  isAuth: propTypes.bool,
   movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     genre: propTypes.string,
@@ -81,8 +103,8 @@ App.propTypes = {
     poster: propTypes.string,
     previewMp4: propTypes.string,
     previewWebm: propTypes.string,
-  })).isRequired,
-  genres: propTypes.arrayOf(propTypes.string).isRequired,
+  })),
+  genres: propTypes.arrayOf(propTypes.string),
   onFilterClick: propTypes.func,
   activeMovie: propTypes.shape({
     name: propTypes.string,
@@ -95,15 +117,23 @@ App.propTypes = {
   }),
   setActiveMovie: propTypes.func,
   getMovies: propTypes.func,
+  getAuthStatus: propTypes.func,
+  auth: propTypes.func,
   isLoading: propTypes.bool,
-  errors: propTypes.arrayOf(propTypes.string),
+  appErrors: propTypes.arrayOf(propTypes.string),
+  userErrors: propTypes.arrayOf(propTypes.string),
+  user: propTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  movies: state.movies,
-  genres: state.genres,
-  isLoading: state.isLoading,
-  errors: state.errors,
+const mapStateToProps = ({app, user}) => ({
+  isAuth: user.isAuth,
+  user: user.user,
+  movies: app.movies,
+  filteredMovies: app.filteredMovies,
+  genres: app.genres,
+  isLoading: app.isLoading,
+  appErrors: app.errors,
+  userErrors: user.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -113,6 +143,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getMovies: () => {
     dispatch(getMoviesAsync());
+  },
+  getAuthStatus: () => {
+    dispatch(getAuthStatusAsync());
+  },
+  auth: (email, password) => {
+    dispatch(authAsync(email, password));
   }
 });
 

@@ -1,5 +1,7 @@
-import ActionCreator from 'store/action-creator.js';
+import ActionCreatorApp from 'ducks/app/action-creator.js';
+import ActionCreatorUser from 'ducks/user/action-creator.js';
 import axios from 'axios';
+import {requestFlow} from 'utils/utils.js';
 
 const createAPI = () => axios.create({
   baseURL: `https://4.react.pages.academy/wtw`,
@@ -9,12 +11,29 @@ const createAPI = () => axios.create({
 
 const api = createAPI();
 
-export const getMoviesAsync = () => async (dispatch) => {
-  dispatch(ActionCreator.getMoviesRequest());
-  try {
-    const response = await api.get(`/films`);
-    dispatch(ActionCreator.getMoviesSuccess(response.data));
-  } catch (e) {
-    dispatch(ActionCreator.getMoviesFailed(e.message));
-  }
+export const getMoviesAsync = () => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.getMoviesSuccess,
+    failed: ActionCreatorApp.getMoviesFailed,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/films`, api);
+};
+
+export const getAuthStatusAsync = () => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorUser.getAuthStatus,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/login`, api);
+};
+
+export const authAsync = (email, password) => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorUser.authSuccess,
+    failed: ActionCreatorUser.authFailed,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/login`, api, `post`, {email, password});
 };
