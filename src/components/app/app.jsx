@@ -77,7 +77,11 @@ const App = (props) => {
             />
           </Route>
           <Route exact path="/sign-in">
-            <SignInWrapped message={userErrors[0]} isAuth={isAuth} onSignIn={auth} />
+            <SignInWrapped
+              message={userErrors[0]}
+              isAuth={isAuth}
+              onSignIn={auth}
+            />
           </Route>
         </Switch>
       </Router>
