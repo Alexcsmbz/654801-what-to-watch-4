@@ -14,7 +14,7 @@ const AddReviewPage = (props) => {
   useEffect(() => {
     setReview({...review, movieId: movie.id});
     if (isAuth) {
-      push(`/sign-in`);
+      push(`/login`);
     }
   }, []);
 

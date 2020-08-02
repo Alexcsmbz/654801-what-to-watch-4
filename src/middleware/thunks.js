@@ -11,13 +11,13 @@ const createAPI = () => axios.create({
 
 const api = createAPI();
 
-export const getMoviesAsync = () => (dispatch) => {
+export const getMoviesAsync = (go) => (dispatch) => {
   requestFlow(dispatch, {
     start: ActionCreatorApp.startLoading,
     success: ActionCreatorApp.getMoviesSuccess,
     failed: ActionCreatorApp.getMoviesFailed,
     stop: ActionCreatorApp.stopLoading,
-  }, `/films`, api);
+  }, `/films`, api, go);
 };
 
 export const getAuthStatusAsync = () => (dispatch) => {

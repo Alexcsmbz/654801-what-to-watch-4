@@ -26,9 +26,11 @@ const MoviePage = (props) => {
     openFullscreen,
     isAuth,
     user,
+    toggleMovieInList,
+    addedMovies,
   } = props;
 
-  const {push, replace} = useHistory();
+  const {replace} = useHistory();
 
   const navigateTo = (path) => {
     replace(path);
@@ -72,11 +74,11 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => {},
+                  onClick: () => toggleMovieInList(movie),
                   className: `btn--list btn movie-card__button`
                 }}
                 icon={{
-                  iconKey: `#add`,
+                  iconKey: addedMovies.includes(movie) ? `#in-list` : `#add`,
                   width: `19`,
                   height: `20`,
                 }}
@@ -145,6 +147,8 @@ MoviePage.propTypes = {
   isFullscreen: propTypes.bool,
   setIsFullscreen: propTypes.func,
   openFullscreen: propTypes.func,
+  toggleMovieInList: propTypes.func,
+  addedMovies: propTypes.array,
 };
 
 export default MoviePage;

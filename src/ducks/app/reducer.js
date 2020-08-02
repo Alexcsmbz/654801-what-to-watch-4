@@ -9,9 +9,7 @@ const initialState = {
   filteredMovies: [],
   isLoading: false,
   errors: [],
-  review: {
-
-  },
+  addedMovies: [],
 };
 
 export default (state = initialState, action) => {
@@ -43,7 +41,7 @@ export default (state = initialState, action) => {
     case ActionType.GET_MOVIES_SUCCESS:
       return extend(state, {
         movies: adapterKeys(action.payload),
-        filteredMovies: action.payload,
+        filteredMovies: adapterKeys(action.payload),
         genres: [`All genres`, ...new Set(action.payload.map((movie) => movie.genre))],
       });
 
@@ -52,15 +50,16 @@ export default (state = initialState, action) => {
         errors: [action.payload, ...state.errors],
       });
 
-    case ActionType.SET_ERROR:
+    case ActionType.TOGGLE_MOVIE_IN_LIST:
+      const isListIncludesMovie = state.addedMovies.includes(action.payload);
+      const addedMovies = isListIncludesMovie
+        ? state.addedMovies.filter((m) => m !== action.payload)
+        : [action.payload, ...state.addedMovies];
+
       return extend(state, {
-        errors: [action.payload, ...state.errors],
+        addedMovies,
       });
 
-    case ActionType.CREATE_REVIEW:
-      return extend(state, {
-        review: action.payload,
-      });
   }
 
   return state;
