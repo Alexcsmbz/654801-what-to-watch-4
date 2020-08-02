@@ -7,8 +7,5 @@ export default {
   stopLoading: () => ({type: ActionType.STOP_LOADING}),
   getMoviesSuccess: (payload) => ({type: ActionType.GET_MOVIES_SUCCESS, payload}),
   getMoviesFailed: (payload) => ({type: ActionType.GET_MOVIES_FAILED, payload}),
-  createReview: (payload) => ({type: ActionType.CREATE_REVIEW, payload}),
-  setError: (payload) => ({type: ActionType.SET_ERROR, payload}),
-
+  toggleMovieInList: (payload) => ({type: ActionType.TOGGLE_MOVIE_IN_LIST, payload}),
 };
-// setError: (payload) = ({type: ActionType.SET_ERROR, payload}),

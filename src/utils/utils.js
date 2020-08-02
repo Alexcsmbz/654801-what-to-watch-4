@@ -42,7 +42,16 @@ export const requestFlow = async (
   api,
   method = `get`,
   requestBody = {},
+  go,
 ) => {
+  api.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response.status === 401) {
+          go();
+        }
+      });
+
   dispatch(start());
   try {
     switch (method) {

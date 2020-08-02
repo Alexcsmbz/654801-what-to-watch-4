@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import Main from 'components/main/main.jsx';
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, useHistory} from 'react-router-dom';
 import MoviePage from 'components/movie-page/movie-page.jsx';
 import {connect} from 'react-redux';
 import ActionCreator from 'ducks/app/action-creator.js';
@@ -15,9 +15,9 @@ import SignIn from 'components/sign-in/sign-in.jsx';
 import AddReviewPage from 'components/add-review-page/add-review-page.jsx';
 
 const AddReviewPageWrapped = withReview(AddReviewPage);
-const MoviePageWrapped = withRouter(withFullscreen(withActiveItem(MoviePage)));
+const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
-const SignInWrapped = withRouter(SignIn);
+// const SignInWrapped = SignIn;
 // TODO: Create page catalog with pages
 
 const App = (props) => {
@@ -40,7 +40,11 @@ const App = (props) => {
     isAuth,
     user,
     sendReview,
+    toggleMovieInList,
+    addedMovies,
   } = props;
+
+  const {push} = useHistory();
 
   const onMovieCardClick = (movie) => {
     window.scrollTo(0, 0);
@@ -49,7 +53,7 @@ const App = (props) => {
 
   useEffect(() => {
     getMovies();
-    getAuthStatus();
+    getAuthStatus(() => push(`/login`));
   }, []);
 
   return <>
@@ -75,14 +79,16 @@ const App = (props) => {
           </Route>
           <Route exact path="/movie-page/:id">
             <MoviePageWrapped
+              addedMovies={addedMovies}
               movie={activeMovie}
               onMovieCardClick={onMovieCardClick}
               isAuth={isAuth}
               user={user}
+              toggleMovieInList={toggleMovieInList}
             />
           </Route>
-          <Route exact path="/sign-in">
-            <SignInWrapped
+          <Route exact path="/login">
+            <SignIn
               message={userErrors[0]}
               isAuth={isAuth}
               onSignIn={auth}
@@ -135,6 +141,8 @@ App.propTypes = {
   userErrors: propTypes.arrayOf(propTypes.string),
   user: propTypes.object,
   sendReview: propTypes.func,
+  toggleMovieInList: propTypes.func,
+  addedMovies: propTypes.array,
 };
 
 const mapStateToProps = ({app, user}) => ({
@@ -146,6 +154,7 @@ const mapStateToProps = ({app, user}) => ({
   isLoading: app.isLoading,
   appErrors: app.errors,
   userErrors: user.errors,
+  addedMovies: app.addedMovies,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -156,14 +165,17 @@ const mapDispatchToProps = (dispatch) => ({
   getMovies: () => {
     dispatch(getMoviesAsync());
   },
-  getAuthStatus: () => {
-    dispatch(getAuthStatusAsync());
+  getAuthStatus: (go) => {
+    dispatch(getAuthStatusAsync(go));
   },
   auth: (email, password) => {
     dispatch(authAsync(email, password));
   },
   sendReview: (review) => {
     dispatch(sendReviewAsync(review));
+  },
+  toggleMovieInList: (movie) => {
+    dispatch(ActionCreator.toggleMovieInList(movie));
   }
 });
 
