@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
 
     case ActionType.GET_MOVIES_SUCCESS:
       return extend(state, {
-        movies: action.payload,
+        movies: adapterKeys(action.payload),
         filteredMovies: action.payload,
         genres: [`All genres`, ...new Set(action.payload.map((movie) => movie.genre))],
       });

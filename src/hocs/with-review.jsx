@@ -3,8 +3,9 @@ import {useState} from 'react';
 const withReview = (Component) => (props) => {
   const {setState} = useState();
   const [review, setReview] = useState({
-    raiting: 5,
+    rating: 5,
     comment: ``,
+    movieId: 0,
   });
 
   return (

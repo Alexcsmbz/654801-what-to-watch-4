@@ -38,12 +38,11 @@ export const authAsync = (email, password) => (dispatch) => {
   }, `/login`, api, `post`, {email, password});
 };
 
-export const sendReviewAsync = ({rating, comment}) => (dispatch) => {
-  // console.log(rating, comment);
+export const sendReviewAsync = ({rating, comment, movieId}) => (dispatch) => {
   requestFlow(dispatch, {
     start: ActionCreatorApp.startLoading,
     success: ActionCreatorApp.createReview,
     failed: ActionCreatorApp.stopLoading,
     stop: ActionCreatorApp.stopLoading,
-  }, `/comments/42`, api, `post`, {rating, comment});
+  }, `/comments/${movieId}`, api, `post`, {rating, comment});
 };

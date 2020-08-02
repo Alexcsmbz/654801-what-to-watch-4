@@ -15,7 +15,7 @@ import Footer from 'components/footer/footer.jsx';
 import {useHistory} from 'react-router-dom';
 
 const MoviePage = (props) => {
-  const {name, genre, releaseDate, promo, poster} = props.movie;
+  const {name, genre, releaseDate, promo, poster, id} = props.movie;
   const {
     onMovieCardClick,
     activeIdx,
@@ -28,10 +28,10 @@ const MoviePage = (props) => {
     user,
   } = props;
 
-  const {push} = useHistory();
+  const {push, replace} = useHistory();
 
   const navigateTo = (path) => {
-    push(path);
+    replace(path);
   };
 
   return <>
@@ -84,7 +84,7 @@ const MoviePage = (props) => {
               {isAuth && <Button
                 button={{
                   name: `Add review`,
-                  onClick: () => navigateTo(`/add-review-page`),
+                  onClick: () => navigateTo(`/movie-page/${id}/add-review-page`),
                   className: `btn movie-card__button`,
                 }}
               />}
@@ -137,6 +137,7 @@ MoviePage.propTypes = {
     releaseDate: propTypes.string,
     promo: propTypes.string,
     poster: propTypes.string,
+    id: propTypes.number,
   }).isRequired,
   onMovieCardClick: propTypes.func,
   activeIdx: propTypes.number.isRequired,

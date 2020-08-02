@@ -1,35 +1,36 @@
 import Logo from 'components/logo/logo.jsx';
 import ReviewPoint from 'components/review-point/review-point.jsx';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef} from 'react';
 import {useHistory} from 'react-router-dom';
 import {ButtonStyled} from './styles.js';
 
 const AddReviewPage = (props) => {
   const points = [1, 2, 3, 4, 5];
-  const {sendReview, isAuth, review, setReview} = props;
+  const {sendReview, isAuth, review, setReview, movie} = props;
   const {push} = useHistory();
   const textareaRef = useRef(null);
-  const isDisabled = (value) => value <= 50 || value >= 400 ? true : false;
+  const isValid = (value) => value <= 50 || value >= 400 ? true : false;
 
   useEffect(() => {
+    setReview({...review, movieId: movie.id});
     if (isAuth) {
       push(`/sign-in`);
     }
-  });
+  }, []);
 
   const onClick = (p) => {
-    setReview({...review, raiting: p});
+    setReview({...review, rating: p});
   };
 
   const onChange = () => {
     const value = textareaRef.current.value;
-    if (!isDisabled(value)) {
-      setReview({...review, comment: value});
-    }
+    setReview({...review, comment: value});
   };
 
   const onSendReview = (r) => {
-    sendReview(r);
+    if (!isValid(r.comment.length)) {
+      sendReview(r);
+    }
   };
 
   return <section className="movie-card movie-card--full">
@@ -90,8 +91,8 @@ const AddReviewPage = (props) => {
           />
           <div className="add-review__submit">
             <ButtonStyled
-              isDisabled={isDisabled(review.comment.length)}
-              disabled={isDisabled(review.comment.length)}
+              isDisabled={isValid(review.comment.length)}
+              disabled={isValid(review.comment.length)}
               onClick={() => onSendReview(review)}
               className="add-review__btn"
               type="button"
@@ -108,6 +109,7 @@ AddReviewPage.propTypes = {
   sendReview: propTypes.func,
   isAuth: propTypes.bool,
   review: propTypes.object,
+  movie: propTypes.object,
   setReview: propTypes.func,
 };
 

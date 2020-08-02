@@ -7,9 +7,7 @@ import ActionCreator from 'ducks/app/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
-// import withComment from 'hocs/with-comment.jsx';
 import withReview from 'hocs/with-review.jsx';
-// import withPoint from 'hocs/with-point.jsx';
 import {getMoviesAsync, getAuthStatusAsync, authAsync, sendReviewAsync} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
@@ -90,8 +88,11 @@ const App = (props) => {
               onSignIn={auth}
             />
           </Route>
-          <Route exact path="/add-review-page">
-            <AddReviewPageWrapped sendReview={sendReview} />
+          <Route exact path="/movie-page/:id/add-review-page">
+            <AddReviewPageWrapped
+              movie={activeMovie}
+              sendReview={sendReview}
+            />
           </Route>
         </Switch>
       </Router>
