@@ -7,12 +7,16 @@ import ActionCreator from 'ducks/app/action-creator.js';
 import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
+// import withComment from 'hocs/with-comment.jsx';
+import withReview from 'hocs/with-review.jsx';
+// import withPoint from 'hocs/with-point.jsx';
 import {getMoviesAsync, getAuthStatusAsync, authAsync, sendReviewAsync} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
 import SignIn from 'components/sign-in/sign-in.jsx';
 import AddReviewPage from 'components/add-review-page/add-review-page.jsx';
 
+const AddReviewPageWrapped = withReview(AddReviewPage);
 const MoviePageWrapped = withRouter(withFullscreen(withActiveItem(MoviePage)));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 const SignInWrapped = withRouter(SignIn);
@@ -87,7 +91,7 @@ const App = (props) => {
             />
           </Route>
           <Route exact path="/add-review-page">
-            <AddReviewPage sendReview={sendReview} />
+            <AddReviewPageWrapped sendReview={sendReview} />
           </Route>
         </Switch>
       </Router>

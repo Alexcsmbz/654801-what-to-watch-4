@@ -39,7 +39,7 @@ export const authAsync = (email, password) => (dispatch) => {
 };
 
 export const sendReviewAsync = ({rating, comment}) => (dispatch) => {
-  console.log(rating, comment);
+  // console.log(rating, comment);
   requestFlow(dispatch, {
     start: ActionCreatorApp.startLoading,
     success: ActionCreatorApp.createReview,

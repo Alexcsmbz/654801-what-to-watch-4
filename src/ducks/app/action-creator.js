@@ -8,4 +8,7 @@ export default {
   getMoviesSuccess: (payload) => ({type: ActionType.GET_MOVIES_SUCCESS, payload}),
   getMoviesFailed: (payload) => ({type: ActionType.GET_MOVIES_FAILED, payload}),
   createReview: (payload) => ({type: ActionType.CREATE_REVIEW, payload}),
+  setError: (payload) => ({type: ActionType.SET_ERROR, payload}),
+
 };
+// setError: (payload) = ({type: ActionType.SET_ERROR, payload}),

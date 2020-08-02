@@ -1,22 +1,35 @@
 import Logo from 'components/logo/logo.jsx';
 import ReviewPoint from 'components/review-point/review-point.jsx';
-import {useEffect} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {ButtonStyled} from './styles.js';
 
 const AddReviewPage = (props) => {
   const points = [1, 2, 3, 4, 5];
-  const {sendReview, isAuth} = props;
+  const {sendReview, isAuth, review, setReview} = props;
   const {push} = useHistory();
+  const textareaRef = useRef(null);
+  const isDisabled = (value) => value <= 50 || value >= 400 ? true : false;
 
   useEffect(() => {
     if (isAuth) {
       push(`/sign-in`);
     }
   });
-  const review = {rating: 5, comment: `trsf`};
+
   const onClick = (p) => {
-    sendReview(review);
-    console.log(p);
+    setReview({...review, raiting: p});
+  };
+
+  const onChange = () => {
+    const value = textareaRef.current.value;
+    if (!isDisabled(value)) {
+      setReview({...review, comment: value});
+    }
+  };
+
+  const onSendReview = (r) => {
+    sendReview(r);
   };
 
   return <section className="movie-card movie-card--full">
@@ -54,19 +67,36 @@ const AddReviewPage = (props) => {
     </div>
 
     <div className="add-review">
-      <form action="#" className="add-review__form">
+      <form className="add-review__form">
         <div className="rating">
           <div className="rating__stars">
-            {points.map((p) => <ReviewPoint onClick={() => onClick(p)} key={`point-${p}`} value={p} />)}
+            {points.map((p) =>
+              <ReviewPoint
+                onClick={() => onClick(p)}
+                key={`point-${p}`}
+                value={p}
+              />)}
           </div>
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+          <textarea
+            onChange={onChange}
+            ref={textareaRef}
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"
+          />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <ButtonStyled
+              isDisabled={isDisabled(review.comment.length)}
+              disabled={isDisabled(review.comment.length)}
+              onClick={() => onSendReview(review)}
+              className="add-review__btn"
+              type="button"
+            >Post</ButtonStyled>
           </div>
-
         </div>
       </form>
     </div>
@@ -77,6 +107,8 @@ const AddReviewPage = (props) => {
 AddReviewPage.propTypes = {
   sendReview: propTypes.func,
   isAuth: propTypes.bool,
+  review: propTypes.object,
+  setReview: propTypes.func,
 };
 
 export default AddReviewPage;
