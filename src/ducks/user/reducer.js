@@ -13,14 +13,14 @@ export default (state = initialState, action) => {
     case ActionType.GET_AUTH_STATUS:
       return extend(state, {
         isAuth: true,
-        user: action.payload,
+        user: adapterKeys(action.payload),
         errors: [],
       });
 
     case ActionType.AUTH_SUCCESS:
       return extend(state, {
         isAuth: true,
-        user: action.payload,
+        user: adapterKeys(action.payload),
         errors: [],
       });
 

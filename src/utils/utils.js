@@ -12,21 +12,20 @@ export const toCamel = (s) => {
 };
 
 export const adapterKeys = (target) => {
-  if (typeof target === Array) {
+  if (Array.isArray(target)) {
     const targetEntries = target.map((t) => (Object.entries(t)));
     targetEntries.forEach((t) => t.forEach((_t) => {
       _t[0] = toCamel(_t[0]);
     }));
-    const resultTarget = targetEntries.map((t) => Object.fromEntries(t));
-    return resultTarget;
+    return targetEntries.map((t) => Object.fromEntries(t));
+  } else if (typeof target === `object`) {
+    const targetEntries = Object.entries(target);
+    targetEntries.forEach((t) => {
+      t[0] = toCamel(t[0]);
+    });
+    return Object.fromEntries(targetEntries);
   }
-
-  const targetEntries = Object.entries(target);
-  targetEntries.forEach((t) => t.forEach((_t) => {
-    _t[0] = toCamel(_t[0]);
-  }));
-  // const resultTarget = Object.fromEntries(t);
-  return targetEntries;
+  return null;
 };
 
 export const goNext = (isLoading, next) => isLoading ? next() : null;

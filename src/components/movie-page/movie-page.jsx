@@ -12,9 +12,10 @@ import Button from 'components/button/button.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
 import Header from 'components/header/header.jsx';
 import Footer from 'components/footer/footer.jsx';
+import {useHistory} from 'react-router-dom';
 
 const MoviePage = (props) => {
-  const {name, genre, releaseDate, promo, poster} = props.movie;
+  const {name, genre, releaseDate, promo, poster, id} = props.movie;
   const {
     onMovieCardClick,
     activeIdx,
@@ -26,6 +27,12 @@ const MoviePage = (props) => {
     isAuth,
     user,
   } = props;
+
+  const {push, replace} = useHistory();
+
+  const navigateTo = (path) => {
+    replace(path);
+  };
 
   return <>
     <div className="visually-hidden">
@@ -74,7 +81,13 @@ const MoviePage = (props) => {
                   height: `20`,
                 }}
               />
-              <a href="add-review.html" className="btn movie-card__button">Add review</a>
+              {isAuth && <Button
+                button={{
+                  name: `Add review`,
+                  onClick: () => navigateTo(`/movie-page/${id}/add-review-page`),
+                  className: `btn movie-card__button`,
+                }}
+              />}
             </div>
           </div>
         </div>
@@ -124,6 +137,7 @@ MoviePage.propTypes = {
     releaseDate: propTypes.string,
     promo: propTypes.string,
     poster: propTypes.string,
+    id: propTypes.number,
   }).isRequired,
   onMovieCardClick: propTypes.func,
   activeIdx: propTypes.number.isRequired,
