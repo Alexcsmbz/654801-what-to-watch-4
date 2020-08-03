@@ -1,6 +1,3 @@
-export const formatNameToPath = (name) =>
-  name.replace(/ /g, `-`).replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g, ``).toLowerCase();
-
 export const formatNumericToWord = (num) => {
   switch (true) {
     case num > 0 && num <= 3:
@@ -22,13 +19,6 @@ export const formatNumericToWord = (num) => {
       return `No rating`;
   }
 };
-
-export const splittingArray = (array) => {
-  return array.splice(0, );
-};
-// new Array(Math.ceil(array.length / splitNumeric))
-// .fill()
-// .map(() => array.splice(0, splitNumeric));
 
 export const extend = (a, b) => Object.assign({}, a, b);
 
@@ -56,8 +46,6 @@ export const adapterKeys = (target) => {
   }
   return null;
 };
-
-export const goNext = (isLoading, next) => isLoading ? next() : null;
 
 export const requestFlow = async (
   dispatch,

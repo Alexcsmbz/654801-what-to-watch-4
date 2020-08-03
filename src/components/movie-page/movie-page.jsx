@@ -6,7 +6,6 @@ import Details from 'components/details/details.jsx';
 import Reviews from 'components/reviews/reviews.jsx';
 import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-// import movies from 'mock/movies.js';
 import {moviePageTabs} from 'config';
 import Button from 'components/button/button.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';

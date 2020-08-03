@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import reducer from 'ducks';
+import reducer from 'ducks/ducks.js';
 import App from 'components/app/app.jsx';
 import withActiveMovie from 'hocs/with-active-movie.jsx';
 import thunk from 'redux-thunk';
