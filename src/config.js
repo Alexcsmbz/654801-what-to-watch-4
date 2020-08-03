@@ -19,3 +19,9 @@ export const RoutePath = {
 };
 
 export const baseURL = `https://4.react.pages.academy`;
+
+export const dateOptions = {
+  year: `numeric`,
+  month: `long`,
+  day: `numeric`,
+};

@@ -1,4 +1,6 @@
 import {useRef} from 'react';
+import {dateOptions} from 'config';
+
 const Reviews = (props) => {
   const {commentList} = props;
   const splitList = useRef([
@@ -13,13 +15,11 @@ const Reviews = (props) => {
         firstCol.map(({comment, date, id, rating, user}) => <div key={id} className="review">
           <blockquote className="review__quote">
             <p className="review__text">{comment}</p>
-
             <footer className="review__details">
               <cite className="review__author">{user.name}</cite>
-              <time className="review__date" dateTime="2016-12-24">{new Date(date).toLocaleDateString()}</time>
+              <time className="review__date" dateTime={new Date(date).toLocaleDateString()}>{new Date(date).toLocaleDateString(`en-EN`, dateOptions)}</time>
             </footer>
           </blockquote>
-
           <div className="review__rating">{rating}</div>
         </div>)
       }
@@ -29,13 +29,11 @@ const Reviews = (props) => {
         secondCol.map(({comment, date, id, rating, user}) => <div key={id} className="review">
           <blockquote className="review__quote">
             <p className="review__text">{comment}</p>
-
             <footer className="review__details">
               <cite className="review__author">{user.name}</cite>
-              <time className="review__date" dateTime="2016-12-24">{new Date(date).toLocaleDateString()}</time>
+              <time className="review__date" dateTime={new Date(date).toLocaleDateString()}>{new Date(date).toLocaleDateString(`en-EN`, dateOptions)}</time>
             </footer>
           </blockquote>
-
           <div className="review__rating">{rating}</div>
         </div>)
       }

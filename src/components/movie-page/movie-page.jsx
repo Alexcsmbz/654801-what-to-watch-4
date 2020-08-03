@@ -16,7 +16,6 @@ import {useHistory} from 'react-router-dom';
 import {toggleStatus} from 'utils/utils.js';
 import {useEffect} from 'react';
 
-
 const MoviePage = (props) => {
   const {
     name,
@@ -51,6 +50,14 @@ const MoviePage = (props) => {
 
   const navigateTo = (path) => {
     replace(path);
+  };
+
+  const onAddMyList = (m, movieStatus) => {
+    if (isAuth) {
+      toggleMovieInList(m, movieStatus);
+    } else {
+      navigateTo(`/login`);
+    }
   };
 
   return <>
@@ -91,7 +98,7 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => toggleMovieInList(movie, toggleStatus(addedMovies, movie)),
+                  onClick: () => onAddMyList(movie, toggleStatus(addedMovies, movie)),
                   className: `btn--list btn movie-card__button`
                 }}
                 icon={{
