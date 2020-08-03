@@ -71,3 +71,5 @@ export const requestFlow = async (
     dispatch(stop());
   }
 };
+
+export const toggleStatus = (movies, movie) => movies.find(({id}) => id === movie.id) ? 0 : 1;

@@ -13,6 +13,7 @@ import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-play
 import Header from 'components/header/header.jsx';
 import Footer from 'components/footer/footer.jsx';
 import {useHistory} from 'react-router-dom';
+import {toggleStatus} from 'utils/utils.js';
 
 const MoviePage = (props) => {
   const {name, genre, releaseDate, promo, poster, id} = props.movie;
@@ -74,11 +75,11 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => toggleMovieInList(movie),
+                  onClick: () => toggleMovieInList(movie, toggleStatus(addedMovies, movie)),
                   className: `btn--list btn movie-card__button`
                 }}
                 icon={{
-                  iconKey: addedMovies.includes(movie) ? `#in-list` : `#add`,
+                  iconKey: toggleStatus(addedMovies, movie) ? `#add` : `#in-list`,
                   width: `19`,
                   height: `20`,
                 }}

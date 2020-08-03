@@ -51,13 +51,18 @@ export default (state = initialState, action) => {
       });
 
     case ActionType.TOGGLE_MOVIE_IN_LIST:
-      const isListIncludesMovie = state.addedMovies.includes(action.payload);
-      const addedMovies = isListIncludesMovie
-        ? state.addedMovies.filter((m) => m !== action.payload)
-        : [action.payload, ...state.addedMovies];
+      const adapteResponse = adapterKeys(action.payload);
+      const addedMovies = !adapteResponse.isFavorite
+        ? state.addedMovies.filter(({id}) => id !== adapteResponse.id)
+        : [adapteResponse, ...state.addedMovies];
 
       return extend(state, {
         addedMovies,
+      });
+
+    case ActionType.GET_FAVORITE_MOVIES:
+      return extend(state, {
+        addedMovies: adapterKeys(action.payload),
       });
 
   }

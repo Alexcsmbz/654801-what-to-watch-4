@@ -7,13 +7,22 @@ const MovieCardList = (props) => {
     ? movies.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
     : movies;
 
+  if (moviesAmount) {
+    return resultMovies.map((movie, idx) =>
+      idx < moviesAmount ?
+        <MovieCard
+          key={movie.name}
+          movie={movie}
+          onClick={onClick}
+        /> : null);
+  }
+
   return resultMovies.map((movie, idx) =>
-    idx < moviesAmount ?
-      <MovieCard
-        key={movie.name}
-        movie={movie}
-        onClick={onClick}
-      /> : null);
+    <MovieCard
+      key={movie.name}
+      movie={movie}
+      onClick={onClick}
+    />);
 };
 
 MovieCardList.propTypes = {

@@ -46,3 +46,24 @@ export const sendReviewAsync = ({rating, comment, movieId}) => (dispatch) => {
     stop: ActionCreatorApp.stopLoading,
   }, `/comments/${movieId}`, api, `post`, {rating, comment});
 };
+
+export const getFavoriteMoviesAsync = () => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.getFavoriteMovies,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/favorite`, api);
+};
+
+export const toggleFavoriteMovieAsync = (movie, movieStatus) => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.toggleMovieInList,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/favorite/${movie.id}/${movieStatus}`, api, `post`, {
+    "film_id": movie.id,
+    "status": movieStatus
+  });
+};
