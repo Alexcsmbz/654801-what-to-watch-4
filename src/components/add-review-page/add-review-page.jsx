@@ -1,21 +1,16 @@
 import Logo from 'components/logo/logo.jsx';
 import ReviewPoint from 'components/review-point/review-point.jsx';
 import {useEffect, useRef} from 'react';
-import {useHistory} from 'react-router-dom';
 import {ButtonStyled} from './styles.js';
 
 const AddReviewPage = (props) => {
   const points = [1, 2, 3, 4, 5];
   const {sendReview, isAuth, review, setReview, movie} = props;
-  const {push} = useHistory();
   const textareaRef = useRef(null);
   const isValid = (value) => value <= 50 || value >= 400 ? true : false;
 
   useEffect(() => {
     setReview({...review, movieId: movie.id});
-    if (isAuth) {
-      push(`/login`);
-    }
   }, []);
 
   const onClick = (p) => {

@@ -87,7 +87,7 @@ const MoviePage = (props) => {
               {isAuth && <Button
                 button={{
                   name: `Add review`,
-                  onClick: () => navigateTo(`/movie-page/${id}/add-review-page`),
+                  onClick: () => navigateTo(`/films/${id}/review`),
                   className: `btn movie-card__button`,
                 }}
               />}

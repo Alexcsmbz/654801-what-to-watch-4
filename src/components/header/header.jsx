@@ -10,7 +10,7 @@ const Header = (props) => {
 
     <div className="user-block">
       {isAuth && <div className="user-block__avatar">
-        <Link to="/my-list">
+        <Link to="/mylist">
           <img src={user.avatar_url} alt={`${user.name} avatar`} width="63" height="63" />
         </Link>
       </div> || <Link to="/login">Sign in</Link>}

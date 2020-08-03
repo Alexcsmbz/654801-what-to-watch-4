@@ -22,6 +22,7 @@ import SignIn from 'components/sign-in/sign-in.jsx';
 import AddReviewPage from 'components/add-review-page/add-review-page.jsx';
 import PrivateRoute from 'components/private-route/private-route.jsx';
 import MyListPage from 'components/my-list-page/my-list-page.jsx';
+import {RoutePath} from 'config';
 
 const AddReviewPageWrapped = withReview(AddReviewPage);
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
@@ -74,7 +75,7 @@ const App = (props) => {
       <Popup message={appErrors[0]} /> ||
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={RoutePath.MAIN}>
             <MainWrapped
               movieName={name}
               genre={genre}
@@ -88,22 +89,14 @@ const App = (props) => {
               user={user}
             />
           </Route>
-          <Route exact path="/login">
+          <Route exact path={RoutePath.LOGIN}>
             <SignIn
               message={userErrors[0]}
               isAuth={isAuth}
               onSignIn={auth}
             />
           </Route>
-          <PrivateRoute isAuth={isAuth} exact path="/my-list">
-            <MyListPage
-              movies={addedMovies}
-              activeMovie={activeMovie}
-              onClick={onMovieCardClick}
-              getFavoriteMovies={getFavoriteMovies}
-            />
-          </PrivateRoute>
-          <Route exact path="/movie-page/:id">
+          <Route exact path={RoutePath.MOVIE}>
             <MoviePageWrapped
               addedMovies={addedMovies}
               movie={activeMovie}
@@ -113,12 +106,20 @@ const App = (props) => {
               toggleMovieInList={toggleMovieInList}
             />
           </Route>
-          <Route exact path="/movie-page/:id/add-review-page">
+          <PrivateRoute isAuth={isAuth} exact path={RoutePath.MYLIST}>
+            <MyListPage
+              movies={addedMovies}
+              activeMovie={activeMovie}
+              onClick={onMovieCardClick}
+              getFavoriteMovies={getFavoriteMovies}
+            />
+          </PrivateRoute>
+          <PrivateRoute isAuth={isAuth} exact path={RoutePath.REVIEW}>
             <AddReviewPageWrapped
               movie={activeMovie}
               sendReview={sendReview}
             />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     }
