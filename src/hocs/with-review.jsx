@@ -8,13 +8,11 @@ const withReview = (Component) => (props) => {
     movieId: 0,
   });
 
-  return (
-    <Component
-      {...props}
-      review={review}
-      setReview={setReview}
-    />
-  );
+  return <Component
+    {...props}
+    review={review}
+    setReview={setReview}
+  />;
 };
 
 export default withReview;

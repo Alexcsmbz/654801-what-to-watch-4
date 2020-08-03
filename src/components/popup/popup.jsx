@@ -9,7 +9,6 @@ const Popup = (props) => {
     <PopupStyled>
       <span>{message}</span>
       <Icon>&#128169;</Icon>
-
       <Button
         button={{
           name: `Reload app`,

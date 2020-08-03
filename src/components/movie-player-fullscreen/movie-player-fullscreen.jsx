@@ -20,16 +20,14 @@ const MoviePlayerFullscreen = (props) => {
     }
   }, [isFullscreen]);
 
-  return (
-    <video
-      ref={videoRef}
-      width="280"
-      height="175"
-      controls
-    >
-      <source src={videoLink} type="video/mp4" />
-    </video>
-  );
+  return <video
+    ref={videoRef}
+    width="280"
+    height="175"
+    controls
+  >
+    <source src={videoLink} type="video/mp4" />
+  </video>;
 };
 
 MoviePlayerFullscreen.propTypes = {

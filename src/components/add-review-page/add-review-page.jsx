@@ -6,7 +6,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {baseURL} from 'config';
 
 const AddReviewPage = (props) => {
-  const points = [1, 2, 3, 4, 5];
+  const points = useRef([1, 2, 3, 4, 5]).current;
   const {sendReview, isAuth, review, setReview, movie, user} = props;
   const {posterImage, backgroundImage, name, id, backgroundColor} = props.movie;
   const textareaRef = useRef(null);

@@ -8,7 +8,6 @@ const Header = (props) => {
 
   return <header className="page-header movie-card__head">
     <Logo />
-
     <div className="user-block">
       {isAuth && <div className="user-block__avatar">
         <Link to="/mylist">

@@ -1,11 +1,9 @@
 const GenreListItem = (props) => {
   const {item, onClick, className} = props;
 
-  return (
-    <li onClick={onClick} className={`catalog__genres-item ${className}`}>
-      <div className="catalog__genres-link">{item}</div>
-    </li>
-  );
+  return <li onClick={onClick} className={`catalog__genres-item ${className}`}>
+    <div className="catalog__genres-link">{item}</div>
+  </li>;
 };
 
 GenreListItem.propTypes = {
