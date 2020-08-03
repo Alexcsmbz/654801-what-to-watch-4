@@ -4,7 +4,7 @@ const MovieCardList = (props) => {
   const {movies, onClick, activeMovie, moviesAmount} = props;
 
   const resultMovies = activeMovie
-    ? movies.filter((movie) => movie.genre === activeMovie.genre && movie !== activeMovie)
+    ? movies.filter((movie) => movie.genre === activeMovie.genre && movie.id !== activeMovie.id)
     : movies;
 
   if (moviesAmount) {

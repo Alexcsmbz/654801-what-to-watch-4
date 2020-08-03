@@ -102,6 +102,7 @@ const App = (props) => {
           </Route>
           <Route exact path={RoutePath.MOVIE}>
             <MoviePageWrapped
+              movies={movies}
               commentList={commentList}
               getCommentList={getCommentList}
               addedMovies={addedMovies}
@@ -114,6 +115,7 @@ const App = (props) => {
           </Route>
           <PrivateRoute isAuth={isAuth} exact path={RoutePath.MYLIST}>
             <MyListPage
+              user={user}
               movies={addedMovies}
               activeMovie={activeMovie}
               onClick={onMovieCardClick}
@@ -122,6 +124,7 @@ const App = (props) => {
           </PrivateRoute>
           <PrivateRoute isAuth={isAuth} exact path={RoutePath.REVIEW}>
             <AddReviewPageWrapped
+              user={user}
               movie={activeMovie}
               sendReview={sendReview}
             />

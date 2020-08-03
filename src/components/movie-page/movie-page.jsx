@@ -6,7 +6,7 @@ import Details from 'components/details/details.jsx';
 import Reviews from 'components/reviews/reviews.jsx';
 import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import movies from 'mock/movies.js';
+// import movies from 'mock/movies.js';
 import {moviePageTabs} from 'config';
 import Button from 'components/button/button.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
@@ -24,9 +24,11 @@ const MoviePage = (props) => {
     id,
     posterImage,
     backgroundImage,
+    backgroundColor,
   } = props.movie;
 
   const {
+    movies,
     onMovieCardClick,
     activeIdx,
     setActiveIdx,
@@ -70,7 +72,7 @@ const MoviePage = (props) => {
     </div>
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
-        <div className="movie-card__bg">
+        <div style={{backgroundColor}} className="movie-card__bg">
           <img src={backgroundImage} alt={name} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
@@ -144,8 +146,8 @@ const MoviePage = (props) => {
         <div className="catalog__movies-list">
           <MovieCardList
             movies={movies}
-            activeMovie={props.movie}
             onClick={onMovieCardClick}
+            activeMovie={movie}
           />
         </div>
       </section>
@@ -158,14 +160,8 @@ MoviePage.propTypes = {
   commentList: propTypes.array,
   isAuth: propTypes.bool,
   user: propTypes.object,
-  movie: propTypes.shape({
-    name: propTypes.string,
-    genre: propTypes.string,
-    released: propTypes.string,
-    posterImage: propTypes.string,
-    backgroundImage: propTypes.string,
-    id: propTypes.number,
-  }).isRequired,
+  movie: propTypes.object,
+  movies: propTypes.array,
   getCommentList: propTypes.func,
   onMovieCardClick: propTypes.func,
   activeIdx: propTypes.number.isRequired,

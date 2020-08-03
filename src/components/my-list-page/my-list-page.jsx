@@ -3,9 +3,10 @@ import Footer from 'components/footer/footer.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {Link} from 'react-router-dom';
 import {useEffect} from 'react';
+import {baseURL} from 'config';
 
 const MyListPage = (props) => {
-  const {movies, activeMovie, onClick, getFavoriteMovies} = props;
+  const {movies, activeMovie, onClick, getFavoriteMovies, user} = props;
 
   useEffect(() => {
     getFavoriteMovies();
@@ -17,7 +18,7 @@ const MyListPage = (props) => {
       <h1 className="page-title user-page__title">My list</h1>
       <div className="user-block">
         <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <img src={`${baseURL}${user.avatarUrl}`} alt={`${user.name} avatar`} width="63" height="63" />
         </div>
       </div>
     </header>
@@ -41,6 +42,7 @@ const MyListPage = (props) => {
 };
 
 MyListPage.propTypes = {
+  user: propTypes.object,
   movies: propTypes.array,
   activeMovie: propTypes.object,
   onClick: propTypes.func,

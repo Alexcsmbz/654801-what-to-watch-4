@@ -36,6 +36,7 @@ const Main = (props) => {
     posterImage,
     previewImage,
     backgroundImage,
+    backgroundColor,
     id,
   } = props.promoMovie;
 
@@ -73,7 +74,7 @@ const Main = (props) => {
       />
     </div>
     <section className="movie-card">
-      <div className="movie-card__bg">
+      <div style={{backgroundColor}} className="movie-card__bg">
         <img src={backgroundImage} alt={name} />
       </div>
       <h1 className="visually-hidden">WTW</h1>
