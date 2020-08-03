@@ -17,3 +17,5 @@ export const RoutePath = {
   MYLIST: `/mylist`,
   REVIEW: `/films/:id/review`,
 };
+
+export const baseURL = `https://4.react.pages.academy`;

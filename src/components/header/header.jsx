@@ -1,6 +1,7 @@
 import Logo from 'components/logo/logo.jsx';
 import {RelativeBox} from './styles.js';
 import {Link} from 'react-router-dom';
+import {baseURL} from 'config';
 
 const Header = (props) => {
   const {isAuth, user} = props;
@@ -11,7 +12,7 @@ const Header = (props) => {
     <div className="user-block">
       {isAuth && <div className="user-block__avatar">
         <Link to="/mylist">
-          <img src={user.avatar_url} alt={`${user.name} avatar`} width="63" height="63" />
+          <img src={`${baseURL}${user.avatarUrl}`} alt={`${user.name} avatar`} width="63" height="63" />
         </Link>
       </div> || <Link to="/login">Sign in</Link>}
     </div>

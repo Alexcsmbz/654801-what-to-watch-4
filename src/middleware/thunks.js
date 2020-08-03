@@ -2,9 +2,10 @@ import ActionCreatorApp from 'ducks/app/action-creator.js';
 import ActionCreatorUser from 'ducks/user/action-creator.js';
 import axios from 'axios';
 import {requestFlow} from 'utils/utils.js';
+import {baseURL} from 'config';
 
 const createAPI = () => axios.create({
-  baseURL: `https://4.react.pages.academy/wtw`,
+  baseURL: `${baseURL}/wtw`,
   timeout: 1000 * 5,
   withCredentials: true,
 });
