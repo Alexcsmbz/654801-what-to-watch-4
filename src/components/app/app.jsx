@@ -16,6 +16,7 @@ import {
   toggleFavoriteMovieAsync,
   getFavoriteMoviesAsync,
   getPromoMovieAsync,
+  getCommentListAsync,
 } from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
@@ -53,6 +54,8 @@ const App = (props) => {
     addedMovies,
     getFavoriteMovies,
     getPromoMovie,
+    getCommentList,
+    commentList,
   } = props;
 
   const {push} = useHistory();
@@ -99,6 +102,8 @@ const App = (props) => {
           </Route>
           <Route exact path={RoutePath.MOVIE}>
             <MoviePageWrapped
+              commentList={commentList}
+              getCommentList={getCommentList}
               addedMovies={addedMovies}
               movie={activeMovie}
               onMovieCardClick={onMovieCardClick}
@@ -128,6 +133,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  commentList: propTypes.array,
   promoMovie: propTypes.object,
   filteredMovies: propTypes.arrayOf(propTypes.object),
   isAuth: propTypes.bool,
@@ -164,6 +170,7 @@ App.propTypes = {
   addedMovies: propTypes.array,
   getFavoriteMovies: propTypes.func,
   getPromoMovie: propTypes.func,
+  getCommentList: propTypes.func,
 };
 
 const mapStateToProps = ({app, user}) => ({
@@ -177,6 +184,7 @@ const mapStateToProps = ({app, user}) => ({
   appErrors: app.errors,
   userErrors: user.errors,
   addedMovies: app.addedMovies,
+  commentList: app.commentList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -204,6 +212,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getPromoMovie: () => {
     dispatch(getPromoMovieAsync());
+  },
+  getCommentList: (movie) => {
+    dispatch(getCommentListAsync(movie));
   }
 });
 

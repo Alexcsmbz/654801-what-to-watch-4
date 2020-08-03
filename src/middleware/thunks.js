@@ -77,3 +77,12 @@ export const getPromoMovieAsync = () => (dispatch) => {
     stop: ActionCreatorApp.stopLoading,
   }, `/films/promo`, api);
 };
+
+export const getCommentListAsync = ({id}) => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.getCommentList,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/comments/${id}`, api);
+};

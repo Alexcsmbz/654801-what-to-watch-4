@@ -11,13 +11,14 @@ const initialState = {
   errors: [],
   addedMovies: [],
   promoMovie: {},
+  commentList: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_FILTER_BY_GENRE:
       return extend(state, {
-        selectedGenre: action.payload
+        selectedGenre: action.payload,
       });
 
     case ActionType.GET_MOVIE_LIST_BY_GENRE:
@@ -26,7 +27,7 @@ export default (state = initialState, action) => {
         : state.movies.filter((m) => m.genre === action.payload);
 
       return extend(state, {
-        filteredMovies: showMovies
+        filteredMovies: showMovies,
       });
 
     case ActionType.START_LOADING:
@@ -68,7 +69,12 @@ export default (state = initialState, action) => {
 
     case ActionType.GET_PROMO_MOVIE:
       return extend(state, {
-        promoMovie: adapterKeys(action.payload)
+        promoMovie: adapterKeys(action.payload),
+      });
+
+    case ActionType.GET_COMMENT_LIST:
+      return extend(state, {
+        commentList: action.payload,
       });
   }
 
