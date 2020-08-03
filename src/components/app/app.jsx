@@ -15,6 +15,7 @@ import {
   sendReviewAsync,
   toggleFavoriteMovieAsync,
   getFavoriteMoviesAsync,
+  getPromoMovieAsync,
 } from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
@@ -32,9 +33,7 @@ const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 
 const App = (props) => {
   const {
-    name,
-    genre,
-    releaseDate,
+    promoMovie,
     movies,
     onFilterClick,
     genres,
@@ -53,6 +52,7 @@ const App = (props) => {
     toggleMovieInList,
     addedMovies,
     getFavoriteMovies,
+    getPromoMovie,
   } = props;
 
   const {push} = useHistory();
@@ -66,6 +66,7 @@ const App = (props) => {
     getMovies();
     getFavoriteMovies();
     getAuthStatus(() => push(`/login`));
+    getPromoMovie();
   }, []);
 
   return <>
@@ -77,9 +78,9 @@ const App = (props) => {
         <Switch>
           <Route exact path={RoutePath.MAIN}>
             <MainWrapped
-              movieName={name}
-              genre={genre}
-              releaseDate={releaseDate}
+              toggleMovieInList={toggleMovieInList}
+              promoMovie={promoMovie}
+              addedMovies={addedMovies}
               movies={filteredMovies}
               genres={genres}
               onMovieCardClick={onMovieCardClick}
@@ -127,10 +128,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  promoMovie: propTypes.object,
   filteredMovies: propTypes.arrayOf(propTypes.object),
-  name: propTypes.string,
-  genre: propTypes.string,
-  releaseDate: propTypes.string,
   isAuth: propTypes.bool,
   movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
@@ -164,9 +163,11 @@ App.propTypes = {
   toggleMovieInList: propTypes.func,
   addedMovies: propTypes.array,
   getFavoriteMovies: propTypes.func,
+  getPromoMovie: propTypes.func,
 };
 
 const mapStateToProps = ({app, user}) => ({
+  promoMovie: app.promoMovie,
   isAuth: user.isAuth,
   user: user.user,
   movies: app.movies,
@@ -201,6 +202,9 @@ const mapDispatchToProps = (dispatch) => ({
   getFavoriteMovies: () => {
     dispatch(getFavoriteMoviesAsync());
   },
+  getPromoMovie: () => {
+    dispatch(getPromoMovieAsync());
+  }
 });
 
 export {App};

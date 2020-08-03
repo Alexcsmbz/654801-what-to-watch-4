@@ -7,12 +7,6 @@ import withActiveMovie from 'hocs/with-active-movie.jsx';
 import thunk from 'redux-thunk';
 import {withRouter, BrowserRouter as Router} from 'react-router-dom';
 
-const data = {
-  name: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseDate: `2014`,
-};
-
 const store = createStore(
     reducer,
     compose(
@@ -26,11 +20,7 @@ const AppWrapped = withRouter(withActiveMovie(App));
 ReactDOM.render(
     <Router>
       <Provider store={store}>
-        <AppWrapped
-          name={data.name}
-          genre={data.genre}
-          releaseDate={data.releaseDate}
-        />
+        <AppWrapped />
       </Provider>
     </Router>,
     document.querySelector(`#root`)

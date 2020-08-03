@@ -10,6 +10,7 @@ const initialState = {
   isLoading: false,
   errors: [],
   addedMovies: [],
+  promoMovie: {},
 };
 
 export default (state = initialState, action) => {
@@ -65,6 +66,10 @@ export default (state = initialState, action) => {
         addedMovies: adapterKeys(action.payload),
       });
 
+    case ActionType.GET_PROMO_MOVIE:
+      return extend(state, {
+        promoMovie: adapterKeys(action.payload)
+      });
   }
 
   return state;

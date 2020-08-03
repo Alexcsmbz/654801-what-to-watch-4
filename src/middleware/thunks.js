@@ -68,3 +68,12 @@ export const toggleFavoriteMovieAsync = (movie, movieStatus) => (dispatch) => {
     "status": movieStatus
   });
 };
+
+export const getPromoMovieAsync = () => (dispatch) => {
+  requestFlow(dispatch, {
+    start: ActionCreatorApp.startLoading,
+    success: ActionCreatorApp.getPromoMovie,
+    failed: ActionCreatorApp.stopLoading,
+    stop: ActionCreatorApp.stopLoading,
+  }, `/films/promo`, api);
+};
