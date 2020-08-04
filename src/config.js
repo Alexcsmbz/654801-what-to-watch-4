@@ -46,6 +46,47 @@ export const testMovie = {
   previewVideoLink: `previewVideoLink`,
 };
 
+export const testComment = {
+  id: 1,
+  user: {
+    id: 1,
+    name: `name`,
+  },
+  rating: 8.9,
+  comment: `comment`,
+  date: `date`,
+};
+
+export const testComments = [
+  {
+    ...testComment,
+    id: 2,
+  },
+  {
+    ...testComment,
+    id: 3,
+  },
+  {
+    ...testComment,
+    id: 4,
+  },
+];
+
+export const testMovies = [
+  {
+    ...testMovie,
+    name: `name1`,
+  },
+  {
+    ...testMovie,
+    name: `name2`,
+  },
+  {
+    ...testMovie,
+    name: `name3`,
+  },
+];
+
 export const testUser = {
   id: 1,
   name: `name`,

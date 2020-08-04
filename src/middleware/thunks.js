@@ -4,7 +4,7 @@ import axios from 'axios';
 import {requestFlow} from 'utils/utils.js';
 import {baseURL} from 'config';
 
-const createAPI = () => axios.create({
+export const createAPI = () => axios.create({
   baseURL: `${baseURL}/wtw`,
   timeout: 1000 * 5,
   withCredentials: true,
