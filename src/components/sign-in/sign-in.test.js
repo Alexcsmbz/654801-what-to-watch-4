@@ -1,11 +1,25 @@
-// import SignIn from './sign-in.jsx';
+import SignIn from './sign-in.jsx';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-// describe(`SignIn snapshot test`, () => {
-//   it(`SignIn should render sign-in page`, () => {
-//     const tree = renderer.create(
-//         <SignIn />
-//     ).toJSON();
+jest.mock(`react-router-dom`, () => ({
+  ...jest.requireActual(`react-router-dom`),
+  useHistory: () => ({
+    push: jest.fn()
+  })
+}));
 
-//     expect(tree).toMatchSnapshot();
-//   });
-// });
+describe(`SignIn snapshot test`, () => {
+  it(`SignIn should render sign-in page`, () => {
+    const tree = renderer.create(
+        <Router>
+          <SignIn
+            message={``}
+            isAuth={false}
+            onSignIn={() => {}}
+          />
+        </Router>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+});

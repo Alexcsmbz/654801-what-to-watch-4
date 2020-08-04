@@ -1,16 +1,19 @@
 import MovieCard from './movie-card.jsx';
+import {testMovie} from 'config';
 
-const movie = {
-  name: `movie 1`,
-  img: `img/img-1.jpg`,
-};
+jest.mock(`react-router-dom`, () => ({
+  ...jest.requireActual(`react-router-dom`),
+  useHistory: () => ({
+    push: jest.fn()
+  })
+}));
 
 describe(`MovieCard e2e test`, () => {
-  const onClick = jest.fn(() => {});
+  const onClick = jest.fn(() => { });
 
   const movieCard = shallow(
       <MovieCard
-        movie={movie}
+        movie={testMovie}
         onClick={onClick}
       />
   );

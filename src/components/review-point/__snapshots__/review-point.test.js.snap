@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewPoint snapshot test ReviewPoint should render review point 1`] = `
+Array [
+  <input
+    className="rating__input"
+    id="star-5"
+    name="rating"
+    type="radio"
+    value={5}
+  />,
+  <label
+    className="rating__label"
+    htmlFor="star-5"
+    onClick={[Function]}
+  >
+    Rating 
+    5
+  </label>,
+]
+`;

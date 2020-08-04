@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MoviePage snapshot test MoviePage should render movie info 1`] = `
+exports[`MoviePage snapshot test MoviePage should render movie page 1`] = `
 Array [
   <div
     className="visually-hidden"
@@ -8,13 +8,10 @@ Array [
     <video
       controls={true}
       height="175"
-      poster="poster"
       width="280"
     >
       <source
-        type="video/webm"
-      />
-      <source
+        src="videoLink"
         type="video/mp4"
       />
     </video>
@@ -27,10 +24,15 @@ Array [
     >
       <div
         className="movie-card__bg"
+        style={
+          Object {
+            "backgroundColor": "backgroundColor",
+          }
+        }
       >
         <img
           alt="name"
-          src="promo"
+          src="backgroundImage"
         />
       </div>
       <h1
@@ -69,12 +71,21 @@ Array [
         <div
           className="user-block"
         >
-          <a
-            href="/sign-in"
-            onClick={[Function]}
+          <div
+            className="user-block__avatar"
           >
-            Sign in
-          </a>
+            <a
+              href="/mylist"
+              onClick={[Function]}
+            >
+              <img
+                alt="name avatar"
+                height="63"
+                src="https://4.react.pages.academyavatarUrl"
+                width="63"
+              />
+            </a>
+          </div>
         </div>
       </header>
       <div
@@ -99,7 +110,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              releaseDate
+              2002
             </span>
           </p>
           <div
@@ -107,6 +118,7 @@ Array [
           >
             <button
               className="btn--play btn movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -140,12 +152,15 @@ Array [
                 My list
               </span>
             </button>
-            <a
+            <button
               className="btn movie-card__button"
-              href="add-review.html"
+              onClick={[Function]}
+              type="button"
             >
-              Add review
-            </a>
+              <span>
+                Add review
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -162,7 +177,7 @@ Array [
           <img
             alt="name"
             height="327"
-            src="poster"
+            src="posterImage"
             width="218"
           />
         </div>
@@ -213,7 +228,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              8,9
+              8.8
             </div>
             <p
               className="movie-rating__meta"
@@ -226,7 +241,8 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                240 ratings
+                370881
+                 ratings
               </span>
             </p>
           </div>
@@ -234,23 +250,22 @@ Array [
             className="movie-card__text"
           >
             <p>
-              In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege.
-            </p>
-            <p>
-              Gustave prides himself on providing first-class service to the hotels guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustaves lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+              description
             </p>
             <p
               className="movie-card__director"
             >
               <strong>
-                Director: Wes Andreson
+                Director: 
+                director
               </strong>
             </p>
             <p
               className="movie-card__starring"
             >
               <strong>
-                Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other
+                Starring: 
+                and other...
               </strong>
             </p>
           </div>

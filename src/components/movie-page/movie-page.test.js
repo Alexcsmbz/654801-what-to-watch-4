@@ -1,22 +1,26 @@
 import {BrowserRouter as Router} from 'react-router-dom';
 import MoviePage from './movie-page.jsx';
-
-const movie = {
-  name: `name`,
-  genre: `genre`,
-  releaseDate: `releaseDate`,
-  promo: `promo`,
-  poster: `poster`,
-};
+import {testMovie, testUser} from 'config';
 
 describe(`MoviePage snapshot test`, () => {
-  it(`MoviePage should render movie info`, () => {
+  it(`MoviePage should render movie page`, () => {
     const tree = renderer.create(
         <Router>
           <MoviePage
-            movie={movie}
+            movies={[]}
+            onMovieCardClick={() => {}}
             activeIdx={0}
             setActiveIdx={() => {}}
+            isFullscreen={false}
+            setIsFullscreen={() => {}}
+            movie={testMovie}
+            openFullscreen={() => {}}
+            isAuth={true}
+            user={testUser}
+            toggleMovieInList={() => {}}
+            addedMovies={[]}
+            getCommentList={() => {}}
+            commentList={[]}
           />
         </Router>
     ).toJSON();

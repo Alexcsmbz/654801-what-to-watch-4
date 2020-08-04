@@ -1,48 +1,39 @@
 import {App} from './app.jsx';
+import {testMovie, testUser} from 'config';
 
-
-const name = `Whatever movie`;
-const genre = `Criminal`;
-const releaseDate = `1999`;
-const movies = [
-  {
-    name: `movie 1`,
-    img: `img/img-1.jpg`,
-  },
-  {
-    name: `movie 2`,
-    img: `img/img-2.jpg`,
-  },
-  {
-    name: `movie 3`,
-    img: `img/img-3.jpg`,
-  },
-  {
-    name: `movie 4`,
-    img: `img/img-4.jpg`,
-  },
-];
-
-const genres = [
-  `Comedy`,
-  `Drama`,
-  `Crime`,
-];
+jest.mock(`react-router-dom`, () => ({
+  ...jest.requireActual(`react-router-dom`),
+  useHistory: () => ({
+    push: jest.fn()
+  })
+}));
 
 describe(`App snapshot test`, () => {
-  it(`App should render Main component with movies name, genre, relise date, movies list`, () => {
+  it(`App should render app component`, () => {
     const tree = renderer.create(
         <App
-          name={name}
-          genre={genre}
-          releaseDate={releaseDate}
-          movies={movies}
-          genres={genres}
-          activeMovie={{}}
+          promoMovie={testMovie}
+          movies={[]}
+          onFilterClick={() => {}}
+          genres={[]}
+          activeMovie={testMovie}
           setActiveMovie={() => {}}
+          getMovies={() => {}}
+          getAuthStatus={() => {}}
+          auth={() => {}}
+          isLoading={false}
           appErrors={[]}
           userErrors={[]}
-          isLoading={false}
+          filteredMovies={[]}
+          isAuth={true}
+          user={testUser}
+          sendReview={() => {}}
+          toggleMovieInList={() => {}}
+          addedMovies={[]}
+          getFavoriteMovies={() => {}}
+          getPromoMovie={() => {}}
+          getCommentList={() => {}}
+          commentList={[]}
         />
     ).toJSON();
 
