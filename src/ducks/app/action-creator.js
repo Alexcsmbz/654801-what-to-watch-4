@@ -8,4 +8,7 @@ export default {
   getMoviesSuccess: (payload) => ({type: ActionType.GET_MOVIES_SUCCESS, payload}),
   getMoviesFailed: (payload) => ({type: ActionType.GET_MOVIES_FAILED, payload}),
   toggleMovieInList: (payload) => ({type: ActionType.TOGGLE_MOVIE_IN_LIST, payload}),
+  getFavoriteMovies: (payload) => ({type: ActionType.GET_FAVORITE_MOVIES, payload}),
+  getPromoMovie: (payload) => ({type: ActionType.GET_PROMO_MOVIE, payload}),
+  getCommentList: (payload) => ({type: ActionType.GET_COMMENT_LIST, payload}),
 };

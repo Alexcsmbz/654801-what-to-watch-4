@@ -1,7 +1,7 @@
 import {useRef, useEffect} from 'react';
 
 const MoviePlayerFullscreen = (props) => {
-  const {previewMp4, previewWebm, poster} = props.movie;
+  const {videoLink} = props.movie;
   const {isFullscreen, setIsFullscreen} = props;
   const videoRef = useRef(null);
 
@@ -20,29 +20,19 @@ const MoviePlayerFullscreen = (props) => {
     }
   }, [isFullscreen]);
 
-  return (
-    <video
-      ref={videoRef}
-      width="280"
-      height="175"
-      poster={poster}
-      controls
-    >
-      <source src={previewWebm} type="video/webm" />
-      <source src={previewMp4} type="video/mp4" />
-    </video>
-  );
+  return <video
+    ref={videoRef}
+    width="280"
+    height="175"
+    controls
+  >
+    <source src={videoLink} type="video/mp4" />
+  </video>;
 };
 
 MoviePlayerFullscreen.propTypes = {
   movie: propTypes.shape({
-    name: propTypes.string,
-    genre: propTypes.string,
-    releaseDate: propTypes.string,
-    promo: propTypes.string,
-    poster: propTypes.string,
-    previewMp4: propTypes.string,
-    previewWebm: propTypes.string,
+    videoLink: propTypes.string,
   }).isRequired,
   isFullscreen: propTypes.bool,
   setIsFullscreen: propTypes.func,

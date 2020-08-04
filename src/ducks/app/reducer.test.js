@@ -1,49 +1,46 @@
-// import ActionType from './action-types.js';
-// import reducer from './reducer.js';
-// import movies from 'mock/movies.js';
+import ActionType from './action-types.js';
+import reducer from './reducer.js';
+import {createAPI} from 'middleware/thunks.js';
+import {adapterKeys} from 'utils/utils.js';
+import MockAdapter from 'axios-mock-adapter';
+import configureStore from 'redux-mock-store';
 
-// describe(`Reducer test`, () => {
-//   it(`Reducer should set default state`, () => {
-//     expect(reducer(void 0, {})).toEqual({
-//       genre: `All genres`,
-//       movies,
-//       genres: [`All genres`, ...new Set(movies.map((m) => m.genre))],
-//       backMovies: [],
-//       isLoading: false,
-//       errors: [],
-//     });
-//   });
+const api = createAPI(() => {});
+const mockStore = configureStore([]);
 
-//   it(`Reducer should set filter genre`, () => {
-//     expect(reducer(
-//         {
-//           genre: `All genres`,
-//           movies,
-//           genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
-//         },
-//         {
-//           type: ActionType.CHANGE_FILTER_BY_GENRE,
-//           payload: `Crime`,
-//         }
-//     )).toEqual({
-//       genre: `Crime`,
-//       movies,
-//       genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
-//     });
-//   });
+describe(`Reducer test`, () => {
+  it(`Reducer should set default state`, () => {
+    expect(reducer(void 0, {})).toEqual({
+      selectedGenre: `All genres`,
+      genres: [],
+      movies: [],
+      filteredMovies: [],
+      isLoading: false,
+      errors: [],
+      addedMovies: [],
+      promoMovie: {},
+      commentList: [],
+    });
+  });
 
-//   it(`Reducer should get movie list by genre`, () => {
-//     expect(reducer({
-//       genre: `All genres`,
-//       movies,
-//       genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
-//     }, {
-//       type: ActionType.GET_MOVIE_LIST_BY_GENRE,
-//       payload: `Crime`,
-//     })).toEqual({
-//       genre: `All genres`,
-//       movies: movies.filter((m) => m.genre === `Crime`),
-//       genres: [`All genres`, ...new Set(movies.map((m) => m.genre))]
-//     });
-//   });
-// });
+  it(`Reducer should change filter genre`, () => {
+    expect(reducer({selectedGenre: `All genres`},
+        {
+          type: ActionType.CHANGE_FILTER_BY_GENRE,
+          payload: `Crime`,
+        }
+    )).toEqual({selectedGenre: `Crime`});
+  });
+
+  it(`Reducer should set start loading`, () => {
+    expect(reducer({isLoading: false},
+        {type: ActionType.START_LOADING}
+    )).toEqual({isLoading: true});
+  });
+
+  it(`Reducer should set stop loading`, () => {
+    expect(reducer({isLoading: true},
+        {type: ActionType.STOP_LOADING}
+    )).toEqual({isLoading: false});
+  });
+});

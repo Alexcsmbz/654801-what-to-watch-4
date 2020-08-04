@@ -1,3 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieCardList snapshot test MovieCardList should render movie list 1`] = `null`;
+exports[`MovieCardList snapshot test MovieCardList should render movie list 1`] = `
+Array [
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      onClick={[Function]}
+    >
+      <video
+        controls={true}
+        height="175"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        width="280"
+      >
+        <source
+          type="video/mp4"
+        />
+      </video>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/undefined"
+          onClick={[Function]}
+        >
+          movie 1
+        </a>
+      </h3>
+    </div>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      onClick={[Function]}
+    >
+      <video
+        controls={true}
+        height="175"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        width="280"
+      >
+        <source
+          type="video/mp4"
+        />
+      </video>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/undefined"
+          onClick={[Function]}
+        >
+          movie 2
+        </a>
+      </h3>
+    </div>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      onClick={[Function]}
+    >
+      <video
+        controls={true}
+        height="175"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        width="280"
+      >
+        <source
+          type="video/mp4"
+        />
+      </video>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/undefined"
+          onClick={[Function]}
+        >
+          movie 3
+        </a>
+      </h3>
+    </div>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      onClick={[Function]}
+    >
+      <video
+        controls={true}
+        height="175"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        width="280"
+      >
+        <source
+          type="video/mp4"
+        />
+      </video>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/undefined"
+          onClick={[Function]}
+        >
+          movie 4
+        </a>
+      </h3>
+    </div>
+  </article>,
+]
+`;

@@ -8,23 +8,33 @@ import withActiveItem from 'hocs/with-active-item.jsx';
 import withMaxAmount from 'hocs/with-max-amount.jsx';
 import withFullscreen from 'hocs/with-fullscreen.jsx';
 import withReview from 'hocs/with-review.jsx';
-import {getMoviesAsync, getAuthStatusAsync, authAsync, sendReviewAsync} from 'middleware/thunks.js';
+import {
+  getMoviesAsync,
+  getAuthStatusAsync,
+  authAsync,
+  sendReviewAsync,
+  toggleFavoriteMovieAsync,
+  getFavoriteMoviesAsync,
+  getPromoMovieAsync,
+  getCommentListAsync,
+} from 'middleware/thunks.js';
 import Loader from 'components/loader/loader.jsx';
 import Popup from 'components/popup/popup.jsx';
 import SignIn from 'components/sign-in/sign-in.jsx';
 import AddReviewPage from 'components/add-review-page/add-review-page.jsx';
+import PrivateRoute from 'components/private-route/private-route.jsx';
+import MyListPage from 'components/my-list-page/my-list-page.jsx';
+import {RoutePath} from 'config';
 
 const AddReviewPageWrapped = withReview(AddReviewPage);
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
-// const SignInWrapped = SignIn;
 // TODO: Create page catalog with pages
+// TODO: Add history props
 
 const App = (props) => {
   const {
-    name,
-    genre,
-    releaseDate,
+    promoMovie,
     movies,
     onFilterClick,
     genres,
@@ -42,6 +52,10 @@ const App = (props) => {
     sendReview,
     toggleMovieInList,
     addedMovies,
+    getFavoriteMovies,
+    getPromoMovie,
+    getCommentList,
+    commentList,
   } = props;
 
   const {push} = useHistory();
@@ -53,7 +67,9 @@ const App = (props) => {
 
   useEffect(() => {
     getMovies();
+    getFavoriteMovies();
     getAuthStatus(() => push(`/login`));
+    getPromoMovie();
   }, []);
 
   return <>
@@ -63,11 +79,11 @@ const App = (props) => {
       <Popup message={appErrors[0]} /> ||
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={RoutePath.MAIN}>
             <MainWrapped
-              movieName={name}
-              genre={genre}
-              releaseDate={releaseDate}
+              toggleMovieInList={toggleMovieInList}
+              promoMovie={promoMovie}
+              addedMovies={addedMovies}
               movies={filteredMovies}
               genres={genres}
               onMovieCardClick={onMovieCardClick}
@@ -77,8 +93,18 @@ const App = (props) => {
               user={user}
             />
           </Route>
-          <Route exact path="/movie-page/:id">
+          <Route exact path={RoutePath.LOGIN}>
+            <SignIn
+              message={userErrors[0]}
+              isAuth={isAuth}
+              onSignIn={auth}
+            />
+          </Route>
+          <Route exact path={RoutePath.MOVIE}>
             <MoviePageWrapped
+              movies={movies}
+              commentList={commentList}
+              getCommentList={getCommentList}
               addedMovies={addedMovies}
               movie={activeMovie}
               onMovieCardClick={onMovieCardClick}
@@ -87,19 +113,22 @@ const App = (props) => {
               toggleMovieInList={toggleMovieInList}
             />
           </Route>
-          <Route exact path="/login">
-            <SignIn
-              message={userErrors[0]}
-              isAuth={isAuth}
-              onSignIn={auth}
+          <PrivateRoute isAuth={isAuth} exact path={RoutePath.MYLIST}>
+            <MyListPage
+              user={user}
+              movies={addedMovies}
+              activeMovie={activeMovie}
+              onClick={onMovieCardClick}
+              getFavoriteMovies={getFavoriteMovies}
             />
-          </Route>
-          <Route exact path="/movie-page/:id/add-review-page">
+          </PrivateRoute>
+          <PrivateRoute isAuth={isAuth} exact path={RoutePath.REVIEW}>
             <AddReviewPageWrapped
+              user={user}
               movie={activeMovie}
               sendReview={sendReview}
             />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     }
@@ -107,10 +136,9 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  commentList: propTypes.array,
+  promoMovie: propTypes.object,
   filteredMovies: propTypes.arrayOf(propTypes.object),
-  name: propTypes.string,
-  genre: propTypes.string,
-  releaseDate: propTypes.string,
   isAuth: propTypes.bool,
   movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
@@ -143,9 +171,13 @@ App.propTypes = {
   sendReview: propTypes.func,
   toggleMovieInList: propTypes.func,
   addedMovies: propTypes.array,
+  getFavoriteMovies: propTypes.func,
+  getPromoMovie: propTypes.func,
+  getCommentList: propTypes.func,
 };
 
 const mapStateToProps = ({app, user}) => ({
+  promoMovie: app.promoMovie,
   isAuth: user.isAuth,
   user: user.user,
   movies: app.movies,
@@ -155,6 +187,7 @@ const mapStateToProps = ({app, user}) => ({
   appErrors: app.errors,
   userErrors: user.errors,
   addedMovies: app.addedMovies,
+  commentList: app.commentList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -174,8 +207,17 @@ const mapDispatchToProps = (dispatch) => ({
   sendReview: (review) => {
     dispatch(sendReviewAsync(review));
   },
-  toggleMovieInList: (movie) => {
-    dispatch(ActionCreator.toggleMovieInList(movie));
+  toggleMovieInList: (movieId, movieStatus) => {
+    dispatch(toggleFavoriteMovieAsync(movieId, movieStatus));
+  },
+  getFavoriteMovies: () => {
+    dispatch(getFavoriteMoviesAsync());
+  },
+  getPromoMovie: () => {
+    dispatch(getPromoMovieAsync());
+  },
+  getCommentList: (movie) => {
+    dispatch(getCommentListAsync(movie));
   }
 });
 

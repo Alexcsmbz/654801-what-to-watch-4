@@ -1,5 +1,24 @@
-export const formatNameToPath = (name) =>
-  name.replace(/ /g, `-`).replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g, ``).toLowerCase();
+export const formatNumericToWord = (num) => {
+  switch (true) {
+    case num > 0 && num <= 3:
+      return `Bad`;
+
+    case num > 3 && num <= 5:
+      return `Normal`;
+
+    case num > 5 && num <= 8:
+      return `Good`;
+
+    case num > 8 && num < 10:
+      return `Very good`;
+
+    case num === 10:
+      return `Amesome`;
+
+    default:
+      return `No rating`;
+  }
+};
 
 export const extend = (a, b) => Object.assign({}, a, b);
 
@@ -27,8 +46,6 @@ export const adapterKeys = (target) => {
   }
   return null;
 };
-
-export const goNext = (isLoading, next) => isLoading ? next() : null;
 
 export const requestFlow = async (
   dispatch,
@@ -71,3 +88,5 @@ export const requestFlow = async (
     dispatch(stop());
   }
 };
+
+export const toggleStatus = (movies, movie) => movies.find(({id}) => id === movie.id) ? 0 : 1;

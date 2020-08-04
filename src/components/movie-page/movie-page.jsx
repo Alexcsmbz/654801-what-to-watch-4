@@ -6,17 +6,28 @@ import Details from 'components/details/details.jsx';
 import Reviews from 'components/reviews/reviews.jsx';
 import Subpages from 'components/subpages/subpages.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
-import movies from 'mock/movies.js';
 import {moviePageTabs} from 'config';
 import Button from 'components/button/button.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
 import Header from 'components/header/header.jsx';
 import Footer from 'components/footer/footer.jsx';
 import {useHistory} from 'react-router-dom';
+import {toggleStatus} from 'utils/utils.js';
+import {useEffect} from 'react';
 
 const MoviePage = (props) => {
-  const {name, genre, releaseDate, promo, poster, id} = props.movie;
   const {
+    name,
+    genre,
+    released,
+    id,
+    posterImage,
+    backgroundImage,
+    backgroundColor,
+  } = props.movie;
+
+  const {
+    movies,
     onMovieCardClick,
     activeIdx,
     setActiveIdx,
@@ -28,12 +39,26 @@ const MoviePage = (props) => {
     user,
     toggleMovieInList,
     addedMovies,
+    getCommentList,
+    commentList,
   } = props;
+
+  useEffect(() => {
+    getCommentList(movie);
+  }, []);
 
   const {replace} = useHistory();
 
   const navigateTo = (path) => {
     replace(path);
+  };
+
+  const onAddMyList = (m, movieStatus) => {
+    if (isAuth) {
+      toggleMovieInList(m, movieStatus);
+    } else {
+      navigateTo(`/login`);
+    }
   };
 
   return <>
@@ -46,8 +71,8 @@ const MoviePage = (props) => {
     </div>
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
-        <div className="movie-card__bg">
-          <img src={promo} alt={name} />
+        <div style={{backgroundColor}} className="movie-card__bg">
+          <img src={backgroundImage} alt={name} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <Header user={user} isAuth={isAuth} />
@@ -56,7 +81,7 @@ const MoviePage = (props) => {
             <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{releaseDate}</span>
+              <span className="movie-card__year">{released}</span>
             </p>
             <div className="movie-card__buttons">
               <Button
@@ -74,11 +99,11 @@ const MoviePage = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => toggleMovieInList(movie),
+                  onClick: () => onAddMyList(movie, toggleStatus(addedMovies, movie)),
                   className: `btn--list btn movie-card__button`
                 }}
                 icon={{
-                  iconKey: addedMovies.includes(movie) ? `#in-list` : `#add`,
+                  iconKey: toggleStatus(addedMovies, movie) ? `#add` : `#in-list`,
                   width: `19`,
                   height: `20`,
                 }}
@@ -86,7 +111,7 @@ const MoviePage = (props) => {
               {isAuth && <Button
                 button={{
                   name: `Add review`,
-                  onClick: () => navigateTo(`/movie-page/${id}/add-review-page`),
+                  onClick: () => navigateTo(`/films/${id}/review`),
                   className: `btn movie-card__button`,
                 }}
               />}
@@ -97,7 +122,7 @@ const MoviePage = (props) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src={poster} alt={name} width="218" height="327" />
+            <img src={posterImage} alt={name} width="218" height="327" />
           </div>
           <div className="movie-card__desc">
             <NavTabs>
@@ -106,9 +131,9 @@ const MoviePage = (props) => {
                 : <NavTab onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />)}
             </NavTabs>
             <Subpages idx={activeIdx}>
-              <Overview />
-              <Details />
-              <Reviews />
+              <Overview movie={movie} />
+              <Details movie={movie} />
+              <Reviews commentList={commentList} />
             </Subpages>
           </div>
         </div>
@@ -120,8 +145,8 @@ const MoviePage = (props) => {
         <div className="catalog__movies-list">
           <MovieCardList
             movies={movies}
-            activeMovie={props.movie}
             onClick={onMovieCardClick}
+            activeMovie={movie}
           />
         </div>
       </section>
@@ -131,16 +156,12 @@ const MoviePage = (props) => {
 };
 
 MoviePage.propTypes = {
+  commentList: propTypes.array,
   isAuth: propTypes.bool,
   user: propTypes.object,
-  movie: propTypes.shape({
-    name: propTypes.string,
-    genre: propTypes.string,
-    releaseDate: propTypes.string,
-    promo: propTypes.string,
-    poster: propTypes.string,
-    id: propTypes.number,
-  }).isRequired,
+  movie: propTypes.object,
+  movies: propTypes.array,
+  getCommentList: propTypes.func,
   onMovieCardClick: propTypes.func,
   activeIdx: propTypes.number.isRequired,
   setActiveIdx: propTypes.func,

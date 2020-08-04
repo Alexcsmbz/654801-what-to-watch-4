@@ -6,13 +6,14 @@ import Button from 'components/button/button.jsx';
 import MoviePlayerFullscreen from 'components/movie-player-fullscreen/movie-player-fullscreen.jsx';
 import Header from 'components/header/header.jsx';
 import Footer from 'components/footer/footer.jsx';
+import {useHistory} from 'react-router-dom';
+import {toggleStatus} from 'utils/utils.js';
 
 const Main = (props) => {
   const {
-    movieName,
-    genre,
-    releaseDate,
+    promoMovie,
     movies,
+    addedMovies,
     onMovieCardClick,
     onFilterClick,
     genres,
@@ -25,20 +26,31 @@ const Main = (props) => {
     openFullscreen,
     isAuth,
     user,
+    toggleMovieInList,
   } = props;
 
-  const DEFAULT_MOVIES_AMOUNT = 8;
+  const {
+    name,
+    genre,
+    released,
+    posterImage,
+    previewImage,
+    backgroundImage,
+    backgroundColor,
+    id,
+  } = props.promoMovie;
 
-  const movie = {
-    name: `Fantastic Beasts: The Crimes of Grindelwald`,
-    thumbnail: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    genre: `Comedies`,
-    releaseDate: `2014`,
-    promo: `promo`,
-    poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    previewMp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    previewWebm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  const {push} = useHistory();
+
+  const onAddMyList = (movie, movieStatus) => {
+    if (isAuth) {
+      toggleMovieInList(movie, movieStatus);
+    } else {
+      push(`/login`);
+    }
   };
+
+  const DEFAULT_MOVIES_AMOUNT = 8;
 
   const isMaxMovieShow = (moviesArray, amount) => moviesArray.length > amount;
 
@@ -57,26 +69,26 @@ const Main = (props) => {
     <div className="visually-hidden">
       <MoviePlayerFullscreen
         setIsFullscreen={setIsFullscreen}
-        movie={movie}
+        movie={promoMovie}
         isFullscreen={isFullscreen}
       />
     </div>
     <section className="movie-card">
-      <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+      <div style={{backgroundColor}} className="movie-card__bg">
+        <img src={backgroundImage} alt={name} />
       </div>
       <h1 className="visually-hidden">WTW</h1>
       <Header user={user} isAuth={isAuth} />
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={posterImage} alt={name} width="218" height="327" />
           </div>
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{movieName}</h2>
+            <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{releaseDate}</span>
+              <span className="movie-card__year">{released}</span>
             </p>
             <div className="movie-card__buttons">
               <Button
@@ -94,11 +106,11 @@ const Main = (props) => {
               <Button
                 button={{
                   name: `My list`,
-                  onClick: () => {},
+                  onClick: () => onAddMyList(promoMovie, toggleStatus(addedMovies, promoMovie)),
                   className: `btn--list btn movie-card__button`
                 }}
                 icon={{
-                  iconKey: `#add`,
+                  iconKey: toggleStatus(addedMovies, promoMovie) ? `#add` : `#in-list`,
                   width: `19`,
                   height: `20`,
                 }}
@@ -142,9 +154,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  movieName: propTypes.string.isRequired,
-  genre: propTypes.string.isRequired,
-  releaseDate: propTypes.string.isRequired,
+  promoMovie: propTypes.object,
   movies: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string,
     img: propTypes.string,
@@ -161,6 +171,8 @@ Main.propTypes = {
   openFullscreen: propTypes.func,
   isAuth: propTypes.bool,
   user: propTypes.object,
+  toggleMovieInList: propTypes.func,
+  addedMovies: propTypes.array,
 };
 
 export default Main;

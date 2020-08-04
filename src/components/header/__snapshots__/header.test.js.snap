@@ -33,7 +33,7 @@ exports[`Header snapshot test Header should render header 1`] = `
     className="user-block"
   >
     <a
-      href="/sign-in"
+      href="/login"
       onClick={[Function]}
     >
       Sign in
