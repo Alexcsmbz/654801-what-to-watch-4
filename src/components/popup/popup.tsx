@@ -1,10 +1,8 @@
 import {PopupStyled, Icon, Overlay} from './styles.js';
 import Button from 'components/button/button.tsx';
 
-const Popup = (props) => {
-  const {message} = props;
-
-  return <>
+const Popup = ({ message }) =>
+  <>
     <Overlay />
     <PopupStyled>
       <span>{message}</span>
@@ -20,10 +18,5 @@ const Popup = (props) => {
       />
     </PopupStyled>
   </>;
-};
-
-Popup.propTypes = {
-  message: propTypes.string,
-};
 
 export default Popup;

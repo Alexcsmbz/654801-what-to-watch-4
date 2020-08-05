@@ -30,12 +30,4 @@ const MoviePlayerFullscreen = (props) => {
   </video>;
 };
 
-MoviePlayerFullscreen.propTypes = {
-  movie: propTypes.shape({
-    videoLink: propTypes.string,
-  }).isRequired,
-  isFullscreen: propTypes.bool,
-  setIsFullscreen: propTypes.func,
-};
-
 export default MoviePlayerFullscreen;

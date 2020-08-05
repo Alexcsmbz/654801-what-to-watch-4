@@ -25,8 +25,4 @@ const Overview = (props) => {
   </>;
 };
 
-Overview.propTypes = {
-  movie: propTypes.object,
-};
-
 export default Overview;

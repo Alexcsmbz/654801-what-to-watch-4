@@ -20,11 +20,4 @@ const MoviePlayer = (props) => {
   </video>;
 };
 
-MoviePlayer.propTypes = {
-  movie: propTypes.shape({
-    previewImage: propTypes.string,
-    previewVideoLink: propTypes.string,
-  }).isRequired,
-};
-
 export default MoviePlayer;

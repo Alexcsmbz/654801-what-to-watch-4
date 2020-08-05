@@ -55,10 +55,4 @@ const SignIn = (props) => {
   </div>;
 };
 
-SignIn.propTypes = {
-  isAuth: propTypes.bool,
-  onSignIn: propTypes.func,
-  message: propTypes.string,
-};
-
 export default SignIn;

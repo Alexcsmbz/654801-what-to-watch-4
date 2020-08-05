@@ -99,13 +99,4 @@ const AddReviewPage = (props) => {
   </section>;
 };
 
-AddReviewPage.propTypes = {
-  sendReview: propTypes.func,
-  isAuth: propTypes.bool,
-  user: propTypes.object,
-  review: propTypes.object,
-  movie: propTypes.object,
-  setReview: propTypes.func,
-};
-
 export default AddReviewPage;

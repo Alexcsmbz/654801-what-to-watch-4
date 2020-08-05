@@ -1,7 +1,5 @@
-const ReviewPoint = (props) => {
-  const {value, onClick} = props;
-
-  return <>
+const ReviewPoint = ({ value, onClick }) =>
+  <>
     <input
       className="rating__input"
       id={`star-${value}`}
@@ -17,11 +15,5 @@ const ReviewPoint = (props) => {
       Rating {value}
     </label>
   </>;
-};
-
-ReviewPoint.propTypes = {
-  value: propTypes.number,
-  onClick: propTypes.func,
-};
 
 export default ReviewPoint;

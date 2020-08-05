@@ -8,8 +8,4 @@ const NavTabActive = (props) => {
   return <NavTab className={className} {...restProps}/>;
 };
 
-NavTabActive.propTypes = {
-  className: propTypes.string,
-};
-
 export default NavTabActive;

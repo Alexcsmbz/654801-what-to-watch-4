@@ -17,19 +17,12 @@ const MovieCardList = (props) => {
         /> : null);
   }
 
-  return resultMovies.map((movie, idx) =>
+  return resultMovies.map((movie) =>
     <MovieCard
       key={movie.name}
       movie={movie}
       onClick={onClick}
     />);
-};
-
-MovieCardList.propTypes = {
-  movies: propTypes.array,
-  onClick: propTypes.func,
-  activeMovie: propTypes.object,
-  moviesAmount: propTypes.number,
 };
 
 export default MovieCardList;

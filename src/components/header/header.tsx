@@ -2,10 +2,8 @@ import Logo from 'components/logo/logo.tsx';
 import {Link} from 'react-router-dom';
 import {baseURL} from 'config';
 
-const Header = (props) => {
-  const {isAuth, user} = props;
-
-  return <header className="page-header movie-card__head">
+const Header = ({isAuth, user}) =>
+  <header className="page-header movie-card__head">
     <Logo />
     <div className="user-block">
       {isAuth && <div className="user-block__avatar">
@@ -15,11 +13,5 @@ const Header = (props) => {
       </div> || <Link to="/login">Sign in</Link>}
     </div>
   </header>;
-};
-
-Header.propTypes = {
-  isAuth: propTypes.bool,
-  user: propTypes.object,
-};
 
 export default Header;

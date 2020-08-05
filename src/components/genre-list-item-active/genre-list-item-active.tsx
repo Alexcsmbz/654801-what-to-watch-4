@@ -8,8 +8,4 @@ const GenreListItemActive = (props) => {
   return <GenreListItem className={className} {...restProps} />;
 };
 
-GenreListItemActive.propTypes = {
-  className: propTypes.string,
-};
-
 export default GenreListItemActive;

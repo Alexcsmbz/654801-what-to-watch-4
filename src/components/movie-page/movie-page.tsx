@@ -155,21 +155,4 @@ const MoviePage = (props) => {
   </>;
 };
 
-MoviePage.propTypes = {
-  commentList: propTypes.array,
-  isAuth: propTypes.bool,
-  user: propTypes.object,
-  movie: propTypes.object,
-  movies: propTypes.array,
-  getCommentList: propTypes.func,
-  onMovieCardClick: propTypes.func,
-  activeIdx: propTypes.number.isRequired,
-  setActiveIdx: propTypes.func,
-  isFullscreen: propTypes.bool,
-  setIsFullscreen: propTypes.func,
-  openFullscreen: propTypes.func,
-  toggleMovieInList: propTypes.func,
-  addedMovies: propTypes.array,
-};
-
 export default MoviePage;

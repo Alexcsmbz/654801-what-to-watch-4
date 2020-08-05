@@ -34,10 +34,8 @@ const Main = (props) => {
     genre,
     released,
     posterImage,
-    previewImage,
     backgroundImage,
     backgroundColor,
-    id,
   } = props.promoMovie;
 
   const {push} = useHistory();
@@ -151,28 +149,6 @@ const Main = (props) => {
       <Footer />
     </div>
   </>;
-};
-
-Main.propTypes = {
-  promoMovie: propTypes.object,
-  movies: propTypes.arrayOf(propTypes.shape({
-    name: propTypes.string,
-    img: propTypes.string,
-  })).isRequired,
-  genres: propTypes.arrayOf(propTypes.string).isRequired,
-  onMovieCardClick: propTypes.func,
-  onFilterClick: propTypes.func,
-  activeIdx: propTypes.number.isRequired,
-  setActiveIdx: propTypes.func,
-  moviesAmount: propTypes.number.isRequired,
-  setMoviesAmount: propTypes.func,
-  isFullscreen: propTypes.bool,
-  setIsFullscreen: propTypes.func,
-  openFullscreen: propTypes.func,
-  isAuth: propTypes.bool,
-  user: propTypes.object,
-  toggleMovieInList: propTypes.func,
-  addedMovies: propTypes.array,
 };
 
 export default Main;

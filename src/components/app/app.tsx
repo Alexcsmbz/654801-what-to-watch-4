@@ -117,7 +117,6 @@ const App = (props) => {
             <MyListPage
               user={user}
               movies={addedMovies}
-              activeMovie={activeMovie}
               onClick={onMovieCardClick}
               getFavoriteMovies={getFavoriteMovies}
             />
@@ -133,47 +132,6 @@ const App = (props) => {
       </Router>
     }
   </>;
-};
-
-App.propTypes = {
-  commentList: propTypes.array,
-  promoMovie: propTypes.object,
-  filteredMovies: propTypes.arrayOf(propTypes.object),
-  isAuth: propTypes.bool,
-  movies: propTypes.arrayOf(propTypes.shape({
-    name: propTypes.string,
-    genre: propTypes.string,
-    releaseDate: propTypes.string,
-    promo: propTypes.string,
-    poster: propTypes.string,
-    previewMp4: propTypes.string,
-    previewWebm: propTypes.string,
-  })),
-  genres: propTypes.arrayOf(propTypes.string),
-  onFilterClick: propTypes.func,
-  activeMovie: propTypes.shape({
-    name: propTypes.string,
-    genre: propTypes.string,
-    releaseDate: propTypes.string,
-    promo: propTypes.string,
-    poster: propTypes.string,
-    previewMp4: propTypes.string,
-    previewWebm: propTypes.string,
-  }),
-  setActiveMovie: propTypes.func,
-  getMovies: propTypes.func,
-  getAuthStatus: propTypes.func,
-  auth: propTypes.func,
-  isLoading: propTypes.bool,
-  appErrors: propTypes.arrayOf(propTypes.string),
-  userErrors: propTypes.arrayOf(propTypes.string),
-  user: propTypes.object,
-  sendReview: propTypes.func,
-  toggleMovieInList: propTypes.func,
-  addedMovies: propTypes.array,
-  getFavoriteMovies: propTypes.func,
-  getPromoMovie: propTypes.func,
-  getCommentList: propTypes.func,
 };
 
 const mapStateToProps = ({app, user}) => ({

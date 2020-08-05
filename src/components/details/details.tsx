@@ -36,8 +36,4 @@ const Details = (props) => {
   </div>;
 };
 
-Details.propTypes = {
-  movie: propTypes.object,
-};
-
 export default Details;

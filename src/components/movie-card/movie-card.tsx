@@ -23,19 +23,4 @@ const MovieCard = (props) => {
   </article>;
 };
 
-MovieCard.propTypes = {
-  movie: propTypes.shape({
-    genre: propTypes.string,
-    releaseDate: propTypes.string,
-    promo: propTypes.string,
-    poster: propTypes.string,
-    name: propTypes.string,
-    thumbnail: propTypes.string,
-    previewMp4: propTypes.string,
-    id: propTypes.number,
-    previewWebm: propTypes.string,
-  }).isRequired,
-  onClick: propTypes.func,
-};
-
 export default MovieCard;

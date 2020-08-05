@@ -46,8 +46,4 @@ const Reviews = (props) => {
   </div>;
 };
 
-Reviews.propTypes = {
-  commentList: propTypes.array,
-};
-
 export default Reviews;

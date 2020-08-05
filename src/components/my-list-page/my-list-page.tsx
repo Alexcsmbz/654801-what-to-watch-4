@@ -6,7 +6,7 @@ import {useEffect} from 'react';
 import {baseURL} from 'config';
 
 const MyListPage = (props) => {
-  const {movies, activeMovie, onClick, getFavoriteMovies, user} = props;
+  const {movies, onClick, getFavoriteMovies, user} = props;
 
   useEffect(() => {
     getFavoriteMovies();
@@ -39,14 +39,6 @@ const MyListPage = (props) => {
     </section>
     <Footer />
   </div>;
-};
-
-MyListPage.propTypes = {
-  user: propTypes.object,
-  movies: propTypes.array,
-  activeMovie: propTypes.object,
-  onClick: propTypes.func,
-  getFavoriteMovies: propTypes.func,
 };
 
 export default MyListPage;
