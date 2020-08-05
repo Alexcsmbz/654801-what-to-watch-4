@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es2016",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "utils/*": ["src/utils/*"],
+      "config": ["src/config.ts"],
+      "store/*": ["src/store/*"],
+      "hocs/*": ["src/hocs/*"],
+      "middleware/*": ["src/middleware/*"],
+      "ducks/*": ["src/ducks/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

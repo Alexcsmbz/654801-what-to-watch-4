@@ -1,4 +1,4 @@
-import Main from './main.jsx';
+import Main from './main.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {testMovie, testUser} from 'config';
 

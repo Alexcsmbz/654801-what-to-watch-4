@@ -1,4 +1,4 @@
-import Footer from './footer.jsx';
+import Footer from './footer.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 describe(`Footer snapshot test`, () => {

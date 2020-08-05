@@ -1,4 +1,4 @@
-import MoviePlayer from './movie-player.jsx';
+import MoviePlayer from './movie-player.tsx';
 
 const movie = {
   name: `name`,

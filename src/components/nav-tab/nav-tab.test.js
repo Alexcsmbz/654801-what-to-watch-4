@@ -1,4 +1,4 @@
-import NavTab from './nav-tab.jsx';
+import NavTab from './nav-tab.tsx';
 
 const tab = {
   name: `tab`

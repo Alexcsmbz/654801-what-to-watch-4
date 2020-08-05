@@ -1,4 +1,4 @@
-import Details from './details.jsx';
+import Details from './details.tsx';
 import {testMovie} from 'config';
 
 describe(`Details snapshot test`, () => {

@@ -1,4 +1,4 @@
-import Logo from 'components/logo/logo.jsx';
+import Logo from 'components/logo/logo.tsx';
 
 const Footer = (props) => <footer className="page-footer">
   <Logo className="logo__link--light" />

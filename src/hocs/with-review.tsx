@@ -1,7 +1,6 @@
 import {useState} from 'react';
 
 const withReview = (Component) => (props) => {
-  const {setState} = useState();
   const [review, setReview] = useState({
     rating: 5,
     comment: ``,

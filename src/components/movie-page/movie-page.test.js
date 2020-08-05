@@ -1,5 +1,5 @@
 import {BrowserRouter as Router} from 'react-router-dom';
-import MoviePage from './movie-page.jsx';
+import MoviePage from './movie-page.tsx';
 import {testMovie, testUser} from 'config';
 
 describe(`MoviePage snapshot test`, () => {

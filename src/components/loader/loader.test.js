@@ -1,4 +1,4 @@
-import Loader from './loader.jsx';
+import Loader from './loader.tsx';
 
 describe(`Loader snapshot test`, () => {
   it(`Loader should render loader`, () => {

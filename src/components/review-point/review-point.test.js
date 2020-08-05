@@ -1,4 +1,4 @@
-import ReviewPoint from './review-point.jsx';
+import ReviewPoint from './review-point.tsx';
 
 describe(`ReviewPoint snapshot test`, () => {
   it(`ReviewPoint should render review point`, () => {

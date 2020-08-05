@@ -3,7 +3,7 @@ const path = require(`path`);
 const webpack = require(`webpack`);
 
 module.exports = {
-  entry: `./src/index.jsx`,
+  entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`),
@@ -24,7 +24,7 @@ module.exports = {
       middleware: path.resolve(__dirname, `./src/middleware`),
       ducks: path.resolve(__dirname, `./src/ducks`),
     },
-    extensions: [`.js`, `.jsx`, `ts`, `tsx`],
+    extensions: [`.js`, `.jsx`, `ts`, `tsx`, `json`],
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -41,7 +41,11 @@ module.exports = {
           loader: `babel-loader`,
         },
       },
+      {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`
+      }
     ],
   },
-  devtool: `source-map`,
+  devtool: `inline-source-map`,
 };

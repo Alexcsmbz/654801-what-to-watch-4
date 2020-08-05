@@ -1,13 +1,13 @@
 import {useEffect} from 'react';
-import Main from 'components/main/main.jsx';
+import Main from 'components/main/main.tsx';
 import {BrowserRouter as Router, Route, Switch, useHistory} from 'react-router-dom';
-import MoviePage from 'components/movie-page/movie-page.jsx';
+import MoviePage from 'components/movie-page/movie-page.tsx';
 import {connect} from 'react-redux';
 import ActionCreator from 'ducks/app/action-creator.js';
-import withActiveItem from 'hocs/with-active-item.jsx';
-import withMaxAmount from 'hocs/with-max-amount.jsx';
-import withFullscreen from 'hocs/with-fullscreen.jsx';
-import withReview from 'hocs/with-review.jsx';
+import withActiveItem from 'hocs/with-active-item.tsx';
+import withMaxAmount from 'hocs/with-max-amount.tsx';
+import withFullscreen from 'hocs/with-fullscreen.tsx';
+import withReview from 'hocs/with-review.tsx';
 import {
   getMoviesAsync,
   getAuthStatusAsync,
@@ -18,12 +18,12 @@ import {
   getPromoMovieAsync,
   getCommentListAsync,
 } from 'middleware/thunks.js';
-import Loader from 'components/loader/loader.jsx';
-import Popup from 'components/popup/popup.jsx';
-import SignIn from 'components/sign-in/sign-in.jsx';
-import AddReviewPage from 'components/add-review-page/add-review-page.jsx';
-import PrivateRoute from 'components/private-route/private-route.jsx';
-import MyListPage from 'components/my-list-page/my-list-page.jsx';
+import Loader from 'components/loader/loader.tsx';
+import Popup from 'components/popup/popup.tsx';
+import SignIn from 'components/sign-in/sign-in.tsx';
+import AddReviewPage from 'components/add-review-page/add-review-page.tsx';
+import PrivateRoute from 'components/private-route/private-route.tsx';
+import MyListPage from 'components/my-list-page/my-list-page.tsx';
 import {RoutePath} from 'config';
 
 const AddReviewPageWrapped = withReview(AddReviewPage);

@@ -1,4 +1,4 @@
-import Header from './header.jsx';
+import Header from './header.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 describe(`Header snapshot test`, () => {

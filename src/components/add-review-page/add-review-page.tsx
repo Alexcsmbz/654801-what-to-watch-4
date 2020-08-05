@@ -1,5 +1,5 @@
-import Logo from 'components/logo/logo.jsx';
-import ReviewPoint from 'components/review-point/review-point.jsx';
+import Logo from 'components/logo/logo.tsx';
+import ReviewPoint from 'components/review-point/review-point.tsx';
 import {useEffect, useRef} from 'react';
 import {ButtonStyled} from './styles.js';
 import {Link, useHistory} from 'react-router-dom';

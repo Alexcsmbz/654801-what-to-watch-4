@@ -1,4 +1,4 @@
-import GenreListItemActive from './genre-list-item-active.jsx';
+import GenreListItemActive from './genre-list-item-active.tsx';
 
 const genre = `genre`;
 

@@ -1,4 +1,4 @@
-import MovieCard from './movie-card.jsx';
+import MovieCard from './movie-card.tsx';
 import {testMovie} from 'config';
 
 jest.mock(`react-router-dom`, () => ({

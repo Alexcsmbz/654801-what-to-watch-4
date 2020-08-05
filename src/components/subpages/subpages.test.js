@@ -1,7 +1,7 @@
-import Subpages from './subpages.jsx';
-import Overview from 'components/overview/overview.jsx';
-import Details from 'components/details/details.jsx';
-import Reviews from 'components/reviews/reviews.jsx';
+import Subpages from './subpages.tsx';
+import Overview from 'components/overview/overview.tsx';
+import Details from 'components/details/details.tsx';
+import Reviews from 'components/reviews/reviews.tsx';
 import {testMovie} from 'config';
 
 describe(`Subpages snapshot test`, () => {

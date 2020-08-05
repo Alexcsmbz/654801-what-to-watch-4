@@ -1,5 +1,5 @@
-import NavTabs from './nav-tabs.jsx';
-import NavTab from 'components/nav-tab/nav-tab.jsx';
+import NavTabs from './nav-tabs.tsx';
+import NavTab from 'components/nav-tab/nav-tab.tsx';
 
 const tab = {
   name: `Overview`,

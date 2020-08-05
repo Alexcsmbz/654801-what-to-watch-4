@@ -1,4 +1,4 @@
-import MyListPage from './my-list-page.jsx';
+import MyListPage from './my-list-page.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {testUser, testMovie} from 'config';
 

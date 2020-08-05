@@ -12,8 +12,8 @@ const Logo = (props) => {
   </div>;
 };
 
-Logo.propTypes = {
-  className: propTypes.string,
-};
+// Logo.propTypes = {
+//   className: propTypes.string,
+// };
 
 export default Logo;

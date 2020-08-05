@@ -1,4 +1,4 @@
-import Button from './button.jsx';
+import Button from './button.tsx';
 
 describe(`Button snapshot test`, () => {
   it(`Button should render button`, () => {

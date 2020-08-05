@@ -1,4 +1,4 @@
-import {App} from './app.jsx';
+import {App} from './app.tsx';
 import {testMovie, testUser} from 'config';
 
 jest.mock(`react-router-dom`, () => ({

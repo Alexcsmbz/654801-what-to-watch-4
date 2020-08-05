@@ -1,4 +1,4 @@
-import MovieCard from './movie-card.jsx';
+import MovieCard from './movie-card.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 const movie = {

@@ -1,8 +1,8 @@
 import {useRef, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import Logo from 'components/logo/logo.jsx';
-import Footer from 'components/footer/footer.jsx';
-import Button from 'components/button/button.jsx';
+import Logo from 'components/logo/logo.tsx';
+import Footer from 'components/footer/footer.tsx';
+import Button from 'components/button/button.tsx';
 
 const SignIn = (props) => {
   const {onSignIn, message, isAuth} = props;

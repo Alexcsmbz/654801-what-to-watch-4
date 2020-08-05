@@ -1,4 +1,4 @@
-import MovieCardList from './movie-card-list.jsx';
+import MovieCardList from './movie-card-list.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 const movies = [

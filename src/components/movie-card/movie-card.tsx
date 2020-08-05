@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import MoviePlayer from 'components/movie-player/movie-player.jsx';
+import MoviePlayer from 'components/movie-player/movie-player.tsx';
 import {useHistory} from 'react-router-dom';
 
 const MovieCard = (props) => {

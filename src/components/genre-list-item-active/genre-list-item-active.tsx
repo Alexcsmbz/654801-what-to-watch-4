@@ -1,4 +1,4 @@
-import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
+import GenreListItem from 'components/genre-list-item/genre-list-item.tsx';
 
 const GenreListItemActive = (props) => {
   const className = `catalog__genres-item--active ${props.className || ``}`;

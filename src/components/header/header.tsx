@@ -1,5 +1,4 @@
-import Logo from 'components/logo/logo.jsx';
-import {RelativeBox} from './styles.js';
+import Logo from 'components/logo/logo.tsx';
 import {Link} from 'react-router-dom';
 import {baseURL} from 'config';
 

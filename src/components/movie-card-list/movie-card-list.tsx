@@ -1,4 +1,4 @@
-import MovieCard from 'components/movie-card/movie-card.jsx';
+import MovieCard from 'components/movie-card/movie-card.tsx';
 
 const MovieCardList = (props) => {
   const {movies, onClick, activeMovie, moviesAmount} = props;

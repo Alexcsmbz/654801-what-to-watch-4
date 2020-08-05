@@ -1,4 +1,4 @@
-import NavTab from 'components/nav-tab/nav-tab.jsx';
+import NavTab from 'components/nav-tab/nav-tab.tsx';
 
 const NavTabActive = (props) => {
   const className = `movie-nav__item--active ${props.className || ``}`;

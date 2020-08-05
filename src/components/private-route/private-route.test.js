@@ -1,4 +1,4 @@
-import PrivateRoute from './private-route.jsx';
+import PrivateRoute from './private-route.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 describe(`PrivateRoute snapshot test`, () => {

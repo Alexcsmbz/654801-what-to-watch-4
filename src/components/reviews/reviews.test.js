@@ -1,4 +1,4 @@
-import Reviews from './reviews.jsx';
+import Reviews from './reviews.tsx';
 
 describe(`Reviews snapshot test`, () => {
   it(`Reviews should render movie details`, () => {

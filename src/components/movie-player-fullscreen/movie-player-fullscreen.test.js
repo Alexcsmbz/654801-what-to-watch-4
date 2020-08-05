@@ -1,4 +1,4 @@
-import MoviePlayerFullscreen from './movie-player-fullscreen.jsx';
+import MoviePlayerFullscreen from './movie-player-fullscreen.tsx';
 
 const movie = {
   name: `Fantastic Beasts: The Crimes of Grindelwald`,

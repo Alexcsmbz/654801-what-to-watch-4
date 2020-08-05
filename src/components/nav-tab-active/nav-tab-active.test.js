@@ -1,4 +1,4 @@
-import NavTabActive from './nav-tab-active.jsx';
+import NavTabActive from './nav-tab-active.tsx';
 
 const tab = {
   name: `Overview`,

@@ -1,4 +1,4 @@
-import SignIn from './sign-in.jsx';
+import SignIn from './sign-in.tsx';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 jest.mock(`react-router-dom`, () => ({

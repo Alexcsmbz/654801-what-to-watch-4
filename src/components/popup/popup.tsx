@@ -1,5 +1,5 @@
 import {PopupStyled, Icon, Overlay} from './styles.js';
-import Button from 'components/button/button.jsx';
+import Button from 'components/button/button.tsx';
 
 const Popup = (props) => {
   const {message} = props;

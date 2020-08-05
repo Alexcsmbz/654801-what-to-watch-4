@@ -1,4 +1,4 @@
-import Overview from './overview.jsx';
+import Overview from './overview.tsx';
 import {testMovie} from 'config';
 
 describe(`Overview snapshot test`, () => {

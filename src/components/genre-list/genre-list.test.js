@@ -1,5 +1,5 @@
-import GenreList from './genre-list.jsx';
-import GenreListItem from 'components/genre-list-item/genre-list-item.jsx';
+import GenreList from './genre-list.tsx';
+import GenreListItem from 'components/genre-list-item/genre-list-item.tsx';
 
 const genres = [
   `Comedy`,
