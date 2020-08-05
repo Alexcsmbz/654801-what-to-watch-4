@@ -3,11 +3,15 @@ import ReviewPoint from 'components/review-point/review-point.tsx';
 import {useEffect, useRef} from 'react';
 import {ButtonStyled} from './styles.js';
 import {Link, useHistory} from 'react-router-dom';
-import {baseURL} from 'config';
+import { baseURL } from 'config';
+
+interface IProps {
+
+}
 
 const AddReviewPage = (props) => {
   const points = useRef([1, 2, 3, 4, 5]).current;
-  const {sendReview, isAuth, review, setReview, movie, user} = props;
+  const {sendReview, review, setReview, movie, user} = props;
   const {posterImage, backgroundImage, name, id, backgroundColor} = props.movie;
   const textareaRef = useRef(null);
   const isValid = (value) => value <= 50 || value >= 400 ? true : false;
