@@ -6,7 +6,9 @@
     "module": "commonjs",
     "target": "es2016",
     "jsx": "react",
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "baseUrl": "./",
     "paths": {
       "components/*": ["src/components/*"],

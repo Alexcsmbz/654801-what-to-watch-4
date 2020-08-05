@@ -4,7 +4,14 @@ env:
   commonjs: true
   jest: true
 
-extends: ['htmlacademy/es6', 'plugin:react/recommended']
+parser: '@typescript-eslint/parser'
+
+extends: [
+  'htmlacademy/es6',
+  'plugin:react/recommended',
+  'plugin:@typescript-eslint/eslint-recommended',
+  'plugin:@typescript-eslint/recommended',
+]
 
 rules:
   react/react-in-jsx-scope: 0
@@ -24,7 +31,7 @@ parserOptions:
   ecmaVersion: 8
   sourceType: module
 
-plugins: ['react']
+plugins: ['react', '@typescript-eslint']
 
 settings:
   react:

@@ -24,7 +24,7 @@ module.exports = {
       middleware: path.resolve(__dirname, `./src/middleware`),
       ducks: path.resolve(__dirname, `./src/ducks`),
     },
-    extensions: [`.js`, `.jsx`, `ts`, `tsx`, `json`],
+    extensions: [`.js`, `.jsx`, `ts`, `tsx`, `json`, `.d.ts`],
   },
   plugins: [
     new webpack.ProvidePlugin({
