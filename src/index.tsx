@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from 'ducks/ducks.js';
@@ -22,7 +22,7 @@ const store = createStore(
 
 const AppWrapped = withRouter(withActiveMovie(App));
 
-ReactDOM.render(
+render(
     <Router>
       <Provider store={store}>
         <AppWrapped />
