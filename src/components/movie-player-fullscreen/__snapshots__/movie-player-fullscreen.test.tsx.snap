@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePlayerFullscreen snapshot test MoviePlayerFullscreen should render fullscreen movie player 1`] = `
+<video
+  controls={true}
+  height="175"
+  width="280"
+>
+  <source
+    src="videoLink"
+    type="video/mp4"
+  />
+</video>
+`;
