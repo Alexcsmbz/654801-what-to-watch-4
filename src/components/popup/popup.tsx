@@ -5,7 +5,7 @@ interface IProps {
   message?: string,
 }
 
-const Popup: React.FC<IProps> = ({ message }: IProps) =>
+const Popup: React.FC<IProps> = ({message}: IProps) =>
   <>
     <Overlay />
     <PopupStyled>

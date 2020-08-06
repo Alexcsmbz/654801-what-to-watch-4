@@ -4,7 +4,7 @@ import {useEffect, useRef} from 'react';
 import {ButtonStyled} from './styles.js';
 import {Link, useHistory} from 'react-router-dom';
 import {baseURL} from 'config';
-import {ICommentPost, IMovie, IUser} from 'types/app'
+import {ICommentPost, IMovie, IUser} from 'types/app';
 
 interface IProps {
   sendReview: (review: ICommentPost) => void,

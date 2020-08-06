@@ -4,7 +4,7 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.tsx';
 import {Link} from 'react-router-dom';
 import {useEffect} from 'react';
 import {baseURL} from 'config';
-import { IMovie, IUser } from 'types/app';
+import {IMovie, IUser} from 'types/app';
 
 interface IProps {
   movies: Array<IMovie>,

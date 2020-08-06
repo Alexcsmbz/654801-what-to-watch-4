@@ -3,7 +3,7 @@ import {IMovie} from 'types/app';
 
 interface IProps {
   movies: Array<IMovie>,
-  onClick: () => void,
+  onClick: (movie: IMovie) => void,
   activeMovie?: IMovie,
   moviesAmount?: number,
 }
@@ -16,21 +16,24 @@ const MovieCardList: React.FC<IProps> = (props: IProps) => {
     : movies;
 
   if (moviesAmount) {
-    return resultMovies.map((movie, idx) =>
+    return <> {resultMovies.map((movie, idx) =>
       idx < moviesAmount ?
         <MovieCard
           key={movie.name}
           movie={movie}
           onClick={onClick}
-        /> : null);
+        /> : null)
+    }</>;
   }
 
-  return resultMovies.map((movie) =>
-    <MovieCard
-      key={movie.name}
-      movie={movie}
-      onClick={onClick}
-    />);
+  return <>
+    {resultMovies.map((movie) =>
+      <MovieCard
+        key={movie.name}
+        movie={movie}
+        onClick={onClick}
+      />)}
+  </>;
 };
 
 export default MovieCardList;

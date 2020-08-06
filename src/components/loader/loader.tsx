@@ -4,7 +4,7 @@ interface IProps {
   isLoading: boolean,
 }
 
-const Loader: React.FC<IProps> = ({ isLoading }: IProps) =>
+const Loader: React.FC<IProps> = ({isLoading}: IProps) =>
   isLoading ? <LoaderStyled /> : null;
 
 export default Loader;

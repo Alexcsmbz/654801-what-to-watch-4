@@ -10,7 +10,7 @@ interface ExtendedWindow extends Window {
   __REDUX_DEVTOOLS_EXTENSION__?: typeof compose
 }
 
-declare const window: ExtendedWindow
+declare const window: ExtendedWindow;
 
 const store = createStore(
     reducer,

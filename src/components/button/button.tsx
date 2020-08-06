@@ -13,7 +13,7 @@ interface IProps {
 
 const Button: React.FC<IProps> = (props: IProps) => {
   const {name, onClick, className} = props.button;
-  const {iconKey, width, height} = props.icon;
+  const {iconKey, width, height} = props.icon || {};
 
   return <button
     className={className}

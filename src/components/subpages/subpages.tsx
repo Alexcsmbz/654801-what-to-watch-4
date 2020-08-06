@@ -1,9 +1,8 @@
 interface IProps {
   idx: number,
-  children: Element[],
+  children: JSX.Element[],
 }
 
-const Subpages: React.FC<IProps> = ({ idx, children }: IProps): Element[] =>
-  children.filter((_, i) => i === idx);
+const Subpages: React.FC<IProps> = ({idx, children}: IProps) => <>{children.filter((_, i) => i === idx)}</>;
 
 export default Subpages;

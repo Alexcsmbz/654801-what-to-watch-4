@@ -1,12 +1,12 @@
 import {useRef} from 'react';
 import {dateOptions} from 'config';
-import {ICommentGet} from 'types/app'
+import {ICommentGet} from 'types/app';
 
 interface IProps {
   commentList: Array<ICommentGet>,
 }
 
-const Reviews: React.FC<IProps> = ({commentList}) => {
+const Reviews: React.FC<IProps> = ({commentList}: IProps) => {
   const splitList = useRef([
     [...commentList.slice(0, Math.round(commentList.length / 2))],
     [...commentList.slice(Math.round(commentList.length / 2))],

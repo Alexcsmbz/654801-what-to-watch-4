@@ -3,7 +3,7 @@ interface IProps {
   onClick: () => void,
 }
 
-const ReviewPoint: React.FC<IProps> = ({ value, onClick }: IProps) =>
+const ReviewPoint: React.FC<IProps> = ({value, onClick}: IProps) =>
   <>
     <input
       className="rating__input"

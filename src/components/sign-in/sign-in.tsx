@@ -10,7 +10,7 @@ interface IProps {
   isAuth: boolean,
 }
 
-const SignIn: React.FC<IProps> = ({ onSignIn, message, isAuth }: IProps) => {
+const SignIn: React.FC<IProps> = ({onSignIn, message, isAuth}: IProps) => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const {push} = useHistory();

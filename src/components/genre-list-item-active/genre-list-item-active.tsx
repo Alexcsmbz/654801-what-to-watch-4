@@ -1,7 +1,7 @@
 import GenreListItem from 'components/genre-list-item/genre-list-item.tsx';
 
-interface IProps<T> {
-  props: T,
+interface IProps {
+  [key: string]: any,
 }
 
 const GenreListItemActive: React.FC<IProps> = (props: IProps) => {

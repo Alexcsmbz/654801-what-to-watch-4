@@ -1,5 +1,5 @@
 import {formatNumericToWord} from 'utils/utils.js';
-import {IMovie} from 'types/app'
+import {IMovie} from 'types/app';
 
 interface IProps {
   movie: IMovie,

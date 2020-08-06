@@ -25,14 +25,41 @@ import AddReviewPage from 'components/add-review-page/add-review-page.tsx';
 import PrivateRoute from 'components/private-route/private-route.tsx';
 import MyListPage from 'components/my-list-page/my-list-page.tsx';
 import {RoutePath} from 'config';
+import {IMovie, IUser, ICommentGet, ICommentPost} from 'types/app';
 
 const AddReviewPageWrapped = withReview(AddReviewPage);
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
 // TODO: Create page catalog with pages
-// TODO: Add history props
+// TODO: Add history props?
+// TODO: Create array interfaces IMovies etc
 
-const App = (props) => {
+interface IProps {
+  promoMovie: IMovie,
+  movies: Array<IMovie>,
+  genres: Array<string>,
+  activeMovie: IMovie,
+  isLoading: boolean,
+  appErrors: Array<string>,
+  userErrors: Array<string>,
+  filteredMovies: Array<IMovie>,
+  isAuth: boolean,
+  user: IUser,
+  addedMovies: Array<IMovie>,
+  commentList: Array<ICommentGet>,
+  onFilterClick: (genre: string) => void,
+  setActiveMovie: (movie: IMovie) => void,
+  getMovies: () => void,
+  getAuthStatus: (go: () => void) => void,
+  auth: (email: string, password: string) => void,
+  sendReview: (review: ICommentPost) => void,
+  toggleMovieInList: (movieId: number, movieStatus: number) => void,
+  getFavoriteMovies: () => void,
+  getPromoMovie: () => void,
+  getCommentList: (movie: IMovie) => void,
+}
+
+const App: React.FC<IProps> = (props: IProps) => {
   const {
     promoMovie,
     movies,

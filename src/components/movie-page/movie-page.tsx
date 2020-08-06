@@ -144,9 +144,11 @@ const MoviePage: React.FC<IProps> = (props: IProps) => {
           </div>
           <div className="movie-card__desc">
             <NavTabs>
-              {moviePageTabs.map((tab, idx) => idx === activeIdx
-                ? <NavTabActive onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />
-                : <NavTab onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />)}
+              {
+                moviePageTabs.map((tab, idx) => idx === activeIdx
+                  ? <NavTabActive onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />
+                  : <NavTab onClick={() => setActiveIdx(idx)} key={tab.name} tab={tab} />)
+              }
             </NavTabs>
             <Subpages idx={activeIdx}>
               <Overview movie={movie} />
