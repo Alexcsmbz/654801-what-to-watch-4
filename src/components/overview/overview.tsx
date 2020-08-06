@@ -1,7 +1,12 @@
 import {formatNumericToWord} from 'utils/utils.js';
+import {IMovie} from 'types/app'
 
-const Overview = (props) => {
-  const {description, rating, director, starring, scoresCount} = props.movie;
+interface IProps {
+  movie: IMovie,
+}
+
+const Overview: React.FC<IProps> = ({movie} : IProps) => {
+  const {description, rating, director, starring, scoresCount} = movie;
 
   return <>
     <div className="movie-rating">

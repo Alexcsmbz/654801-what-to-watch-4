@@ -1,8 +1,14 @@
 import {Link} from 'react-router-dom';
 import MoviePlayer from 'components/movie-player/movie-player.tsx';
 import {useHistory} from 'react-router-dom';
+import {IMovie} from 'types/app';
 
-const MovieCard = (props) => {
+interface IProps {
+  movie: IMovie,
+  onClick: (movie: IMovie) => void,
+}
+
+const MovieCard: React.FC<IProps> = (props: IProps) => {
   const {movie, onClick} = props;
   const {push} = useHistory();
 

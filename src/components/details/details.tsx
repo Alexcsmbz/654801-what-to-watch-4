@@ -1,6 +1,11 @@
 import {useRef} from 'react';
+import {IMovie} from 'types/app';
 
-const Details = (props) => {
+interface IProps {
+  movie: IMovie,
+}
+
+const Details: React.FC<IProps> = (props: IProps) => {
   const {director, starring, runTime, genre, released} = props.movie;
 
   const hours = useRef(Math.floor(runTime / 60)).current;

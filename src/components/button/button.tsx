@@ -1,6 +1,19 @@
-const Button = (props) => {
+interface IProps {
+  button?: {
+    name: string,
+    onClick: () => void,
+    className: string,
+  },
+  icon?: {
+    iconKey: string,
+    width: string,
+    height: string,
+  },
+}
+
+const Button: React.FC<IProps> = (props: IProps) => {
   const {name, onClick, className} = props.button;
-  const {iconKey, width, height} = props.icon ? props.icon : {};
+  const {iconKey, width, height} = props.icon;
 
   return <button
     className={className}

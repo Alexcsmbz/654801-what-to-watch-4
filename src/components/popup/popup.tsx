@@ -1,7 +1,11 @@
 import {PopupStyled, Icon, Overlay} from './styles.js';
 import Button from 'components/button/button.tsx';
 
-const Popup = ({ message }) =>
+interface IProps {
+  message?: string,
+}
+
+const Popup: React.FC<IProps> = ({ message }: IProps) =>
   <>
     <Overlay />
     <PopupStyled>

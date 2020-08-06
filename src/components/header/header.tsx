@@ -1,8 +1,14 @@
 import Logo from 'components/logo/logo.tsx';
 import {Link} from 'react-router-dom';
 import {baseURL} from 'config';
+import {IUser} from 'types/app';
 
-const Header = ({isAuth, user}) =>
+interface IProps {
+  user: IUser,
+  isAuth: boolean,
+}
+
+const Header: React.FC<IProps> = ({isAuth, user}: IProps) =>
   <header className="page-header movie-card__head">
     <Logo />
     <div className="user-block">

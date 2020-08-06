@@ -18,7 +18,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, `./src/components`),
       utils: path.resolve(__dirname, `./src/utils`),
-      config: path.resolve(__dirname, `./src/config.js`),
+      config: path.resolve(__dirname, `./src/config.ts`),
       store: path.resolve(__dirname, `./src/store`),
       hocs: path.resolve(__dirname, `./src/hocs`),
       middleware: path.resolve(__dirname, `./src/middleware`),

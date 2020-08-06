@@ -33,6 +33,7 @@ export interface IUser {
 export interface ICommentPost {
   rating: number,
   comment: string,
+  movieId?: number,
 }
 
 export interface ICommentGet extends ICommentPost {

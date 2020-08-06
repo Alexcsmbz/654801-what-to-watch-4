@@ -7,6 +7,12 @@ import withActiveMovie from 'hocs/with-active-movie.tsx';
 import thunk from 'redux-thunk';
 import {withRouter, BrowserRouter as Router} from 'react-router-dom';
 
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
 const store = createStore(
     reducer,
     compose(

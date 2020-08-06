@@ -8,8 +8,28 @@ import Header from 'components/header/header.tsx';
 import Footer from 'components/footer/footer.tsx';
 import {useHistory} from 'react-router-dom';
 import {toggleStatus} from 'utils/utils.js';
+import {IMovie, IUser} from 'types/app';
 
-const Main = (props) => {
+interface IProps {
+  promoMovie: IMovie,
+  movies: Array<IMovie>,
+  addedMovies: Array<IMovie>,
+  genres: Array<string>,
+  activeIdx: number,
+  moviesAmount: number,
+  isFullscreen: boolean,
+  isAuth: boolean,
+  user: IUser,
+  onMovieCardClick: () => void,
+  onFilterClick: (genre: string) => void,
+  setActiveIdx: (s: number) => void,
+  setMoviesAmount: (s: number) => void,
+  setIsFullscreen: (s: boolean) => void,
+  openFullscreen: () => void,
+  toggleMovieInList: (movie: IMovie, movieStatus: number) => void,
+}
+
+const Main: React.FC<IProps> = (props: IProps) => {
   const {
     promoMovie,
     movies,

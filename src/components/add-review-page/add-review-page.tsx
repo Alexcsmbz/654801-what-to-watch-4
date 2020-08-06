@@ -3,13 +3,18 @@ import ReviewPoint from 'components/review-point/review-point.tsx';
 import {useEffect, useRef} from 'react';
 import {ButtonStyled} from './styles.js';
 import {Link, useHistory} from 'react-router-dom';
-import { baseURL } from 'config';
+import {baseURL} from 'config';
+import {ICommentPost, IMovie, IUser} from 'types/app'
 
 interface IProps {
-
+  sendReview: (review: ICommentPost) => void,
+  review: ICommentPost,
+  setReview: (review: ICommentPost) => void,
+  movie: IMovie,
+  user: IUser,
 }
 
-const AddReviewPage = (props) => {
+const AddReviewPage: React.FC<IProps> = (props: IProps) => {
   const points = useRef([1, 2, 3, 4, 5]).current;
   const {sendReview, review, setReview, movie, user} = props;
   const {posterImage, backgroundImage, name, id, backgroundColor} = props.movie;

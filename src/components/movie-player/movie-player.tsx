@@ -1,6 +1,11 @@
 import {useRef} from 'react';
+import {IMovie} from 'types/app';
 
-const MoviePlayer = (props) => {
+interface IProps {
+  movie: IMovie,
+}
+
+const MoviePlayer: React.FC<IProps> = (props: IProps) => {
   const {previewVideoLink, previewImage} = props.movie;
   const videoRef = useRef(null);
 

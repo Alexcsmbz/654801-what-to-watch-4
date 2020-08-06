@@ -4,8 +4,16 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.tsx';
 import {Link} from 'react-router-dom';
 import {useEffect} from 'react';
 import {baseURL} from 'config';
+import { IMovie, IUser } from 'types/app';
 
-const MyListPage = (props) => {
+interface IProps {
+  movies: Array<IMovie>,
+  onClick: (movie: IMovie) => void,
+  getFavoriteMovies: () => void,
+  user: IUser,
+}
+
+const MyListPage: React.FC<IProps> = (props: IProps) => {
   const {movies, onClick, getFavoriteMovies, user} = props;
 
   useEffect(() => {

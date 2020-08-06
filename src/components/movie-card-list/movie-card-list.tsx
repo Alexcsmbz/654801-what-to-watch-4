@@ -1,6 +1,14 @@
 import MovieCard from 'components/movie-card/movie-card.tsx';
+import {IMovie} from 'types/app';
 
-const MovieCardList = (props) => {
+interface IProps {
+  movies: Array<IMovie>,
+  onClick: () => void,
+  activeMovie?: IMovie,
+  moviesAmount?: number,
+}
+
+const MovieCardList: React.FC<IProps> = (props: IProps) => {
   const {movies, onClick, activeMovie, moviesAmount} = props;
 
   const resultMovies = activeMovie

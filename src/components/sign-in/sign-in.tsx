@@ -4,8 +4,13 @@ import Logo from 'components/logo/logo.tsx';
 import Footer from 'components/footer/footer.tsx';
 import Button from 'components/button/button.tsx';
 
-const SignIn = (props) => {
-  const {onSignIn, message, isAuth} = props;
+interface IProps {
+  onSignIn: (email: string, password: string) => void,
+  message: string,
+  isAuth: boolean,
+}
+
+const SignIn: React.FC<IProps> = ({ onSignIn, message, isAuth }: IProps) => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const {push} = useHistory();

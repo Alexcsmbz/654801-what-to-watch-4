@@ -17,7 +17,8 @@
       "store/*": ["src/store/*"],
       "hocs/*": ["src/hocs/*"],
       "middleware/*": ["src/middleware/*"],
-      "ducks/*": ["src/ducks/*"]
+      "ducks/*": ["src/ducks/*"],
+      "types/*": ["src/types/*"]
     }
   },
   "exclude": [

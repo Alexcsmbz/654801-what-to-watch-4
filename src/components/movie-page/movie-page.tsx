@@ -14,8 +14,26 @@ import Footer from 'components/footer/footer.tsx';
 import {useHistory} from 'react-router-dom';
 import {toggleStatus} from 'utils/utils.js';
 import {useEffect} from 'react';
+import {IMovie, IUser, ICommentGet} from 'types/app';
 
-const MoviePage = (props) => {
+interface IProps {
+  movie: IMovie,
+  movies: Array<IMovie>,
+  activeIdx: number,
+  isFullscreen: boolean,
+  isAuth: boolean,
+  user: IUser,
+  addedMovies: Array<IMovie>,
+  commentList: Array<ICommentGet>,
+  onMovieCardClick: () => void,
+  setActiveIdx: (s: number) => void,
+  setIsFullscreen: () => void,
+  openFullscreen: () => void,
+  toggleMovieInList: (movie: IMovie, movieStatus: number) => void,
+  getCommentList: (movie: IMovie) => void,
+}
+
+const MoviePage: React.FC<IProps> = (props: IProps) => {
   const {
     name,
     genre,

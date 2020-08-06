@@ -1,6 +1,13 @@
 import {useRef, useEffect} from 'react';
+import {IMovie} from 'types/app';
 
-const MoviePlayerFullscreen = (props) => {
+interface IProps {
+  movie: IMovie,
+  isFullscreen: boolean,
+  setIsFullscreen: (s: boolean) => void,
+}
+
+const MoviePlayerFullscreen: React.FC<IProps> = (props: IProps) => {
   const {videoLink} = props.movie;
   const {isFullscreen, setIsFullscreen} = props;
   const videoRef = useRef(null);
