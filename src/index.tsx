@@ -6,12 +6,11 @@ import App from 'components/app/app.tsx';
 import withActiveMovie from 'hocs/with-active-movie.tsx';
 import thunk from 'redux-thunk';
 import {withRouter, BrowserRouter as Router} from 'react-router-dom';
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
+interface ExtendedWindow extends Window {
+  __REDUX_DEVTOOLS_EXTENSION__?: typeof compose
 }
+
+declare const window: ExtendedWindow
 
 const store = createStore(
     reducer,
