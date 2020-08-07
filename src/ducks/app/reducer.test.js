@@ -9,7 +9,7 @@ import {testMovie, testMovies, testComments} from 'config';
 const api = createAPI(() => {});
 const mockStore = configureStore([]);
 
-describe(`Reducer test`, () => {
+describe(`App reducer test`, () => {
   it(`Reducer should set default state`, () => {
     expect(reducer(void 0, {})).toEqual({
       selectedGenre: `All genres`,
