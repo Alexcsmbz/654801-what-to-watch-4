@@ -8,16 +8,17 @@ interface IProps {
 const MoviePlayer: React.FC<IProps> = (props: IProps) => {
   const {previewVideoLink, previewImage} = props.movie;
   const videoRef = useRef(null);
+  const TIMEOUT_MS = 1000;
 
   let timeoutMouseEnter = null;
   let timeoutMouseLeave = null;
 
   const onMouseEnter = () => {
-    timeoutMouseEnter = setTimeout(() => videoRef.current.play(), 1000);
+    timeoutMouseEnter = setTimeout(() => videoRef.current.play(), TIMEOUT_MS);
   };
 
   const onMouseLeave = () => {
-    timeoutMouseLeave = setTimeout(() => videoRef.current.load(), 1000);
+    timeoutMouseLeave = setTimeout(() => videoRef.current.load(), TIMEOUT_MS);
   };
 
   useEffect(() => () => clearTimeout(timeoutMouseEnter));
