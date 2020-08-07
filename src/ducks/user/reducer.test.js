@@ -1,6 +1,7 @@
 import ActionType from './action-types.js';
 import reducer from './reducer.js';
 import {createAPI} from 'middleware/thunks.js';
+import {adapterKeys} from 'utils/utils.js';
 import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
 import {testUser} from 'config';
@@ -25,7 +26,7 @@ describe(`User reducer test`, () => {
         }
     )).toEqual({
       isAuth: true,
-      user: testUser,
+      user: adapterKeys(testUser),
       errors: [],
     });
   });
@@ -38,7 +39,7 @@ describe(`User reducer test`, () => {
     },
     {
       type: ActionType.AUTH_SUCCESS,
-      payload: testUser,
+      payload: adapterKeys(testUser),
     }
     )).toEqual({
       isAuth: true,

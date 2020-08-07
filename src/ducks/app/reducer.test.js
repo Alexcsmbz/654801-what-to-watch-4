@@ -1,6 +1,7 @@
 import ActionType from './action-types.js';
 import reducer from './reducer.js';
 import {createAPI} from 'middleware/thunks.js';
+import {adapterKeys} from 'utils/utils.js';
 import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
 import {testMovie, testMovies, testComments} from 'config';
@@ -48,7 +49,7 @@ describe(`App reducer test`, () => {
     expect(reducer({promoMovie: {}},
         {
           type: ActionType.GET_PROMO_MOVIE,
-          payload: testMovie,
+          payload: adapterKeys(testMovie),
         }
     )).toEqual({promoMovie: testMovie});
   });
@@ -57,7 +58,7 @@ describe(`App reducer test`, () => {
     expect(reducer({movies: []},
         {
           type: ActionType.GET_MOVIES_SUCCESS,
-          payload: testMovies,
+          payload: adapterKeys(testMovies),
         }
     )).toEqual({
       movies: testMovies,
@@ -91,7 +92,7 @@ describe(`App reducer test`, () => {
     expect(reducer({addedMovies: testMovies},
         {
           type: ActionType.TOGGLE_MOVIE_IN_LIST,
-          payload: testMovie,
+          payload: adapterKeys(testMovie),
         }
     )).toEqual({addedMovies: []});
   });
@@ -100,7 +101,7 @@ describe(`App reducer test`, () => {
     expect(reducer({addedMovies: testMovies},
         {
           type: ActionType.GET_FAVORITE_MOVIES,
-          payload: testMovie,
+          payload: adapterKeys(testMovie),
         }
     )).toEqual({addedMovies: testMovie});
   });
