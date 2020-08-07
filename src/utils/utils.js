@@ -1,3 +1,5 @@
+import fromEntries from 'object.fromentries';
+
 export const formatNumericToWord = (num) => {
   switch (true) {
     case num > 0 && num <= 3:
@@ -36,13 +38,13 @@ export const adapterKeys = (target) => {
     targetEntries.forEach((t) => t.forEach((_t) => {
       _t[0] = toCamel(_t[0]);
     }));
-    return targetEntries.map((t) => Object.fromEntries(t));
+    return targetEntries.map((t) => fromEntries(t));
   } else if (typeof target === `object`) {
     const targetEntries = Object.entries(target);
     targetEntries.forEach((t) => {
       t[0] = toCamel(t[0]);
     });
-    return Object.fromEntries(targetEntries);
+    return fromEntries(targetEntries);
   }
   return null;
 };

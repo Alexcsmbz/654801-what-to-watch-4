@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard snapshot test MovieCard should render movie 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
+>
+  <div
+    onClick={[Function]}
+  >
+    <video
+      controls={true}
+      height="175"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      poster="previewImage"
+      width="280"
+    >
+      <source
+        src="previewVideoLink"
+        type="video/mp4"
+      />
+    </video>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
+      >
+        name
+      </a>
+    </h3>
+  </div>
+</article>
+`;
