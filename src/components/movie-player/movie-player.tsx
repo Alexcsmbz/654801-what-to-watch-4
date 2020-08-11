@@ -15,12 +15,14 @@ const MoviePlayer: React.FC<IProps> = (props: IProps) => {
 
   const onMouseEnter = () => {
     if (_videoRef.current !== null) {
+      _videoRef.current.pause();
       timeoutMouseEnter = setTimeout(() => _videoRef.current.play(), TIMEOUT_MS);
     }
   };
 
   const onMouseLeave = () => {
     if (_videoRef.current !== null) {
+      _videoRef.current.pause();
       timeoutMouseLeave = setTimeout(() => _videoRef.current.load(), TIMEOUT_MS);
     }
   };
@@ -31,6 +33,7 @@ const MoviePlayer: React.FC<IProps> = (props: IProps) => {
   return <video
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
+    preload="on"
     ref={_videoRef}
     width="280"
     height="175"
