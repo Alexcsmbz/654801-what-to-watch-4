@@ -7,6 +7,7 @@ exports[`MoviePlayer snapshot test MoviePlayer should render movie info 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   poster="previewImage"
+  preload="on"
   width="280"
 >
   <source

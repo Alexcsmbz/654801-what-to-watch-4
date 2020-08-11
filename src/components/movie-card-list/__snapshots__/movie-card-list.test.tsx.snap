@@ -15,6 +15,7 @@ Array [
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         poster="previewImage"
+        preload="on"
         width="280"
       >
         <source
@@ -48,6 +49,7 @@ Array [
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         poster="previewImage"
+        preload="on"
         width="280"
       >
         <source
@@ -81,6 +83,7 @@ Array [
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         poster="previewImage"
+        preload="on"
         width="280"
       >
         <source
