@@ -16,8 +16,10 @@ const Header: React.FC<IProps> = ({isAuth, user}: IProps) =>
         <Link to="/mylist">
           <img src={`${baseURL}${user.avatarUrl}`} alt={`${user.name} avatar`} width="63" height="63" />
         </Link>
-      </div> || <Link to="/login">Sign in</Link>}
+      </div> || <Link className="user-block__link" to="/login">Sign in</Link>}
     </div>
   </header>;
 
-export default Header;
+const MemoizedHeader = React.memo(Header);
+
+export default MemoizedHeader;

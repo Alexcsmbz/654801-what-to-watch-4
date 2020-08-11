@@ -7,28 +7,31 @@ interface IProps {
 
 const MoviePlayer: React.FC<IProps> = (props: IProps) => {
   const {previewVideoLink, previewImage} = props.movie;
-  const videoRef = useRef(null);
+  const _videoRef = useRef(null);
   const TIMEOUT_MS = 1000;
 
   let timeoutMouseEnter = null;
   let timeoutMouseLeave = null;
 
   const onMouseEnter = () => {
-    timeoutMouseEnter = setTimeout(() => videoRef.current.play(), TIMEOUT_MS);
+    if (_videoRef.current !== null) {
+      timeoutMouseEnter = setTimeout(() => _videoRef.current.play(), TIMEOUT_MS);
+    }
   };
 
   const onMouseLeave = () => {
-    timeoutMouseLeave = setTimeout(() => videoRef.current.load(), TIMEOUT_MS);
+    if (_videoRef.current !== null) {
+      timeoutMouseLeave = setTimeout(() => _videoRef.current.load(), TIMEOUT_MS);
+    }
   };
 
   useEffect(() => () => clearTimeout(timeoutMouseEnter));
   useEffect(() => () => clearTimeout(timeoutMouseLeave));
 
-
   return <video
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
-    ref={videoRef}
+    ref={_videoRef}
     width="280"
     height="175"
     poster={previewImage}
@@ -38,4 +41,6 @@ const MoviePlayer: React.FC<IProps> = (props: IProps) => {
   </video>;
 };
 
-export default MoviePlayer;
+const MemoizedMoviePlayer = React.memo(MoviePlayer);
+
+export default MemoizedMoviePlayer;

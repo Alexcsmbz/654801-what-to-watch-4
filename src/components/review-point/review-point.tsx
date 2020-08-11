@@ -21,4 +21,6 @@ const ReviewPoint: React.FC<IProps> = ({value, onClick}: IProps) =>
     </label>
   </>;
 
-export default ReviewPoint;
+const MemoizedReviewPoint = React.memo(ReviewPoint);
+
+export default MemoizedReviewPoint;

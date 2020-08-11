@@ -49,4 +49,6 @@ const MyListPage: React.FC<IProps> = (props: IProps) => {
   </div>;
 };
 
-export default MyListPage;
+const MemoizedMyListPage = React.memo(MyListPage);
+
+export default MemoizedMyListPage;

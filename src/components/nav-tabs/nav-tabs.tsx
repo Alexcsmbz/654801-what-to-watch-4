@@ -9,4 +9,6 @@ const NavTabs: React.FC<IProps> = ({children}: IProps) =>
     </ul>
   </nav>;
 
-export default NavTabs;
+const MemoizedNavTabs = React.memo(NavTabs);
+
+export default MemoizedNavTabs;

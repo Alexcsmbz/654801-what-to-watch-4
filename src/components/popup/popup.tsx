@@ -23,4 +23,6 @@ const Popup: React.FC<IProps> = ({message}: IProps) =>
     </PopupStyled>
   </>;
 
-export default Popup;
+const MemoizedPopup = React.memo(Popup);
+
+export default MemoizedPopup;

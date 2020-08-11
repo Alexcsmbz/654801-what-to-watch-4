@@ -29,4 +29,6 @@ const MovieCard: React.FC<IProps> = (props: IProps) => {
   </article>;
 };
 
-export default MovieCard;
+const MemoizedMovieCard = React.memo(MovieCard);
+
+export default MemoizedMovieCard;

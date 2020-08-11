@@ -7,4 +7,6 @@ interface IProps {
 const Loader: React.FC<IProps> = ({isLoading}: IProps) =>
   isLoading ? <LoaderStyled /> : null;
 
-export default Loader;
+const MemoizedLoader = React.memo(Loader);
+
+export default MemoizedLoader;

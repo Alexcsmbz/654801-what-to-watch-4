@@ -9,4 +9,6 @@ const GenreListItem: React.FC<IProps> = ({item, onClick, className}: IProps) =>
     <div className="catalog__genres-link">{item}</div>
   </li>;
 
-export default GenreListItem;
+const MemoizedGenreListItem = React.memo(GenreListItem);
+
+export default MemoizedGenreListItem;

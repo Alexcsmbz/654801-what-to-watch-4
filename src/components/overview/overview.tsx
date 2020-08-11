@@ -30,4 +30,6 @@ const Overview: React.FC<IProps> = ({movie} : IProps) => {
   </>;
 };
 
-export default Overview;
+const MemoizedOverview = React.memo(Overview);
+
+export default MemoizedOverview;

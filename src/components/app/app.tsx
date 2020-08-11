@@ -30,9 +30,6 @@ import {IMovie, IUser, ICommentGet, ICommentPost} from 'types/app';
 const AddReviewPageWrapped = withReview(AddReviewPage);
 const MoviePageWrapped = withFullscreen(withActiveItem(MoviePage));
 const MainWrapped = withFullscreen(withMaxAmount(withActiveItem(Main)));
-// TODO: Create page catalog with pages
-// TODO: Add history props?
-// TODO: Create array interfaces IMovies etc
 
 interface IProps {
   promoMovie: IMovie,
@@ -206,5 +203,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+const MemoizedApp = React.memo(App);
+
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(MemoizedApp);

@@ -31,4 +31,6 @@ const Button: React.FC<IProps> = (props: IProps) => {
   </button>;
 };
 
-export default Button;
+const MemoizedButton = React.memo(Button);
+
+export default MemoizedButton;

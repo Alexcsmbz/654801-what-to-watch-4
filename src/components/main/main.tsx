@@ -171,4 +171,6 @@ const Main: React.FC<IProps> = (props: IProps) => {
   </>;
 };
 
-export default Main;
+const MemoizedMain = React.memo(Main);
+
+export default MemoizedMain;

@@ -12,4 +12,6 @@ const NavTabActive: React.FC<IProps> = (props: IProps) => {
   return <NavTab className={className} {...restProps}/>;
 };
 
-export default NavTabActive;
+const MemoizedNavTabActive = React.memo(NavTabActive);
+
+export default MemoizedNavTabActive;

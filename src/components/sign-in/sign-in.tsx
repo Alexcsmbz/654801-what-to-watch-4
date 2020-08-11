@@ -11,12 +11,12 @@ interface IProps {
 }
 
 const SignIn: React.FC<IProps> = ({onSignIn, message, isAuth}: IProps) => {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const _emailRef = useRef(null);
+  const _passwordRef = useRef(null);
   const {push} = useHistory();
 
   const onSubmit = () => {
-    onSignIn(emailRef.current.value, passwordRef.current.value);
+    onSignIn(_emailRef.current.value, _passwordRef.current.value);
   };
 
   useEffect(() => {
@@ -37,11 +37,11 @@ const SignIn: React.FC<IProps> = ({onSignIn, message, isAuth}: IProps) => {
         </div>}
         <div className="sign-in__fields">
           <div className={`sign-in__field ${message ? `sign-in__field--error` : ``}`}>
-            <input ref={emailRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
+            <input ref={_emailRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
             <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
           </div>
           <div className="sign-in__field">
-            <input ref={passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" />
+            <input ref={_passwordRef} className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" />
             <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
           </div>
         </div>
@@ -60,4 +60,6 @@ const SignIn: React.FC<IProps> = ({onSignIn, message, isAuth}: IProps) => {
   </div>;
 };
 
-export default SignIn;
+const MemoizedSignIn = React.memo(SignIn);
+
+export default MemoizedSignIn;

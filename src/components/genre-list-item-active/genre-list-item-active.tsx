@@ -12,4 +12,6 @@ const GenreListItemActive: React.FC<IProps> = (props: IProps) => {
   return <GenreListItem className={className} {...restProps} />;
 };
 
-export default GenreListItemActive;
+const MemoizedGenreListItemActive = React.memo(GenreListItemActive);
+
+export default MemoizedGenreListItemActive;

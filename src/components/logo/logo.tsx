@@ -12,4 +12,6 @@ const Logo: React.FC<IProps> = ({className}: IProps) => <div className="logo">
   </Link>
 </div>;
 
-export default Logo;
+const MemoizedLogo = React.memo(Logo);
+
+export default MemoizedLogo;

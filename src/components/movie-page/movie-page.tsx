@@ -175,4 +175,6 @@ const MoviePage: React.FC<IProps> = (props: IProps) => {
   </>;
 };
 
-export default MoviePage;
+const MemoizedMoviePage = React.memo(MoviePage);
+
+export default MemoizedMoviePage;

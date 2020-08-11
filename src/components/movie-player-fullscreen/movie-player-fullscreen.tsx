@@ -10,25 +10,25 @@ interface IProps {
 const MoviePlayerFullscreen: React.FC<IProps> = (props: IProps) => {
   const {videoLink} = props.movie;
   const {isFullscreen, setIsFullscreen} = props;
-  const videoRef = useRef(null);
+  const _videoRef = useRef(null);
 
   useEffect(() => {
     if (isFullscreen) {
       setIsFullscreen(false);
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      } else if (videoRef.current.mozRequestFullScreen) {
-        videoRef.current.mozRequestFullScreen();
-      } else if (videoRef.current.webkitRequestFullscreen) {
-        videoRef.current.webkitRequestFullscreen();
-      } else if (videoRef.current.msRequestFullscreen) {
-        videoRef.current.msRequestFullscreen();
+      if (_videoRef.current.requestFullscreen) {
+        _videoRef.current.requestFullscreen();
+      } else if (_videoRef.current.mozRequestFullScreen) {
+        _videoRef.current.mozRequestFullScreen();
+      } else if (_videoRef.current.webkitRequestFullscreen) {
+        _videoRef.current.webkitRequestFullscreen();
+      } else if (_videoRef.current.msRequestFullscreen) {
+        _videoRef.current.msRequestFullscreen();
       }
     }
   }, [isFullscreen]);
 
   return <video
-    ref={videoRef}
+    ref={_videoRef}
     width="280"
     height="175"
     controls
@@ -37,4 +37,6 @@ const MoviePlayerFullscreen: React.FC<IProps> = (props: IProps) => {
   </video>;
 };
 
-export default MoviePlayerFullscreen;
+const MemoizedMoviePlayerFullscreen = React.memo(MoviePlayerFullscreen);
+
+export default MemoizedMoviePlayerFullscreen;

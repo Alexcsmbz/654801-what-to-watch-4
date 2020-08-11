@@ -5,4 +5,6 @@ interface IProps {
 
 const Subpages: React.FC<IProps> = ({idx, children}: IProps) => <>{children.filter((_, i) => i === idx)}</>;
 
-export default Subpages;
+const MemoizedSubpages = React.memo(Subpages);
+
+export default MemoizedSubpages;

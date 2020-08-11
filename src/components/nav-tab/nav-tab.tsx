@@ -11,4 +11,6 @@ const NavTab: React.FC<IProps> = ({tab, className, onClick}: IProps) =>
     <div className="movie-nav__link">{tab.name}</div>
   </li>;
 
-export default NavTab;
+const MemoizedNavTab = React.memo(NavTab);
+
+export default MemoizedNavTab;

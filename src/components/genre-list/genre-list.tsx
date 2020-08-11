@@ -5,4 +5,6 @@ interface IProps {
 const GenreList: React.FC<IProps> = ({children}: IProps) =>
   <ul className="catalog__genres-list">{children}</ul>;
 
-export default GenreList;
+const MemoizedGenreList = React.memo(GenreList);
+
+export default MemoizedGenreList;

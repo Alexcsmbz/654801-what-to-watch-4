@@ -15,10 +15,10 @@ interface IProps {
 }
 
 const AddReviewPage: React.FC<IProps> = (props: IProps) => {
-  const points = useRef([1, 2, 3, 4, 5]).current;
+  const _points = useRef([1, 2, 3, 4, 5]).current;
   const {sendReview, review, setReview, movie, user} = props;
   const {posterImage, backgroundImage, name, id, backgroundColor} = props.movie;
-  const textareaRef = useRef(null);
+  const _textareaRef = useRef(null);
   const isValid = (value) => value <= 50 || value >= 400 ? true : false;
   const {push} = useHistory();
 
@@ -31,7 +31,7 @@ const AddReviewPage: React.FC<IProps> = (props: IProps) => {
   };
 
   const onChange = () => {
-    const value = textareaRef.current.value;
+    const value = _textareaRef.current.value;
     setReview({...review, comment: value});
   };
 
@@ -76,7 +76,7 @@ const AddReviewPage: React.FC<IProps> = (props: IProps) => {
       <form className="add-review__form">
         <div className="rating">
           <div className="rating__stars">
-            {points.map((p) =>
+            {_points.map((p) =>
               <ReviewPoint
                 onClick={() => onClick(p)}
                 key={`point-${p}`}
@@ -87,7 +87,7 @@ const AddReviewPage: React.FC<IProps> = (props: IProps) => {
         <div className="add-review__text">
           <textarea
             onChange={onChange}
-            ref={textareaRef}
+            ref={_textareaRef}
             className="add-review__textarea"
             name="review-text"
             id="review-text"
@@ -108,4 +108,6 @@ const AddReviewPage: React.FC<IProps> = (props: IProps) => {
   </section>;
 };
 
-export default AddReviewPage;
+const MemoizedAddReviewPage = React.memo(AddReviewPage);
+
+export default MemoizedAddReviewPage;
